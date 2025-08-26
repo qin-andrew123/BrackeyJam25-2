@@ -24,13 +24,6 @@ public enum IngredientEffect
     ADDITIVE,
 }
 
-[System.Serializable]
-public class IngredientPair
-{
-    public IngredientDataSO ingredient;
-    public IngredientDataSO result;
-}
-
 
 [CreateAssetMenu(fileName = "IngredientDataSO", menuName = "Scriptable Objects/IngredientDataSO")]
 public class IngredientDataSO : ScriptableObject
@@ -84,9 +77,4 @@ public class IngredientDataSO : ScriptableObject
     public IngredientEffect IngredientEffectValue => mIngredientEffect;
     [SerializeField] private float mIngredientValue = 1.0f;
     public float IngredientValue => mIngredientValue;
-
-    // The key is a combinable ingredient, and the value is the result of combining the ingredients
-    [SerializeField] private List<IngredientPair> mCombinableIngredients;
-    public List<IngredientPair> CombinableIngredients => mCombinableIngredients;
-
 }

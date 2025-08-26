@@ -1,6 +1,14 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+[System.Serializable]
+public class IngredientPair
+{
+    public List<Ingredient> ingredientPrefabs;
+    public IngredientDataSO resultPrefab;
+}
 
 public class IngredientManager : MonoBehaviour
 {
@@ -52,27 +60,52 @@ public class IngredientManager : MonoBehaviour
         mMixingBowlIngredients.Add(ingredient);
         ingredient.SetIngredientUsed(true);
         ingredient.gameObject.transform.position = mMixingBowlLocation.position;
+        AddClickedIngredient(ingredient);
+    }
+
+    public void AddClickedIngredient(Ingredient ingredient)
+    {
+        if(mClickedIngredients.Contains(ingredient))
+        {
+            mClickedIngredients.Remove(ingredient);
+        }
+        else
+        {
+            mClickedIngredients.Add(ingredient);
+        }
+    }
+
+    public List<Ingredient> GetClickedIngredients()
+    {
+        return mClickedIngredients;
+    }
+
+    public List<IngredientPair> GetCombinableIngredients()
+    {
+        return mCombinableIngredients;
     }
 
     public void Combine(IngredientDataSO data)
     {
         // instantiate new prefab and delete previous ingredients
-        Transform resultPos = mIngredientClicked.transform;
-        Destroy(mIngredientClicked.gameObject);
-        Destroy(mCombineCandidate.gameObject);
+        Transform resultPos = mClickedIngredients[0].transform;
+        foreach (Ingredient ingredient in mClickedIngredients)
+        {
+            Destroy(ingredient.gameObject);
+        }
+        mClickedIngredients.Clear();
 
         GameObject newIngredient = Instantiate(mIngredientPrefab);
         newIngredient.GetComponent<Ingredient>().SetIngredientData(data);
-        newIngredient.transform.position = transform.position;
+        newIngredient.transform.position = resultPos.position;
     }
 
     // TODO: Hook up UI with this value
     private float mScore = 0;
-    public Ingredient mIngredientClicked = null;
-    public Ingredient mCombineCandidate = null;
     public bool bIsCombining = false;
     [SerializeField] private List<Ingredient> mMixingBowlIngredients = new List<Ingredient>();
+    [SerializeField] private List<Ingredient> mClickedIngredients = new List<Ingredient>();
     [SerializeField] private Transform mMixingBowlLocation;
     [SerializeField] private GameObject mIngredientPrefab;
-
+    [SerializeField] private List<IngredientPair> mCombinableIngredients;
 }

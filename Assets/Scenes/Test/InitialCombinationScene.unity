@@ -627,6 +627,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586391670}
   m_CullTransparentMesh: 1
+--- !u!114 &605118074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2686004130000771080, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
+  m_PrefabInstance: {fileID: 110852333}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd581c2f04564a4899e17debf5ed374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &797271713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2686004130000771080, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
+  m_PrefabInstance: {fileID: 1443535562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd581c2f04564a4899e17debf5ed374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &937075701
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,12 +694,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58acc4172423c74e886cf34dd728443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mIngredientClicked: {fileID: 0}
-  mCombineCandidate: {fileID: 0}
   bIsCombining: 0
   mMixingBowlIngredients: []
+  mClickedIngredients: []
   mMixingBowlLocation: {fileID: 1454788746}
   mIngredientPrefab: {fileID: 3988034232732167875, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
+  mCombinableIngredients:
+  - ingredientPrefabs:
+    - {fileID: 797271713}
+    - {fileID: 605118074}
+    resultPrefab: {fileID: 11400000, guid: 50d65b4aa3b37454a950f85dc1723f35, type: 2}
 --- !u!114 &937075704
 MonoBehaviour:
   m_ObjectHideFlags: 0

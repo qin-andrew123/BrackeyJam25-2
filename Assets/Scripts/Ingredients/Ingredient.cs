@@ -12,9 +12,7 @@ public class Ingredient : MonoBehaviour
     {
         OnIngredientClicked?.Invoke(mIngredientData);
 
-        bool isCombining = mIngredientManager.bIsCombining;
-        mIngredientManager.mCombineCandidate = isCombining ? this : null;
-        mIngredientManager.mIngredientClicked = !isCombining ? this : mIngredientManager.mIngredientClicked;
+        mIngredientManager.AddClickedIngredient(this);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
