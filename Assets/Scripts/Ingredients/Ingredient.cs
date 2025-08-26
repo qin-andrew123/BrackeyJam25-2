@@ -7,6 +7,7 @@ public class Ingredient : MonoBehaviour
     [SerializeField] private IngredientDataSO mIngredientData;
     public static event Action<IngredientDataSO> OnIngredientClicked;
     private bool bIsUsed = false;
+
     public void IngredientClicked()
     {
         OnIngredientClicked?.Invoke(mIngredientData);
@@ -22,6 +23,15 @@ public class Ingredient : MonoBehaviour
         {
             Debug.LogAssertion("ERROR: Ingredient's ingredient data scriptable object is null");
             return;
+        }
+
+        if(!mIngredientManager)
+        {
+            IngredientManager[] components = UnityEngine.Object.FindObjectsByType<IngredientManager>(FindObjectsSortMode.None);
+            if (components.Length > 0)
+            {
+                mIngredientManager = components[0];
+            }
         }
     }
 

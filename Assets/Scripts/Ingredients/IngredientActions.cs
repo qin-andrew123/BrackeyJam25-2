@@ -5,18 +5,6 @@ using UnityEngine;
 public class IngredientActions : MonoBehaviour
 {
     [SerializeField] private IngredientManager mIngredientManager;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void CheckCombine()
     {
         Debug.Log("Trying to Combine Ingredients");
