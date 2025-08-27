@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,10 +16,12 @@ public class IngredientManager : MonoBehaviour
     private void OnEnable()
     {
         Ingredient.OnIngredientClicked += HandleIngredientInteracted;
+        TicketManager.OnTicketGenerated += SpawnIngredients;
     }
     private void OnDestroy()
     {
         Ingredient.OnIngredientClicked -= HandleIngredientInteracted;
+        TicketManager.OnTicketGenerated -= SpawnIngredients;
     }
 
     private void HandleIngredientInteracted(IngredientDataSO inputIngredient)
@@ -54,6 +57,72 @@ public class IngredientManager : MonoBehaviour
             "\n Its synergistic ingredients are: {" + (IngredientFlavor)(synergisticIngredients[0]) + "," + (IngredientFlavor)(synergisticIngredients[1]) + "}");
     }
 
+    public void SpawnIngredients(TicketConstraint ticket)
+    {
+        // Potentially temp, delete the old 
+        foreach (GameObject go in mSpawnedIngredients)
+        {
+            Destroy(go);
+        }
+
+        bool bHasGeneratedFlavorType = false;
+        bool bHasGeneratedIngredientName = false;
+
+        // Create the spawning pool and sort the list randomly
+        List<IngredientDataSO> spawningPool = new List<IngredientDataSO>(GlobalVariables.Instance.IngredientData);
+        spawningPool = spawningPool.OrderBy(x => Random.value).ToList();
+
+        // Take the first number to spawn as our selected
+        List<IngredientDataSO> selectedIngredients = spawningPool.Take(mSpawnIngredientLocations.Count).ToList();
+
+        // Check to ensure that we have the required flavor and value
+        for (int i = 0; i < selectedIngredients.Count; ++i)
+        {
+            if (selectedIngredients[i].IngredientFlavorValue == ticket.ingredientFlavor)
+            {
+                bHasGeneratedFlavorType = true;
+            }
+            if (selectedIngredients[i].IngredientName == ticket.ingredientName)
+            {
+                bHasGeneratedIngredientName = true;
+            }
+        }
+
+        // If we don't manually override the indices to get the ones we want
+        int flavorIndex = 0;
+        if (!bHasGeneratedFlavorType)
+        {
+            flavorIndex = Random.Range(0, mSpawnIngredientLocations.Count);
+            GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
+            int randomFlavorIndex = Random.Range(0, flavor.Count);
+            selectedIngredients[flavorIndex] = flavor[randomFlavorIndex];
+        }
+
+        if (!bHasGeneratedIngredientName)
+        {
+            for (int i = selectedIngredients.Count - 1; i >= 0; --i)
+            {
+                if (i != flavorIndex)
+                {
+                    GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
+                    int randomIndex = Random.Range(0, flavor.Count);
+                    selectedIngredients[i] = flavor[randomIndex];
+                    break;
+                }
+            }
+        }
+
+        Assert.IsTrue(mSpawnIngredientLocations.Count == selectedIngredients.Count, "The number to spawn is not equal to the number of spawn ingredient locations!");
+
+        for (int i = 0; i < mSpawnIngredientLocations.Count; ++i)
+        {
+            GameObject newIngredient = Instantiate(mIngredientPrefab);
+            newIngredient.GetComponent<Ingredient>().SetIngredientData(selectedIngredients[i]);
+            newIngredient.transform.position = mSpawnIngredientLocations[i].position;
+
+            mSpawnedIngredients.Add(newIngredient);
+        }
+    }
     public void AddToMixingBowl(Ingredient ingredient)
     {
         Debug.Log("Added " + ingredient + " to mixing bowl");
@@ -122,4 +191,7 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private GameObject mIngredientPrefab;
     [SerializeField] private List<IngredientPair> mCombinableIngredients;
     [SerializeField] private IngredientUI mIngredientUI;
+    [SerializeField] private List<Transform> mSpawnIngredientLocations;
+    // TODO : Make this private
+    public List<GameObject> mSpawnedIngredients;
 }

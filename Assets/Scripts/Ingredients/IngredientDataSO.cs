@@ -90,4 +90,6 @@ public class IngredientDataSO : ScriptableObject
     public float IngredientValue => mIngredientValue;
 
     [SerializeField] public FlavorData mFlavorData = new FlavorData();
+    public Material IngredientMaterial => mIngredientMaterial;
+    [SerializeField] private Material mIngredientMaterial;
 }
