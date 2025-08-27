@@ -1017,6 +1017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 937075702}
   - component: {fileID: 937075703}
+  - component: {fileID: 937075704}
   m_Layer: 0
   m_Name: IngredientManager
   m_TagString: Untagged
@@ -1060,7 +1061,7 @@ MonoBehaviour:
   - ingredientPrefabs:
     - {fileID: 3879943675848903790, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
     - {fileID: 3879943675848903790, guid: f6296012279fc724ba346ae9e1149365, type: 3}
-    resultPrefab: {fileID: 0}
+    resultPrefab: {fileID: 11400000, guid: dbd9ac9c1ffbbfb4f9d9b098b7f1b8bf, type: 2}
   mIngredientUI: {fileID: 952313914}
   mSpawnIngredientLocations:
   - {fileID: 1152059550}
@@ -1073,6 +1074,19 @@ MonoBehaviour:
   - {fileID: 1075988336}
   mSpawnedIngredients: []
   mRoundManager: {fileID: 383464687}
+--- !u!114 &937075704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937075701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70ab6a3588111b4a9cb1c93a34966c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mIngredientManager: {fileID: 937075703}
 --- !u!1 &952313913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0152c722b9de343b970c134b19916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mIngredientActions: {fileID: 0}
+  mIngredientActions: {fileID: 937075704}
 --- !u!114 &1219244057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0152c722b9de343b970c134b19916f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mIngredientActions: {fileID: 0}
+  mIngredientActions: {fileID: 937075704}
 --- !u!114 &1330054239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,7 +2665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6183822153734641882, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.18
+      value: -9.49
       objectReference: {fileID: 0}
     - target: {fileID: 6183822153734641882, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2668,6 +2682,10 @@ PrefabInstance:
     - target: {fileID: 6183822153734641882, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6183822153734641882, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 6183822153734641882, guid: 7be858260fe968143a2d2d9583b5883c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

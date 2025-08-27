@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4639975290562417993}
   - component: {fileID: 2785551332673352440}
   - component: {fileID: 5988397664324117125}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 3879943675848903790}
   - component: {fileID: 933906766799260351}
   - component: {fileID: 9132501505837967582}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: IngredientPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,9 +146,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 2.562231
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: -0.06364179, z: -0.00000011920929}
 --- !u!114 &3879943675848903790
 MonoBehaviour:
   m_ObjectHideFlags: 0
