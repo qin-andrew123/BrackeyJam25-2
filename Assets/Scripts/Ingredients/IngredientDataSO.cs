@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum IngredientFlavor
@@ -22,6 +23,7 @@ public enum IngredientEffect
     MULTIPLIER,
     ADDITIVE,
 }
+
 
 [CreateAssetMenu(fileName = "IngredientDataSO", menuName = "Scriptable Objects/IngredientDataSO")]
 public class IngredientDataSO : ScriptableObject
