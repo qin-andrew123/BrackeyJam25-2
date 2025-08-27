@@ -14,8 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mIngredientName: TEST 1
   mIngredientFlavor: 2
-  mIngredientEffect: -1
-  mIngredientValue: 1
-  mCombinableIngredients:
-  - ingredient: {fileID: 11400000, guid: 711ef06ee2faff040a703dc6300ed7fe, type: 2}
-    result: {fileID: 11400000, guid: 50d65b4aa3b37454a950f85dc1723f35, type: 2}
+  mIngredientEffect: 1
+  mIngredientValue: 33

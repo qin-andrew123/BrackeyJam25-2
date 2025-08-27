@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
   m_Name: TEST_Ingredient_SO_2
   m_EditorClassIdentifier: 
-  mIngredientName: NONE
-  mIngredientFlavor: -1
-  mIngredientEffect: -1
-  mIngredientValue: 1
-  mCombinableIngredients: []
+  mIngredientName: TEST 2
+  mIngredientFlavor: 1
+  mIngredientEffect: 2
+  mIngredientValue: 44

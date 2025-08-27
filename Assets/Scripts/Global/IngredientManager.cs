@@ -65,13 +65,23 @@ public class IngredientManager : MonoBehaviour
 
     public void AddClickedIngredient(Ingredient ingredient)
     {
-        if(mClickedIngredients.Contains(ingredient))
+        if (mClickedIngredients.Contains(ingredient))
         {
             mClickedIngredients.Remove(ingredient);
+            if (mClickedIngredients.Count > 0)
+            {
+                mIngredientUI.UpdatePopup(mClickedIngredients[mClickedIngredients.Count - 1].GetIngredientData());
+            }
+            else
+            {
+                mIngredientUI.HidePopup();
+            }
+
         }
         else
         {
             mClickedIngredients.Add(ingredient);
+            mIngredientUI.UpdatePopup(ingredient.GetIngredientData());
         }
     }
 
@@ -108,4 +118,5 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private Transform mMixingBowlLocation;
     [SerializeField] private GameObject mIngredientPrefab;
     [SerializeField] private List<IngredientPair> mCombinableIngredients;
+    [SerializeField] private IngredientUI mIngredientUI;
 }
