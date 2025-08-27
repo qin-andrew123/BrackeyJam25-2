@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/Menu.uss?fileID=7433441132597879392&amp;guid=b55a66c28b829784c80ae7de8c4ffc6d&amp;type=3" />
+    <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1; transition-property: ignored; transition-duration: 0ms; transition-delay: 0s; background-image: url(&quot;project://database/Assets/Art/UI/MainMenu%20Background.png?fileID=2800000&amp;guid=07be10529548db84fa15afaeaac11895&amp;type=3#MainMenu Background&quot;);">
+        <ui:VisualElement name="Menu" style="flex-grow: 1; align-items: center; justify-content: center; padding-bottom: 0%; padding-top: 0%; padding-right: 0%; padding-left: 0%; width: 50%; align-self: center; height: 50%; max-height: none; align-content: auto; margin-top: 5%; margin-right: 10%; margin-bottom: 5%; margin-left: 10%;">
+            <ui:VisualElement name="Logo" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/DemoLogo.png?fileID=2800000&amp;guid=733952fa70dfe4b4bafab15b8fb28789&amp;type=3#DemoLogo&quot;); background-color: rgba(55, 55, 55, 0); width: 100%; height: auto; background-size: contain; -unity-background-scale-mode: scale-to-fit; align-items: auto; justify-content: flex-start;" />
+            <ui:Button text="New Game" name="NewGame" />
+            <ui:Button text="Options" name="Options" />
+            <ui:Button text="Quit" name="Quit" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

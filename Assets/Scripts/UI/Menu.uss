@@ -1,0 +1,41 @@
+.panel {
+    background-image: none;
+    background-repeat: repeat repeat;
+    background-size: 96px 96px;
+    background-position-x: left 0;
+    background-position-y: top 0;
+    transition-property: position;
+    transition-timing-function: ease-in-out-bounce;
+    transition-duration: 500ms;
+    transition-delay: 20s;
+    -unity-slice-type: tiled;
+}
+
+.unity-button {
+    width: 60%;
+    border-left-color: rgb(38, 32, 32);
+    border-right-color: rgb(38, 32, 32);
+    border-top-color: rgb(38, 32, 32);
+    border-bottom-color: rgb(38, 32, 32);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    border-bottom-right-radius: 21px;
+    border-bottom-left-radius: 21px;
+    background-color: rgb(175, 214, 210);
+    opacity: 1;
+}
+
+.unity-text-element {
+}
+
+.logo {
+    background-image: url("project://database/Assets/Art/UI/DemoLogo.png?fileID=2800000&guid=733952fa70dfe4b4bafab15b8fb28789&type=3#DemoLogo");
+}
+
+.unity-button:hover {
+    background-color: rgb(24, 144, 202);
+}
