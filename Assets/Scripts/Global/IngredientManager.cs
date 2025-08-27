@@ -15,10 +15,12 @@ public class IngredientManager : MonoBehaviour
     private void OnEnable()
     {
         Ingredient.OnIngredientClicked += HandleIngredientInteracted;
+        TicketManager.OnTicketGenerated += SpawnIngredients;
     }
     private void OnDestroy()
     {
         Ingredient.OnIngredientClicked -= HandleIngredientInteracted;
+        TicketManager.OnTicketGenerated -= SpawnIngredients;
     }
 
     private void HandleIngredientInteracted(IngredientDataSO inputIngredient)
@@ -54,6 +56,59 @@ public class IngredientManager : MonoBehaviour
             "\n Its synergistic ingredients are: {" + (IngredientFlavor)(synergisticIngredients[0]) + "," + (IngredientFlavor)(synergisticIngredients[1]) + "}");
     }
 
+    public void SpawnIngredients(TicketConstraint ticket)
+    {
+        bool bHasGeneratedFlavorType = false;
+        bool bHasGeneratedIngredientName = false;
+        List<IngredientDataSO> spawningPool = GlobalVariables.Instance.IngredientData;
+        for (int i = 0; i < mSpawnIngredientLocations.Count; ++i)
+        {
+            int randomIndex = Random.Range(0, spawningPool.Count);
+            GameObject newIngredient = Instantiate(mIngredientPrefab);
+            newIngredient.GetComponent<Ingredient>().SetIngredientData(spawningPool[randomIndex]);
+            newIngredient.transform.position = mSpawnIngredientLocations[i].position;
+
+            mSpawnedIngredients.Add(newIngredient);
+            if (spawningPool[randomIndex].IngredientFlavorValue == ticket.ingredientFlavor)
+            {
+                bHasGeneratedFlavorType = true;
+            }
+            if (spawningPool[randomIndex].IngredientName == ticket.ingredientName)
+            {
+                bHasGeneratedIngredientName = true;
+            }
+        }
+
+        int flavorIndex = -1;
+        if (!bHasGeneratedFlavorType)
+        {
+            for(int i = 0; i <mSpawnedIngredients.Count; ++i)
+            {
+                if(Random.Range(0f, 1f) < 0.4)
+                {
+                    GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
+                    int randomIndex = Random.Range(0, flavor.Count);
+                    mSpawnedIngredients[i].GetComponent<Ingredient>().SetIngredientData(flavor[randomIndex]);
+                    flavorIndex = i;
+                }
+            }
+        }
+
+        int nameIndex = -1;
+        if (!bHasGeneratedIngredientName)
+        {
+            for (int i = mSpawnedIngredients.Count - 1; i >= 0; --i)
+            {
+                if (i != flavorIndex)
+                {
+                    GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
+                    int randomIndex = Random.Range(0, flavor.Count);
+                    mSpawnedIngredients[i].GetComponent<Ingredient>().SetIngredientData(flavor[randomIndex]);
+                    flavorIndex = i;
+                }
+            }
+        }
+    }
     public void AddToMixingBowl(Ingredient ingredient)
     {
         Debug.Log("Added " + ingredient + " to mixing bowl");
@@ -119,4 +174,7 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private GameObject mIngredientPrefab;
     [SerializeField] private List<IngredientPair> mCombinableIngredients;
     [SerializeField] private IngredientUI mIngredientUI;
+    [SerializeField] private List<Transform> mSpawnIngredientLocations;
+    // TODO : Make this private
+    public List<GameObject> mSpawnedIngredients;
 }

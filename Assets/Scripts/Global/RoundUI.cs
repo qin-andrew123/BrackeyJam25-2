@@ -7,11 +7,11 @@ public class RoundUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mTMP;
     private void OnEnable()
     {
-        TicketManager.OnSelectedIngredients += UpdateText;
+        TicketManager.OnTicketGenerated += UpdateText;
     }
     private void OnDisable()
     {
-        TicketManager.OnSelectedIngredients -= UpdateText;
+        TicketManager.OnTicketGenerated -= UpdateText;
     }
 
     private void UpdateText(TicketConstraint ticketConstraint)

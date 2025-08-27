@@ -11,21 +11,18 @@ public class RoundManager : MonoBehaviour
     {
         mRoundNumber++;
         OnRoundStart?.Invoke(mRoundNumber);
-        // TODO: ADD UI For Round Number as well
     }
     private void EndRound()
     {
         OnRoundEnd?.Invoke();
     }
 
-    // TODO: Delete or refactor after initial prototyping since this is reliant on PlayerInput hitting f5
     private void OnEnable()
     {
-        PlayerInput.TEMPSetRoundRequirements += InitiateNextRound;
+        LevelManager.OnBakeSceneLoad += InitiateNextRound;
     }
-    // TODO: Delete or refactor after initial prototyping since this is reliant on PlayerInput hitting f5
     private void OnDisable()
     {
-        PlayerInput.TEMPSetRoundRequirements -= InitiateNextRound;
+        LevelManager.OnBakeSceneLoad -= InitiateNextRound;
     }
 }

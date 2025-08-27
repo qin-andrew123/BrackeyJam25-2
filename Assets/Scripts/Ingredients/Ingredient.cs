@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+// TODO: create a function to update the game data so that the mesh can update if we forcibly change the data etc
 public class Ingredient : MonoBehaviour
 {
     [SerializeField] private IngredientManager mIngredientManager;
