@@ -38,44 +38,44 @@ public class RoundManager : MonoBehaviour
         LevelManager.OnBakeSceneLoad -= InitiateNextRound;
     }
 
-    private void SetRequiredItems()
-    {
-        // TODO: add weighting or something else if we want that. For now we are just randomly picking
-        int randomDifficulty = UnityEngine.Random.Range((int)(DifficultySetting.EASY), (int)(DifficultySetting.HARD));
+    //private void SetRequiredItems()
+    //{
+    //    // TODO: add weighting or something else if we want that. For now we are just randomly picking
+    //    int randomDifficulty = UnityEngine.Random.Range((int)(DifficultySetting.EASY), (int)(DifficultySetting.HARD));
 
-        // TODO: We can also customize this to be better as well, random selection
-        int starterFlavor = UnityEngine.Random.Range((int)IngredientFlavor.BLAND, (int)IngredientFlavor.TOTAL_FLAVORS - 1);
-        int[] synergies = IngredientDataSO.GetSynergisticIngredientFlavors((IngredientFlavor)starterFlavor);
-        int antagonist = IngredientDataSO.GetAntagonizingIngredientFlavor((IngredientFlavor)starterFlavor);
+    //    // TODO: We can also customize this to be better as well, random selection
+    //    int starterFlavor = UnityEngine.Random.Range((int)IngredientFlavor.BLAND, (int)IngredientFlavor.TOTAL_FLAVORS - 1);
+    //    int[] synergies = IngredientDataSO.GetSynergisticIngredientFlavors((IngredientFlavor)starterFlavor);
+    //    int antagonist = IngredientDataSO.GetAntagonizingIngredientFlavor((IngredientFlavor)starterFlavor);
 
-        mRoundRequiredIngredients[0] = (IngredientFlavor)starterFlavor;
+    //    mRoundRequiredIngredients[0] = (IngredientFlavor)starterFlavor;
 
-        Debug.Log("Difficulty: " + (DifficultySetting)randomDifficulty);
-        switch ((DifficultySetting)randomDifficulty)
-        {
-            case DifficultySetting.EASY:
-                mRoundRequiredIngredients[1] = (IngredientFlavor)synergies[UnityEngine.Random.Range(0, 1)];
-                break;
-            case DifficultySetting.MEDIUM:
-                if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
-                {
-                    mRoundRequiredIngredients[1] = (IngredientFlavor)antagonist;
-                }
-                else
-                {
-                    mRoundRequiredIngredients[1] = (IngredientFlavor)synergies[UnityEngine.Random.Range(0, 1)];
-                }
-                break;
-            case DifficultySetting.HARD:
-                mRoundRequiredIngredients[1] = (IngredientFlavor)antagonist;
-                break;
-            default:
-                Debug.Log("Improper Difficulty Value, something wrong happened");
-                return;
-        }
+    //    Debug.Log("Difficulty: " + (DifficultySetting)randomDifficulty);
+    //    switch ((DifficultySetting)randomDifficulty)
+    //    {
+    //        case DifficultySetting.EASY:
+    //            mRoundRequiredIngredients[1] = (IngredientFlavor)synergies[UnityEngine.Random.Range(0, 1)];
+    //            break;
+    //        case DifficultySetting.MEDIUM:
+    //            if (UnityEngine.Random.Range(0f, 1f) > 0.5f)
+    //            {
+    //                mRoundRequiredIngredients[1] = (IngredientFlavor)antagonist;
+    //            }
+    //            else
+    //            {
+    //                mRoundRequiredIngredients[1] = (IngredientFlavor)synergies[UnityEngine.Random.Range(0, 1)];
+    //            }
+    //            break;
+    //        case DifficultySetting.HARD:
+    //            mRoundRequiredIngredients[1] = (IngredientFlavor)antagonist;
+    //            break;
+    //        default:
+    //            Debug.Log("Improper Difficulty Value, something wrong happened");
+    //            return;
+    //    }
 
-        OnSelectedIngredients?.Invoke(mRoundRequiredIngredients);
-    }
+    //    OnSelectedIngredients?.Invoke(mRoundRequiredIngredients);
+    //}
 
     public void CalculateRoundScore(IngredientFlavor prevFlavor, IngredientFlavor currFlavor, float value)
     {

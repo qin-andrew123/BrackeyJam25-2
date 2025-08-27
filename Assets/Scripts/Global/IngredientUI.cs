@@ -8,7 +8,6 @@ public class IngredientUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mIngredientFlavor;
     [SerializeField] private TextMeshProUGUI mIngredientEffect;
     [SerializeField] private TextMeshProUGUI mIngredientValue;
-    private bool bShouldReveal = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

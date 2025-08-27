@@ -50,7 +50,7 @@ public class Ingredient : MonoBehaviour
     {
         mIngredientData = ingredientDataSO;
         // This is temp but for debugging purposes. 
-        Renderer renderer = gameObject.GetComponent<Renderer>();
+        Renderer renderer = mMesh.GetComponent<Renderer>();
         if (renderer != null)
         {
             renderer.material = ingredientDataSO.IngredientMaterial;

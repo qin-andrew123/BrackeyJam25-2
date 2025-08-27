@@ -8,10 +8,12 @@ public class RoundUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mScoreText;
     private void OnEnable()
     {
+        //TicketManager.OnSelectedIngredients += UpdateText;
         TicketManager.OnTicketGenerated += UpdateText;
     }
     private void OnDisable()
     {
+        //TicketManager.OnSelectedIngredients -= UpdateText;
         TicketManager.OnTicketGenerated -= UpdateText;
     }
 
@@ -21,10 +23,12 @@ public class RoundUI : MonoBehaviour
         ingredientFlavorConstraint = char.ToUpper(ingredientFlavorConstraint[0]) + ingredientFlavorConstraint.Substring(1).ToLower();
 
         string ingredientNameConstraint = ticketConstraint.ingredientName;
-        string ingredientTwo = ingredientFlavors[1].ToString();
+        string ingredientTwo = ingredientFlavorConstraint[1].ToString();
         ingredientTwo = char.ToUpper(ingredientTwo[0]) + ingredientTwo.Substring(1).ToLower();
 
-        mTMP.text = $"You Require: {ingredientOne} AND {ingredientTwo}";
+        //mTMP.text = $"You Require: {ingredientFlavorConstraint} AND {ingredientTwo}";
+        mTMP.text = $"Order #{ticketConstraint.orderNumber}\n Biscuit Flavor: {ingredientFlavorConstraint} \n Ingredients Needed: {ingredientNameConstraint}";
+
     }
 
     public void UpdateScoreText(float newValue)
@@ -35,6 +39,5 @@ public class RoundUI : MonoBehaviour
     void Update()
     {
 
-        mTMP.text = $"Order #{ticketConstraint.orderNumber}\n Biscuit Flavor: {ingredientFlavorConstraint} \n Ingredients Needed: {ingredientNameConstraint}";
     }
 }
