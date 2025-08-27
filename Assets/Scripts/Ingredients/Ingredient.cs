@@ -5,6 +5,7 @@ public class Ingredient : MonoBehaviour
 {
     [SerializeField] private IngredientManager mIngredientManager;
     [SerializeField] private IngredientDataSO mIngredientData;
+    [SerializeField] private GameObject mMesh;
     public static event Action<IngredientDataSO> OnIngredientClicked;
     private bool bIsUsed = false;
 
@@ -36,6 +37,11 @@ public class Ingredient : MonoBehaviour
     public IngredientDataSO GetIngredientData()
     {
         return mIngredientData;
+    }
+
+    public GameObject GetMesh()
+    {
+        return mMesh;
     }
 
     public void SetIngredientData(IngredientDataSO ingredientDataSO)

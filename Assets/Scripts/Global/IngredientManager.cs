@@ -67,6 +67,7 @@ public class IngredientManager : MonoBehaviour
     {
         if (mClickedIngredients.Contains(ingredient))
         {
+            ingredient.GetMesh().layer = LayerMask.NameToLayer("Ingredient");
             mClickedIngredients.Remove(ingredient);
             if (mClickedIngredients.Count > 0)
             {
@@ -82,6 +83,8 @@ public class IngredientManager : MonoBehaviour
         {
             mClickedIngredients.Add(ingredient);
             mIngredientUI.UpdatePopup(ingredient.GetIngredientData());
+            ingredient.GetMesh().layer = LayerMask.NameToLayer("Outline");
+
         }
     }
 

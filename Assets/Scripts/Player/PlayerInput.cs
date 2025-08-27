@@ -34,7 +34,7 @@ public class PlayerInput : MonoBehaviour
                 Debug.Log("Clicked on: " + hit.collider.gameObject.name);
                 // Check for a custom component
                 Ingredient ingredient = hit.collider.GetComponent<Ingredient>();
-                if (ingredient != null)
+                if (ingredient != null && !ingredient.GetIngredientUsed())
                 {
                     ingredient.IngredientClicked();
                 }
