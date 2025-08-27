@@ -28,12 +28,12 @@ public class IngredientUI : MonoBehaviour
 
         string ingredientName = inputIngredient.IngredientName;
         string ingredientFlavor = inputIngredient.IngredientFlavorValue.ToString();
-        string ingredientEffect = inputIngredient.IngredientEffectValue.ToString();
+        //string ingredientEffect = inputIngredient.IngredientEffectValue.ToString();
         string ingredientValue = inputIngredient.IngredientValue.ToString();
 
         mIngredientName.text = ingredientName;
         mIngredientFlavor.text = ingredientFlavor;
-        mIngredientEffect.text = ingredientEffect;
+        //mIngredientEffect.text = ingredientEffect;
         mIngredientValue.text = ingredientValue;
         
 

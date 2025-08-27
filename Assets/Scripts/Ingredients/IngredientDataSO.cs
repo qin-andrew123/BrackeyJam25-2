@@ -27,15 +27,6 @@ public class FlavorData
 }
 
 
-public enum IngredientEffect
-{
-    NONE = -1,
-    BASE_VALUE,
-    MULTIPLIER,
-    ADDITIVE,
-}
-
-
 [CreateAssetMenu(fileName = "IngredientDataSO", menuName = "Scriptable Objects/IngredientDataSO")]
 public class IngredientDataSO : ScriptableObject
 {
@@ -84,8 +75,8 @@ public class IngredientDataSO : ScriptableObject
     public string IngredientName => mIngredientName;
     [SerializeField] private IngredientFlavor mIngredientFlavor = IngredientFlavor.NONE;
     public IngredientFlavor IngredientFlavorValue => mIngredientFlavor;
-    [SerializeField] private IngredientEffect mIngredientEffect = IngredientEffect.NONE;
-    public IngredientEffect IngredientEffectValue => mIngredientEffect;
+    //[SerializeField] private IngredientEffect mIngredientEffect = IngredientEffect.NONE;
+    //public IngredientEffect IngredientEffectValue => mIngredientEffect;
     [SerializeField] private float mIngredientValue = 1.0f;
     public float IngredientValue => mIngredientValue;
 
