@@ -15,6 +15,17 @@ public enum IngredientFlavor
     TOTAL_FLAVORS = 6,
 }
 
+[System.Serializable]
+public class FlavorData
+{
+    public int BLAND = 0;
+    public int BITTER = 0;
+    public int SWEET = 0;
+    public int SALTY = 0;
+    public int SOUR = 0;
+    public int UMAMI = 0;
+}
+
 
 public enum IngredientEffect
 {
@@ -77,4 +88,6 @@ public class IngredientDataSO : ScriptableObject
     public IngredientEffect IngredientEffectValue => mIngredientEffect;
     [SerializeField] private float mIngredientValue = 1.0f;
     public float IngredientValue => mIngredientValue;
+
+    [SerializeField] public FlavorData mFlavorData = new FlavorData();
 }
