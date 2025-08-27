@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: Bitter_SO
+  m_Name: TEST_Ingredient_SO_2
   m_EditorClassIdentifier: 
-  mIngredientName: Bitter
+  mIngredientName: TEST 2
   mIngredientFlavor: 1
-  mIngredientEffect: -1
-  mIngredientValue: 1
-  mIngredientMaterial: {fileID: 2100000, guid: 1e029821538aec848824abd2c669586a, type: 2}
+  mIngredientEffect: 2
+  mIngredientValue: 44
+  mIngredientMaterial: {fileID: 2100000, guid: 210708a0c4654b44ab274fc88a5d466e, type: 2}

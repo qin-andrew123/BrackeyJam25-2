@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum IngredientFlavor
@@ -14,14 +15,17 @@ public enum IngredientFlavor
     TOTAL_FLAVORS = 6,
 }
 
-
-public enum IngredientEffect
+[System.Serializable]
+public class FlavorData
 {
-    NONE = -1,
-    BASE_VALUE,
-    MULTIPLIER,
-    ADDITIVE,
+    public int BLAND = 0;
+    public int BITTER = 0;
+    public int SWEET = 0;
+    public int SALTY = 0;
+    public int SOUR = 0;
+    public int UMAMI = 0;
 }
+
 
 [CreateAssetMenu(fileName = "IngredientDataSO", menuName = "Scriptable Objects/IngredientDataSO")]
 public class IngredientDataSO : ScriptableObject
@@ -71,8 +75,12 @@ public class IngredientDataSO : ScriptableObject
     public string IngredientName => mIngredientName;
     [SerializeField] private IngredientFlavor mIngredientFlavor = IngredientFlavor.NONE;
     public IngredientFlavor IngredientFlavorValue => mIngredientFlavor;
-    [SerializeField] private IngredientEffect mIngredientEffect = IngredientEffect.NONE;
-    public IngredientEffect IngredientEffectValue => mIngredientEffect;
+    //[SerializeField] private IngredientEffect mIngredientEffect = IngredientEffect.NONE;
+    //public IngredientEffect IngredientEffectValue => mIngredientEffect;
     [SerializeField] private float mIngredientValue = 1.0f;
     public float IngredientValue => mIngredientValue;
+
+    [SerializeField] public FlavorData mFlavorData = new FlavorData();
+    public Material IngredientMaterial => mIngredientMaterial;
+    [SerializeField] private Material mIngredientMaterial;
 }

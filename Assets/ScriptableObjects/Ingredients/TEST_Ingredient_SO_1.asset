@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: TEST_Ingredient_SO
+  m_Name: TEST_Ingredient_SO_1
   m_EditorClassIdentifier: 
-  mIngredientName: NONE
-  mIngredientFlavor: -1
-  mIngredientEffect: -1
-  mIngredientValue: 1
+  mIngredientName: TEST 1
+  mIngredientFlavor: 2
+  mIngredientEffect: 1
+  mIngredientValue: 33
+  mIngredientMaterial: {fileID: 2100000, guid: 7eaba44314caca24c8cd24a1ca3a2678, type: 2}
