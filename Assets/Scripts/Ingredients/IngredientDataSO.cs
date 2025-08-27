@@ -77,4 +77,6 @@ public class IngredientDataSO : ScriptableObject
     public IngredientEffect IngredientEffectValue => mIngredientEffect;
     [SerializeField] private float mIngredientValue = 1.0f;
     public float IngredientValue => mIngredientValue;
+    public Material IngredientMaterial => mIngredientMaterial;
+    [SerializeField] private Material mIngredientMaterial;
 }

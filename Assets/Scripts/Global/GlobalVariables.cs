@@ -30,10 +30,10 @@ public class GlobalVariables : MonoBehaviour
     {
         mLevelManager.LoadScene(levelNum);
     }
-    
+
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
             return;
@@ -54,12 +54,12 @@ public class GlobalVariables : MonoBehaviour
 
         foreach (IngredientDataSO ingredientData in mIngredientDataSO)
         {
-            mIngredientDataNames.Add(ingredientData.name);
+            mIngredientDataNames.Add(ingredientData.IngredientName);
 
             IngredientFlavor indexFlavor = ingredientData.IngredientFlavorValue;
-            if(!mFlavorDictionary.ContainsKey(indexFlavor))
+            if (!mFlavorDictionary.ContainsKey(indexFlavor))
             {
-                mFlavorDictionary[indexFlavor] = new List<IngredientDataSO> { ingredientData};
+                mFlavorDictionary[indexFlavor] = new List<IngredientDataSO> { ingredientData };
             }
             else
             {
@@ -67,8 +67,8 @@ public class GlobalVariables : MonoBehaviour
             }
 
             string indexName = ingredientData.IngredientName;
-            Assert.IsTrue(mNameDictionary.ContainsKey(indexName), "Assertion: There is a duplicate name value");
-            
+            Assert.IsFalse(mNameDictionary.ContainsKey(indexName), "Assertion: There is a duplicate name value");
+
             mNameDictionary[indexName] = ingredientData;
         }
     }
@@ -80,7 +80,7 @@ public class GlobalVariables : MonoBehaviour
     {
         LevelIndices loadedLevelIndex = (LevelIndices)scene.buildIndex;
 
-        switch(loadedLevelIndex)
+        switch (loadedLevelIndex)
         {
             case LevelIndices.MAIN_MENU:
                 break;

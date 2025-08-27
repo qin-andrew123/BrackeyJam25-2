@@ -16,3 +16,4 @@ MonoBehaviour:
   mIngredientFlavor: 2
   mIngredientEffect: -1
   mIngredientValue: 1
+  mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}

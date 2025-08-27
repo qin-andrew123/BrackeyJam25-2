@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -58,55 +59,68 @@ public class IngredientManager : MonoBehaviour
 
     public void SpawnIngredients(TicketConstraint ticket)
     {
+        // Potentially temp, delete the old 
+        foreach (GameObject go in mSpawnedIngredients)
+        {
+            Destroy(go);
+        }
+
         bool bHasGeneratedFlavorType = false;
         bool bHasGeneratedIngredientName = false;
-        List<IngredientDataSO> spawningPool = GlobalVariables.Instance.IngredientData;
-        for (int i = 0; i < mSpawnIngredientLocations.Count; ++i)
-        {
-            int randomIndex = Random.Range(0, spawningPool.Count);
-            GameObject newIngredient = Instantiate(mIngredientPrefab);
-            newIngredient.GetComponent<Ingredient>().SetIngredientData(spawningPool[randomIndex]);
-            newIngredient.transform.position = mSpawnIngredientLocations[i].position;
 
-            mSpawnedIngredients.Add(newIngredient);
-            if (spawningPool[randomIndex].IngredientFlavorValue == ticket.ingredientFlavor)
+        // Create the spawning pool and sort the list randomly
+        List<IngredientDataSO> spawningPool = new List<IngredientDataSO>(GlobalVariables.Instance.IngredientData);
+        spawningPool = spawningPool.OrderBy(x => Random.value).ToList();
+
+        // Take the first number to spawn as our selected
+        List<IngredientDataSO> selectedIngredients = spawningPool.Take(mSpawnIngredientLocations.Count).ToList();
+
+        // Check to ensure that we have the required flavor and value
+        for (int i = 0; i < selectedIngredients.Count; ++i)
+        {
+            if (selectedIngredients[i].IngredientFlavorValue == ticket.ingredientFlavor)
             {
                 bHasGeneratedFlavorType = true;
             }
-            if (spawningPool[randomIndex].IngredientName == ticket.ingredientName)
+            if (selectedIngredients[i].IngredientName == ticket.ingredientName)
             {
                 bHasGeneratedIngredientName = true;
             }
         }
 
-        int flavorIndex = -1;
+        // If we don't manually override the indices to get the ones we want
+        int flavorIndex = 0;
         if (!bHasGeneratedFlavorType)
         {
-            for(int i = 0; i <mSpawnedIngredients.Count; ++i)
-            {
-                if(Random.Range(0f, 1f) < 0.4)
-                {
-                    GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
-                    int randomIndex = Random.Range(0, flavor.Count);
-                    mSpawnedIngredients[i].GetComponent<Ingredient>().SetIngredientData(flavor[randomIndex]);
-                    flavorIndex = i;
-                }
-            }
+            flavorIndex = Random.Range(0, mSpawnIngredientLocations.Count);
+            GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
+            int randomFlavorIndex = Random.Range(0, flavor.Count);
+            selectedIngredients[flavorIndex] = flavor[randomFlavorIndex];
         }
 
-        int nameIndex = -1;
         if (!bHasGeneratedIngredientName)
         {
-            for (int i = mSpawnedIngredients.Count - 1; i >= 0; --i)
+            for (int i = selectedIngredients.Count - 1; i >= 0; --i)
             {
                 if (i != flavorIndex)
                 {
                     GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavor);
                     int randomIndex = Random.Range(0, flavor.Count);
-                    mSpawnedIngredients[i].GetComponent<Ingredient>().SetIngredientData(flavor[randomIndex]);
-                    flavorIndex = i;
+                    selectedIngredients[i] = flavor[randomIndex];
+                    break;
                 }
             }
+        }
+
+        Assert.IsTrue(mSpawnIngredientLocations.Count == selectedIngredients.Count, "The number to spawn is not equal to the number of spawn ingredient locations!");
+
+        for (int i = 0; i < mSpawnIngredientLocations.Count; ++i)
+        {
+            GameObject newIngredient = Instantiate(mIngredientPrefab);
+            newIngredient.GetComponent<Ingredient>().SetIngredientData(selectedIngredients[i]);
+            newIngredient.transform.position = mSpawnIngredientLocations[i].position;
+
+            mSpawnedIngredients.Add(newIngredient);
         }
     }
     public void AddToMixingBowl(Ingredient ingredient)

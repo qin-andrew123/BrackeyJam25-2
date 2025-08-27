@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class PlayerInput : MonoBehaviour
 {
     // TODO: either completely delete this event or move it to a place that will use it in the future
-    public static event Action TEMPSetRoundRequirements;
+    public static event Action<int> TEMPSetRoundRequirements;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
         MouseInputCalculation();
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            TEMPSetRoundRequirements?.Invoke();
+            TEMPSetRoundRequirements?.Invoke(1);
         }
     }
 
