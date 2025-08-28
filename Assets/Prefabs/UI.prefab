@@ -733,9 +733,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6661834178678624813}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5065097989154180512
@@ -963,6 +963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTMP: {fileID: 7081385404861943241}
   mScoreText: {fileID: 8547884914758294858}
+  mTurnsLeft: {fileID: 0}
+  mBiscuitsLeft: {fileID: 0}
 --- !u!114 &3944858653059495376
 MonoBehaviour:
   m_ObjectHideFlags: 0
