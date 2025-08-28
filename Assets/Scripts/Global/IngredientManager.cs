@@ -14,8 +14,6 @@ public class IngredientPair
 public class IngredientManager : MonoBehaviour
 {
     public static event Action OnIngredientMixed;
-    // TODO: Hook up UI with this value
-    private float mScore = 0;
     public bool bIsCombining = false;
     [SerializeField] private List<Ingredient> mMixingBowlIngredients = new List<Ingredient>();
     [SerializeField] private List<Ingredient> mClickedIngredients = new List<Ingredient>();
@@ -108,6 +106,7 @@ public class IngredientManager : MonoBehaviour
         mRoundManager.CalculateRoundScore(prevFlavor, currFlavor, ingredient.GetIngredientData().IngredientValue);
         mRoundManager.CalculateRoundFlavor(ingredient.GetIngredientData().mFlavorData);
         // We need to decrement the number of turns because we just used one
+        // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
         OnIngredientMixed?.Invoke();
     }
 

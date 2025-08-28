@@ -248,6 +248,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+      propertyPath: mTurnsPerRound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+      propertyPath: mRoundsPerLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+      propertyPath: 'mQuotaValues.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+      propertyPath: 'mQuotaValues.Array.data[1]'
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+      propertyPath: 'mQuotaValues.Array.data[2]'
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4552526234150555280, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
       propertyPath: m_Name
       value: GlobalVariables
@@ -297,17 +317,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
---- !u!114 &259896198 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-  m_PrefabInstance: {fileID: 259896197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281687f8fcb578d4b8ad292cfce5ef65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &339230108
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,19 +478,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 870906245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 259896198}
-        m_TargetAssemblyTypeName: GlobalVariables, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!114 &870906245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,6 +621,7 @@ GameObject:
   - component: {fileID: 1328835244}
   - component: {fileID: 1328835243}
   - component: {fileID: 1328835242}
+  - component: {fileID: 1328835246}
   m_Layer: 5
   m_Name: TEMP_MainMenuUI
   m_TagString: Untagged
@@ -715,6 +713,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1328835246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328835241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269659bca88063d439dd46bcafe41ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPlayButton: {fileID: 870906244}
 --- !u!1 &1347848890
 GameObject:
   m_ObjectHideFlags: 0
