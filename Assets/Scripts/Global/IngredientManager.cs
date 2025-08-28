@@ -109,10 +109,10 @@ public class IngredientManager : MonoBehaviour
         ingredient.gameObject.transform.position = mMixingBowlLocation.position;
         AddClickedIngredient(ingredient);
 
-        // We need to decrement the number of turns because we just used one
-        OnIngredientMixed?.Invoke();
         mRoundManager.CalculateRoundScore(prevFlavor, currFlavor, ingredient.GetIngredientData().IngredientValue);
         mRoundManager.CalculateRoundFlavor(ingredient.GetIngredientData().mFlavorData);
+        // We need to decrement the number of turns because we just used one
+        OnIngredientMixed?.Invoke();
     }
 
     public void AddClickedIngredient(Ingredient ingredient)

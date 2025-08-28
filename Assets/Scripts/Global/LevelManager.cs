@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +16,7 @@ public class LevelManager
     public static void OnBakeSceneLoaded(int roundsPerLevel)
     {
         Debug.Log("loading baking scene. rounds: " + roundsPerLevel);
+        GlobalVariables.Instance.ModifyQuota();
         OnBakeSceneLoad?.Invoke(roundsPerLevel);
     }
     public static void OnBakeSceneEnded()
