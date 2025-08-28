@@ -59,15 +59,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5079632163dba06429366715f5f6a651, type: 2}
   - {fileID: 11400000, guid: 28f1a5b96b1510f43b1fbffa774fcfe5, type: 2}
   - {fileID: 11400000, guid: 53bf3350d44b1c045aa3e2af24cb5b69, type: 2}
-  - {fileID: 11400000, guid: a526541168b562c4d9e08dbb3ab24caa, type: 2}
-  - {fileID: 11400000, guid: 7b62395de133f014bbd4314fd773f1cd, type: 2}
-  - {fileID: 11400000, guid: e9c1c5a7b9cdac4499a4640065838f60, type: 2}
-  - {fileID: 11400000, guid: 1f78e682be90374489f6885b4aa90744, type: 2}
-  - {fileID: 11400000, guid: b131083a6552fab4d9f81ae94908c090, type: 2}
-  - {fileID: 11400000, guid: dbcd4f289f2bf974bb96ea485d881d08, type: 2}
-  - {fileID: 11400000, guid: 8d2124e32552b35428f7a5e2894c2407, type: 2}
-  - {fileID: 11400000, guid: ab30a2c48b261eb4dada23e171e1ab33, type: 2}
-=======
+  mTurnsPerRound: 5
+  mRoundsPerLevel: 5
   mQuotaValues: 2c01000090010000f4010000
   mIngredientDataSO:
   - {fileID: 11400000, guid: 8bbf171ce5ad169478f199a3ae25f99a, type: 2}
@@ -80,4 +73,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 711ef06ee2faff040a703dc6300ed7fe, type: 2}
   mTurnsPerRound: 5
   mRoundsPerLevel: 5
->>>>>>> Stashed changes
