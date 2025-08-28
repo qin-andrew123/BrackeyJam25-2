@@ -8,7 +8,7 @@ public class LevelManager
 {
     public static event Action<int> OnBakeSceneLoad;
     public static event Action OnBakeSceneEnd;
-    public static event Action OnScoreSceneLoad;
+    public static event Action<int, List<float>, float, bool> OnScoreSceneLoad;
     public static event Action OnScoreSceneEnd;
     public static event Action OnMainMenuLoad;
     public static event Action OnGameOver;
@@ -25,10 +25,10 @@ public class LevelManager
         OnBakeSceneEnd?.Invoke();
         LoadScene((int)LevelIndices.SCORE_SCENE);
     }
-    public static void OnScoreSceneLoaded()
+    public static void OnScoreSceneLoaded(int finalScore, List<float> individualBiscuitScores, float quotaNumber, bool bDidBeatLevel)
     {
         // Some sort of effects can go here
-        OnScoreSceneLoad?.Invoke();
+        OnScoreSceneLoad?.Invoke(finalScore, individualBiscuitScores, quotaNumber, bDidBeatLevel);
     }
     public static void OnScoreSceneEnded()
     {

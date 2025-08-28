@@ -27,14 +27,13 @@ public class RoundManager : MonoBehaviour
     private int mRoundsForLevel = 0;
     private IngredientFlavor[] mRoundRequiredIngredients = { IngredientFlavor.NONE, IngredientFlavor.NONE };
     //[SerializeField] private string mBiscuitFlavorQuota; // ?
-    private float mLevelScore = 0.0f;
     private float mRoundScore = 0.0f;
     private IngredientEffect mLastEffect = IngredientEffect.ADDITIVE;
     private FlavorData mRoundFlavors = new FlavorData();
 
     public void HandleTurnNumberChange()
     {
-        Debug.Log("Handling Turn Number change");
+        Debug.Log("Handling Turn Number turn changed");
         mTurnsPerRound--;
 
         if (mTurnsPerRound == 0)
@@ -99,16 +98,6 @@ public class RoundManager : MonoBehaviour
         mFlavorPieChart.SetValues(mRoundFlavors);
     }
 
-    public void AddLevelScore()
-    {
-        mLevelScore += mRoundScore;
-    }
-
-    public bool MetQuota()
-    {
-        return mLevelScore >= mRoundScoreQuota;
-    }
-
     // Called when the level starts to mark the start of all rounds for the level
     private void InitiateRounds(int roundsPerLevel)
     {
@@ -132,6 +121,11 @@ public class RoundManager : MonoBehaviour
 
         mRoundNumber++;
         mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
+
+        GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
+        mRoundScore = 0.0f;
+        mRoundUI.UpdateScoreText(mRoundScore);
+
         OnTurnUsed?.Invoke(mTurnsPerRound);
         // This is mainly for effects
         OnRoundStart?.Invoke(mRoundNumber);
@@ -146,6 +140,7 @@ public class RoundManager : MonoBehaviour
         // Actual cleanup happens here
         OnRoundCleanup?.Invoke();
 
+        // TODO: We must apply a check here to see whether or not we actually succeeded the ticket or not.
         // Start the next round
         StartNextRound();
     }

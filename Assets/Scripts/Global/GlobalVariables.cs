@@ -14,7 +14,7 @@ public class GlobalVariables : MonoBehaviour
     public static GlobalVariables Instance { get; private set; }
     public static event Action OnQuotaChange;
     public int DayNumber { get; private set; } = 0;
-    public int QuotaNumber => mQuotaNumber;
+    public float QuotaNumber => mQuotaNumber;
 
     public List<IngredientDataSO> IngredientData => mIngredientDataSO;
     public List<string> IngredientNames => mIngredientDataNames;
@@ -22,14 +22,14 @@ public class GlobalVariables : MonoBehaviour
     public Dictionary<string, IngredientDataSO> NameDictionary => mNameDictionary;
     public int TurnsPerRound => mTurnsPerRound;
     public int RoundsPerLevel => mRoundsPerLevel;
-    public List<int> BiscuitValues { get; private set; } = new List<int>();
+    public List<float> BiscuitValues { get; private set; } = new List<float>();
 
-    [SerializeField] private List<int> mQuotaValues;
+    [SerializeField] private List<float> mQuotaValues;
     [SerializeField] private List<IngredientDataSO> mIngredientDataSO;
     [SerializeField] private int mTurnsPerRound = 5;
     [SerializeField] private int mRoundsPerLevel = 5;
 
-    private int mQuotaNumber = 0;
+    private float mQuotaNumber = 0;
     private int mQuotaIndex = 0;
     private List<string> mIngredientDataNames = new List<string>();
     private Dictionary<IngredientFlavor, List<IngredientDataSO>> mFlavorDictionary = new Dictionary<IngredientFlavor, List<IngredientDataSO>>();
@@ -37,7 +37,7 @@ public class GlobalVariables : MonoBehaviour
 
     public void ModifyQuota()
     {
-        mQuotaIndex = Mathf.Clamp(mQuotaNumber, 0, mQuotaValues.Count - 1);
+        mQuotaIndex = Mathf.Clamp(mQuotaIndex, 0, mQuotaValues.Count - 1);
         mQuotaNumber = mQuotaValues[mQuotaIndex];
 
         OnQuotaChange?.Invoke();
@@ -112,11 +112,15 @@ public class GlobalVariables : MonoBehaviour
             case LevelIndices.MAIN_MENU:
                 break;
             case LevelIndices.BAKING_SCENE:
+                // Starting a new level so we are clearing our values
+                BiscuitValues.Clear();
                 DayNumber++;
                 LevelManager.OnBakeSceneLoaded(mRoundsPerLevel);
                 break;
             case LevelIndices.SCORE_SCENE:
-                LevelManager.OnScoreSceneLoaded();
+                int finalScore = TallyFinalLevelScore();
+                bool bDidBeatLevel = finalScore >= mQuotaNumber ? true : false;
+                LevelManager.OnScoreSceneLoaded(finalScore, BiscuitValues, mQuotaNumber, bDidBeatLevel);
                 break;
             default:
                 break;

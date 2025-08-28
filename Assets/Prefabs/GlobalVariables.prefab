@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281687f8fcb578d4b8ad292cfce5ef65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mQuotaValues: 2c01000090010000f4010000
+  mQuotaValues:
+  - 10000
+  - 10000
+  - 10000
   mIngredientDataSO:
   - {fileID: 11400000, guid: c467824afd9d98447ab67b9516dcb07a, type: 2}
   - {fileID: 11400000, guid: 907e69c64429b9845af847dcbb0dd051, type: 2}
