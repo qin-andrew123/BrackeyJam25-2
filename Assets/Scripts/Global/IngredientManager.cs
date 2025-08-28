@@ -13,7 +13,7 @@ public class IngredientPair
 
 public class IngredientManager : MonoBehaviour
 {
-    public static event Action OnIngredientMixed;
+    public static event Action<IngredientDataSO> OnIngredientMixed;
     public bool bIsCombining = false;
     [SerializeField] private List<Ingredient> mMixingBowlIngredients = new List<Ingredient>();
     [SerializeField] private List<Ingredient> mClickedIngredients = new List<Ingredient>();
@@ -22,8 +22,7 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private List<IngredientPair> mCombinableIngredients;
     [SerializeField] private IngredientUI mIngredientUI;
     [SerializeField] private List<Transform> mSpawnIngredientLocations;
-    // TODO : Make this private
-    public List<GameObject> mSpawnedIngredients;
+    private List<GameObject> mSpawnedIngredients = new List<GameObject>();
     [SerializeField] private RoundManager mRoundManager;
 
     public void SpawnIngredients(TicketConstraint ticket)
@@ -107,7 +106,7 @@ public class IngredientManager : MonoBehaviour
         mRoundManager.CalculateRoundFlavor(ingredient.GetIngredientData().mFlavorData);
         // We need to decrement the number of turns because we just used one
         // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
-        OnIngredientMixed?.Invoke();
+        OnIngredientMixed?.Invoke(ingredient.GetIngredientData());
     }
 
     public void AddClickedIngredient(Ingredient ingredient)
@@ -161,48 +160,13 @@ public class IngredientManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Ingredient.OnIngredientClicked += HandleIngredientInteracted;
         TicketManager.OnTicketGenerated += SpawnIngredients;
         RoundManager.OnRoundCleanup += HandleIngredientCleanup;
     }
     private void OnDestroy()
     {
-        Ingredient.OnIngredientClicked -= HandleIngredientInteracted;
         TicketManager.OnTicketGenerated -= SpawnIngredients;
         RoundManager.OnRoundCleanup -= HandleIngredientCleanup;
-    }
-
-    private void HandleIngredientInteracted(IngredientDataSO inputIngredient)
-    {
-        // TODO: more complex math calculations will happen in the future but we can for now just debug log our values:
-        string ingredientName = inputIngredient.IngredientName;
-        IngredientFlavor ingredientFlavor = inputIngredient.IngredientFlavorValue;
-        //IngredientEffect ingredientEffect = inputIngredient.IngredientEffectValue;
-        float ingredientValue = inputIngredient.IngredientValue;
-        int antagonistIngredient = IngredientDataSO.GetAntagonizingIngredientFlavor(ingredientFlavor);
-        int[] synergisticIngredients = IngredientDataSO.GetSynergisticIngredientFlavors(ingredientFlavor);
-
-        // This should never happen but if the count of syntergistic ingredients is != 2 we assert return;
-        if (synergisticIngredients.Length != 2)
-        {
-            Debug.LogAssertion("Something has gone wrong. We have more than 2 synergistic ingredients");
-            return;
-        }
-
-        if (ingredientFlavor == IngredientFlavor.NONE)
-        {
-            Debug.LogWarning("The ingredient interated with has a none flavor value. Is this correct?");
-        }
-
-        //if (ingredientEffect == IngredientEffect.NONE)
-        //{
-        //    Debug.LogWarning("The ingredient interated with has a none effect value. Is this correct?");
-        //}
-
-        Debug.Log("Ingredient: " + ingredientName + " was interacted with! \n It is flavor: " + ingredientFlavor +
-            "\n It is effect: " + "\n It has a value of: " + ingredientValue +
-            "\n Its antagnoist ingredient is: " + (IngredientFlavor)(antagonistIngredient) +
-            "\n Its synergistic ingredients are: {" + (IngredientFlavor)(synergisticIngredients[0]) + "," + (IngredientFlavor)(synergisticIngredients[1]) + "}");
     }
 
     private void HandleIngredientCleanup()
@@ -213,6 +177,11 @@ public class IngredientManager : MonoBehaviour
     }
     private void CleanupSpawnedIngredients()
     {
+        if (mSpawnedIngredients.Count == 0)
+        {
+            return;
+        }
+
         foreach (GameObject go in mSpawnedIngredients)
         {
             Destroy(go);

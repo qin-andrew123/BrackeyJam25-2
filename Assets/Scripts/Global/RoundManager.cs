@@ -30,11 +30,16 @@ public class RoundManager : MonoBehaviour
     private float mRoundScore = 0.0f;
     private IngredientEffect mLastEffect = IngredientEffect.ADDITIVE;
     private FlavorData mRoundFlavors = new FlavorData();
+    private bool bMetRoundFlavorCondition = false;
+    private bool bMetRoundNameCondition = false;
 
-    public void HandleTurnNumberChange()
+    public void HandleTurnNumberChange(IngredientDataSO mixedIngredient)
     {
         Debug.Log("Handling Turn Number turn changed");
         mTurnsPerRound--;
+
+        bMetRoundFlavorCondition = mixedIngredient.IngredientFlavorValue == GlobalVariables.Instance.CurrentTicketConstraint.ingredientFlavor;
+        bMetRoundNameCondition = mixedIngredient.IngredientName == GlobalVariables.Instance.CurrentTicketConstraint.ingredientName;
 
         if (mTurnsPerRound == 0)
         {
@@ -121,8 +126,16 @@ public class RoundManager : MonoBehaviour
 
         mRoundNumber++;
         mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
+        if (bMetRoundFlavorCondition && bMetRoundNameCondition)
+        {
+            GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
+        }
+        else
+        {
+            // We give no points if you fail a biscuit
+            GlobalVariables.Instance.BiscuitValues.Add(0);
+        }
 
-        GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
         mRoundScore = 0.0f;
         mRoundUI.UpdateScoreText(mRoundScore);
 

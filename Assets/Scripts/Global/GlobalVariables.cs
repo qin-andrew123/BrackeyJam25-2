@@ -15,7 +15,7 @@ public class GlobalVariables : MonoBehaviour
     public static event Action OnQuotaChange;
     public int DayNumber { get; private set; } = 0;
     public float QuotaNumber => mQuotaNumber;
-
+    public TicketConstraint CurrentTicketConstraint { get; set; } = new TicketConstraint();
     public List<IngredientDataSO> IngredientData => mIngredientDataSO;
     public List<string> IngredientNames => mIngredientDataNames;
     public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorDictionary;
