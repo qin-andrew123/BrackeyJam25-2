@@ -12,25 +12,41 @@ public enum LevelIndices
 public class GlobalVariables : MonoBehaviour
 {
     public static GlobalVariables Instance { get; private set; }
-
     public int DayNumber { get; private set; } = 0;
     public int QuotaNumber { get; set; } = 0;
     public List<IngredientDataSO> IngredientData => mIngredientDataSO;
     public List<string> IngredientNames => mIngredientDataNames;
     public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorDictionary;
     public Dictionary<string, IngredientDataSO> NameDictionary => mNameDictionary;
+    public int TurnsPerRound => mTurnsPerRound;
+    public int RoundsPerLevel => mRoundsPerLevel;
+    public List<int> BiscuitValues { get; private set; } = new List<int>();
 
-    private RoundManager mRoundManager;
-    private LevelManager mLevelManager;
     [SerializeField] private List<IngredientDataSO> mIngredientDataSO;
+    [SerializeField] private int mTurnsPerRound = 5;
+    [SerializeField] private int mRoundsPerLevel = 5;
+
     private List<string> mIngredientDataNames = new List<string>();
     private Dictionary<IngredientFlavor, List<IngredientDataSO>> mFlavorDictionary = new Dictionary<IngredientFlavor, List<IngredientDataSO>>();
     private Dictionary<string, IngredientDataSO> mNameDictionary = new Dictionary<string, IngredientDataSO>();
     public void LoadScene(int levelNum)
     {
-        mLevelManager.LoadScene(levelNum);
+        LevelManager.LoadScene(levelNum);
     }
+    public void AddBiscuitValue(int value)
+    {
+        BiscuitValues.Add(value);
+    }
+    public int TallyFinalLevelScore()
+    {
+        int result = 0;
+        foreach (int score in BiscuitValues)
+        {
+            result += score;
+        }
 
+        return result;
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,8 +57,6 @@ public class GlobalVariables : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        mLevelManager = new LevelManager();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -86,10 +100,10 @@ public class GlobalVariables : MonoBehaviour
                 break;
             case LevelIndices.BAKING_SCENE:
                 DayNumber++;
-                mLevelManager.OnBakeSceneLoaded();
+                LevelManager.OnBakeSceneLoaded(mRoundsPerLevel);
                 break;
             case LevelIndices.SCORE_SCENE:
-                mLevelManager.OnScoreSceneLoaded();
+                LevelManager.OnScoreSceneLoaded();
                 break;
             default:
                 break;

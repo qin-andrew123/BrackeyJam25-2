@@ -6,18 +6,23 @@ public class RoundUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI mTMP;
     [SerializeField] private TextMeshProUGUI mScoreText;
+    [SerializeField] private TextMeshProUGUI mTurnsLeft;
+    [SerializeField] private TextMeshProUGUI mBiscuitsLeft;
+
     private void OnEnable()
     {
         //TicketManager.OnSelectedIngredients += UpdateText;
-        TicketManager.OnTicketGenerated += UpdateText;
+        TicketManager.OnTicketGenerated += UpdateTicketText;
+        RoundManager.OnTurnUsed += UpdateTurnsText;
     }
     private void OnDisable()
     {
         //TicketManager.OnSelectedIngredients -= UpdateText;
-        TicketManager.OnTicketGenerated -= UpdateText;
+        TicketManager.OnTicketGenerated -= UpdateTicketText;
+        RoundManager.OnTurnUsed -= UpdateTurnsText;
     }
 
-    private void UpdateText(TicketConstraint ticketConstraint)
+    private void UpdateTicketText(TicketConstraint ticketConstraint)
     {
         string ingredientFlavorConstraint = ticketConstraint.ingredientFlavor.ToString();
         ingredientFlavorConstraint = char.ToUpper(ingredientFlavorConstraint[0]) + ingredientFlavorConstraint.Substring(1).ToLower();
@@ -35,9 +40,13 @@ public class RoundUI : MonoBehaviour
     {
         mScoreText.text = newValue.ToString();
     }
-    // Update is called once per frame
-    void Update()
-    {
 
+    public void UpdateTurnsText(int turnsLeft)
+    {
+        mTurnsLeft.text = $"Moves Left: {turnsLeft}";
+    }
+    public void UpdateBiscuitsText(int biscuitsMade)
+    {
+        mBiscuitsLeft.text = $"{biscuitsMade} / {GlobalVariables.Instance.RoundsPerLevel} Biscuits Made";
     }
 }

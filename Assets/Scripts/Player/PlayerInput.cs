@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour
         MouseInputCalculation();
         if (Input.GetKeyDown(KeyCode.F5))
         {
-            TEMPSetRoundRequirements?.Invoke(1);
+            TEMPSetRoundRequirements?.Invoke(5);
         }
     }
 
