@@ -1528,8 +1528,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTMP: {fileID: 6831692827135165324}
   mScoreText: {fileID: 5433071723066209162}
-  mTurnsLeft: {fileID: 0}
-  mBiscuitsLeft: {fileID: 0}
+  mTurnsLeft: {fileID: 5901070224882958450}
+  mBiscuitsLeft: {fileID: 7795659894702116424}
+  mQuota: {fileID: 5065153673817154552}
 --- !u!114 &4209929084140557465
 MonoBehaviour:
   m_ObjectHideFlags: 0
