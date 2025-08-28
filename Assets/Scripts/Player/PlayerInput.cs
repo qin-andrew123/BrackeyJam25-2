@@ -17,10 +17,12 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         MouseInputCalculation();
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.F5))
         {
             TEMPSetRoundRequirements?.Invoke(5);
         }
+#endif
     }
 
     private void MouseInputCalculation()

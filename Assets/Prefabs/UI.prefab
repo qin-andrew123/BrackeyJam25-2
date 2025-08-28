@@ -963,8 +963,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTMP: {fileID: 7081385404861943241}
   mScoreText: {fileID: 8547884914758294858}
+<<<<<<< Updated upstream
   mTurnsLeft: {fileID: 0}
   mBiscuitsLeft: {fileID: 0}
+=======
+  mTurnsLeft: {fileID: 4721763119885083294}
+  mBiscuitsLeft: {fileID: 5865468088374658755}
+  mQuota: {fileID: 3007428007677186759}
+>>>>>>> Stashed changes
 --- !u!114 &3944858653059495376
 MonoBehaviour:
   m_ObjectHideFlags: 0

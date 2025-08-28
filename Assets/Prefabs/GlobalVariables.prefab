@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281687f8fcb578d4b8ad292cfce5ef65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   mIngredientDataSO:
   - {fileID: 11400000, guid: c467824afd9d98447ab67b9516dcb07a, type: 2}
   - {fileID: 11400000, guid: 907e69c64429b9845af847dcbb0dd051, type: 2}
@@ -66,3 +67,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dbcd4f289f2bf974bb96ea485d881d08, type: 2}
   - {fileID: 11400000, guid: 8d2124e32552b35428f7a5e2894c2407, type: 2}
   - {fileID: 11400000, guid: ab30a2c48b261eb4dada23e171e1ab33, type: 2}
+=======
+  mQuotaValues: 2c01000090010000f4010000
+  mIngredientDataSO:
+  - {fileID: 11400000, guid: 8bbf171ce5ad169478f199a3ae25f99a, type: 2}
+  - {fileID: 11400000, guid: 7c74b2fcf4d190f40aa2fb7ec9dc50d2, type: 2}
+  - {fileID: 11400000, guid: fdeda6061d18aa041ad01cfb520be045, type: 2}
+  - {fileID: 11400000, guid: 859d05bb78c97ea4ba8c57a3274a7734, type: 2}
+  - {fileID: 11400000, guid: 50d65b4aa3b37454a950f85dc1723f35, type: 2}
+  - {fileID: 11400000, guid: dbd9ac9c1ffbbfb4f9d9b098b7f1b8bf, type: 2}
+  - {fileID: 11400000, guid: c93bbb17bb45c2c449141e2fe0b4d026, type: 2}
+  - {fileID: 11400000, guid: 711ef06ee2faff040a703dc6300ed7fe, type: 2}
+  mTurnsPerRound: 5
+  mRoundsPerLevel: 5
+>>>>>>> Stashed changes

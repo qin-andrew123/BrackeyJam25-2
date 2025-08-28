@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,8 +13,10 @@ public enum LevelIndices
 public class GlobalVariables : MonoBehaviour
 {
     public static GlobalVariables Instance { get; private set; }
+    public static event Action OnQuotaChange;
     public int DayNumber { get; private set; } = 0;
-    public int QuotaNumber { get; set; } = 0;
+    public int QuotaNumber => mQuotaNumber;
+    
     public List<IngredientDataSO> IngredientData => mIngredientDataSO;
     public List<string> IngredientNames => mIngredientDataNames;
     public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorDictionary;
@@ -22,13 +25,25 @@ public class GlobalVariables : MonoBehaviour
     public int RoundsPerLevel => mRoundsPerLevel;
     public List<int> BiscuitValues { get; private set; } = new List<int>();
 
+    [SerializeField] private List<int> mQuotaValues;
     [SerializeField] private List<IngredientDataSO> mIngredientDataSO;
     [SerializeField] private int mTurnsPerRound = 5;
     [SerializeField] private int mRoundsPerLevel = 5;
 
+    private int mQuotaNumber = 0;
+    private int mQuotaIndex = 0;
     private List<string> mIngredientDataNames = new List<string>();
     private Dictionary<IngredientFlavor, List<IngredientDataSO>> mFlavorDictionary = new Dictionary<IngredientFlavor, List<IngredientDataSO>>();
     private Dictionary<string, IngredientDataSO> mNameDictionary = new Dictionary<string, IngredientDataSO>();
+
+    public void ModifyQuota()
+    {
+        mQuotaIndex = Mathf.Clamp(mQuotaNumber, 0, mQuotaValues.Count - 1);
+        mQuotaNumber = mQuotaValues[mQuotaIndex];
+
+        OnQuotaChange?.Invoke();
+        mQuotaIndex++;
+    }
     public void LoadScene(int levelNum)
     {
         LevelManager.LoadScene(levelNum);

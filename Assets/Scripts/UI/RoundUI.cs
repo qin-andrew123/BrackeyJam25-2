@@ -8,18 +8,27 @@ public class RoundUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mScoreText;
     [SerializeField] private TextMeshProUGUI mTurnsLeft;
     [SerializeField] private TextMeshProUGUI mBiscuitsLeft;
+    [SerializeField] private TextMeshProUGUI mQuota;
 
+    private void Start()
+    {
+    }
     private void OnEnable()
     {
         //TicketManager.OnSelectedIngredients += UpdateText;
         TicketManager.OnTicketGenerated += UpdateTicketText;
         RoundManager.OnTurnUsed += UpdateTurnsText;
+        RoundManager.OnRoundStart += UpdateBiscuitsText;
+        GlobalVariables.OnQuotaChange += UpdateQuotaText;
     }
     private void OnDisable()
     {
         //TicketManager.OnSelectedIngredients -= UpdateText;
         TicketManager.OnTicketGenerated -= UpdateTicketText;
         RoundManager.OnTurnUsed -= UpdateTurnsText;
+        RoundManager.OnRoundStart -= UpdateBiscuitsText;
+        GlobalVariables.OnQuotaChange -= UpdateQuotaText;
+
     }
 
     private void UpdateTicketText(TicketConstraint ticketConstraint)
@@ -36,6 +45,10 @@ public class RoundUI : MonoBehaviour
 
     }
 
+    private void UpdateQuotaText()
+    {
+        mQuota.text = $"Today's Quota: {GlobalVariables.Instance.QuotaNumber}";
+    }
     public void UpdateScoreText(float newValue)
     {
         mScoreText.text = newValue.ToString();

@@ -114,6 +114,7 @@ public class RoundManager : MonoBehaviour
     {
         mRoundsForLevel = roundsPerLevel;
         mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
+        OnTurnUsed?.Invoke(mTurnsPerRound);
         mRoundNumber++;
         Debug.Log("Rounds: " + mRoundsForLevel);
         Debug.Log("Turns: " + mTurnsPerRound);
@@ -130,6 +131,8 @@ public class RoundManager : MonoBehaviour
         }
 
         mRoundNumber++;
+        mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
+        OnTurnUsed?.Invoke(mTurnsPerRound);
         // This is mainly for effects
         OnRoundStart?.Invoke(mRoundNumber);
     }
@@ -157,8 +160,9 @@ public class RoundManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        PlayerInput.TEMPSetRoundRequirements -= InitiateRounds;
         LevelManager.OnBakeSceneLoad -= InitiateRounds;
-        IngredientManager.OnIngredientMixed += HandleTurnNumberChange;
+        IngredientManager.OnIngredientMixed -= HandleTurnNumberChange;
     }
 
     //private void SetRequiredItems()
