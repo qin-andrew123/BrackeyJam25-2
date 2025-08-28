@@ -14,26 +14,27 @@ public class FlavorPieChart : MonoBehaviour
     {
         ClearValues();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        RoundManager.OnRoundCleanup += ClearValues;
     }
-
+    private void OnDisable()
+    {
+        RoundManager.OnRoundCleanup -= ClearValues;
+    }
     public void SetValues(FlavorData mChartValues)
     {
         float totalValues = 0.0f;
         float[] values = { mChartValues.BLAND, mChartValues.BITTER, mChartValues.SWEET, mChartValues.SALTY, mChartValues.SOUR, mChartValues.UMAMI };
-        for(int i = 0; i < mChartImages.Length - 1; i++)
+        for (int i = 0; i < mChartImages.Length - 1; i++)
         {
             float percent = (values[i] / mChartValues.GetTotalSum());
-            if(percent >= 1.0f)
+            if (percent >= 1.0f)
             {
                 ClearValues();
                 mChartImages[i].fillAmount = 1.0f;
                 return;
-                
+
             }
 
             totalValues += percent;
