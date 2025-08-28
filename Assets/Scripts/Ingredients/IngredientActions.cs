@@ -8,13 +8,11 @@ public class IngredientActions : MonoBehaviour
     [SerializeField] private IngredientManager mIngredientManager;
     public void CheckCombine()
     {
-        bool bCanCombine = true;
         Debug.Log("Trying to Combine Ingredients");
 
         if (mIngredientManager.GetClickedIngredients().Count < 2)
         {
             Debug.LogWarning("Cannot enter combine mode without selecting at least two ingredients!");
-            bCanCombine = false;
             return;
         }
 
@@ -22,17 +20,14 @@ public class IngredientActions : MonoBehaviour
         List<Ingredient> clickedIngredients = mIngredientManager.GetClickedIngredients();
         foreach (IngredientPair pair in combinablePairs)
         {
-            List<Ingredient> ingredients = pair.ingredientPrefabs;
+            bool bCanCombine = true;
+            List<IngredientDataSO> ingredients = pair.ingredientPrefabs;
             foreach (Ingredient ingredient in clickedIngredients)
             {
-                if(!ingredients.Contains(ingredient))
+                if (!ingredients.Contains(ingredient.GetIngredientData()))
                 {
                     bCanCombine = false;
-                    continue;
-                }
-                else
-                {
-                    bCanCombine = true;
+                    break;
                 }
             }
             if (bCanCombine)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
   m_Name: Eggs_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Butter
+  mIngredientName: Eggs
   mIngredientFlavor: 0
   mIngredientValue: 4
   mFlavorData:

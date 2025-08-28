@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 [System.Serializable]
 public class IngredientPair
 {
-    public List<Ingredient> ingredientPrefabs;
+    public List<IngredientDataSO> ingredientPrefabs;
     public IngredientDataSO resultPrefab;
 }
 
