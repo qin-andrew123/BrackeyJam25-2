@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum IngredientFlavor
@@ -18,12 +19,35 @@ public enum IngredientFlavor
 [System.Serializable]
 public class FlavorData
 {
-    public int BLAND = 0;
-    public int BITTER = 0;
-    public int SWEET = 0;
-    public int SALTY = 0;
-    public int SOUR = 0;
-    public int UMAMI = 0;
+    public float BLAND = 0;
+    public float BITTER = 0;
+    public float SWEET = 0;
+    public float SALTY = 0;
+    public float SOUR = 0;
+    public float UMAMI = 0;
+
+    public static FlavorData operator +(FlavorData a, FlavorData b)
+    {
+        FlavorData c = new FlavorData();
+        c.BLAND = a.BLAND + b.BLAND;
+        c.BITTER = a.BITTER + b.BITTER;
+        c.SWEET = a.SWEET + b.SWEET;
+        c.SALTY = a.SALTY + b.SALTY;
+        c.SOUR = a.SOUR + b.SOUR;
+        c.UMAMI = a.UMAMI + b.UMAMI;
+        
+        return c;
+    }
+
+    public float GetTotalSum()
+    {
+        return (BLAND + BITTER + SWEET + SALTY + SOUR + UMAMI);
+    }
+
+    public float GetPercentage(float flavor)
+    {
+        return (flavor / GetTotalSum());
+    }
 }
 
 

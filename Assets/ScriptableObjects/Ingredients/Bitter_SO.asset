@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mIngredientName: Bitter
   mIngredientFlavor: 1
-  mIngredientEffect: -1
-  mIngredientValue: 1
+  mIngredientValue: 10
+  mFlavorData:
+    BLAND: 0
+    BITTER: 10
+    SWEET: 0
+    SALTY: 0
+    SOUR: 0
+    UMAMI: 0
   mIngredientMaterial: {fileID: 2100000, guid: 1e029821538aec848824abd2c669586a, type: 2}

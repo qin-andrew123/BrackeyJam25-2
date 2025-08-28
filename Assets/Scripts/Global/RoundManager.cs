@@ -123,6 +123,12 @@ public class RoundManager : MonoBehaviour
         mRoundUI.UpdateScoreText(mRoundScore);
     }
 
+    public void CalculateRoundFlavor(FlavorData ingredientFlavor)
+    {
+        mRoundFlavors += ingredientFlavor;
+        mFlavorPieChart.SetValues(mRoundFlavors);
+    }
+
     public void AddLevelScore()
     {
         mLevelScore += mRoundScore;
@@ -141,5 +147,7 @@ public class RoundManager : MonoBehaviour
     private float mLevelScore = 0.0f;
     private float mRoundScore = 0.0f;
     private IngredientEffect mLastEffect = IngredientEffect.ADDITIVE;
+    private FlavorData mRoundFlavors = new FlavorData();
     [SerializeField] private RoundUI mRoundUI;
+    [SerializeField] private FlavorPieChart mFlavorPieChart;
 }

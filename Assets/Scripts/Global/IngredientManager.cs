@@ -141,6 +141,7 @@ public class IngredientManager : MonoBehaviour
         AddClickedIngredient(ingredient);
 
         mRoundManager.CalculateRoundScore(prevFlavor, currFlavor, ingredient.GetIngredientData().IngredientValue);
+        mRoundManager.CalculateRoundFlavor(ingredient.GetIngredientData().mFlavorData);
     }
 
     public void AddClickedIngredient(Ingredient ingredient)
