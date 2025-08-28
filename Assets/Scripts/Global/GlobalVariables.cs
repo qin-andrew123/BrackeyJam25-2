@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
 public enum LevelIndices
@@ -16,7 +15,7 @@ public class GlobalVariables : MonoBehaviour
     public static event Action OnQuotaChange;
     public int DayNumber { get; private set; } = 0;
     public int QuotaNumber => mQuotaNumber;
-    
+
     public List<IngredientDataSO> IngredientData => mIngredientDataSO;
     public List<string> IngredientNames => mIngredientDataNames;
     public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorDictionary;
@@ -96,7 +95,6 @@ public class GlobalVariables : MonoBehaviour
             }
 
             string indexName = ingredientData.IngredientName;
-            Assert.IsFalse(mNameDictionary.ContainsKey(indexName), "Assertion: There is a duplicate name value");
 
             mNameDictionary[indexName] = ingredientData;
         }

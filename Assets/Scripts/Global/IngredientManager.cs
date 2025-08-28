@@ -1,8 +1,6 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -80,8 +78,6 @@ public class IngredientManager : MonoBehaviour
                 }
             }
         }
-
-        Assert.IsTrue(mSpawnIngredientLocations.Count == selectedIngredients.Count, "The number to spawn is not equal to the number of spawn ingredient locations!");
 
         for (int i = 0; i < mSpawnIngredientLocations.Count; ++i)
         {
@@ -227,12 +223,10 @@ public class IngredientManager : MonoBehaviour
     {
         mClickedIngredients.Clear();
         Debug.Log("ClickedIngredients count: " + mClickedIngredients.Count);
-        Assert.IsTrue(mClickedIngredients.Count == 0, "Cleaning up combined ingredients but clicked ingredients array is not empty!");
     }
     private void CleanupMixingBowl()
     {
         mMixingBowlIngredients.Clear();
         Debug.Log("mMixingBowlIngredients count: " + mMixingBowlIngredients.Count);
-        Assert.IsTrue(mMixingBowlIngredients.Count == 0, "Cleaning up combined ingredients but mixing bowlarray is not empty!");
     }
 }
