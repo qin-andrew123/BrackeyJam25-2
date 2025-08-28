@@ -297,6 +297,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+--- !u!114 &259896198 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+  m_PrefabInstance: {fileID: 259896197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281687f8fcb578d4b8ad292cfce5ef65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &339230108
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 259896198}
         m_TargetAssemblyTypeName: GlobalVariables, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 3
