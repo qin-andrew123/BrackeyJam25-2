@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/TEMP_MainMenu.unity
     guid: 30fecedd52ff2714fb72a86e118ca38d
   - enabled: 1
-    path: Assets/Scenes/Test/TEMP_FirstPlayableMockup.unity
-    guid: 8d3165904116bd64aaea1878f4417be3
+    path: Assets/Scenes/Test/FirstPlayable.unity
+    guid: 1d02024e36791164786895ed11097c0a
   - enabled: 1
     path: Assets/Scenes/Test/TEMP_ScoreScene.unity
     guid: 7be6c137e93666f41b401452d9bc37a9
