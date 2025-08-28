@@ -22,10 +22,12 @@ public class TicketManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        PlayerInput.TEMPSetRoundRequirements += GenerateTicket;
         RoundManager.OnRoundStart += GenerateTicket;
     }
     private void OnDisable()
     {
+        PlayerInput.TEMPSetRoundRequirements -= GenerateTicket;
         RoundManager.OnRoundStart -= GenerateTicket;
     }
     private void GenerateTicket(int roundNumber)
