@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
+  m_Name: Eggs_SO
+  m_EditorClassIdentifier: 
+  mIngredientName: Butter
+  mIngredientFlavor: 0
+  mIngredientValue: 4
+  mFlavorData:
+    BLAND: 2
+    BITTER: 0
+    SWEET: 1
+    SALTY: 0
+    SOUR: 0
+    UMAMI: 1
+  mIngredientMaterial: {fileID: 2100000, guid: 34bf1f129e8159b42b6d38a31fcc28fd, type: 2}

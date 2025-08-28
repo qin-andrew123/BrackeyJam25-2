@@ -173,40 +173,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
       propertyPath: mIngredientDataSO.Array.size
-      value: 8
+      value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 8bbf171ce5ad169478f199a3ae25f99a, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 7c74b2fcf4d190f40aa2fb7ec9dc50d2, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: fdeda6061d18aa041ad01cfb520be045, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 859d05bb78c97ea4ba8c57a3274a7734, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[4]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 50d65b4aa3b37454a950f85dc1723f35, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[5]'
-      value: 
-      objectReference: {fileID: 11400000, guid: dbd9ac9c1ffbbfb4f9d9b098b7f1b8bf, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[6]'
-      value: 
-      objectReference: {fileID: 11400000, guid: c93bbb17bb45c2c449141e2fe0b4d026, type: 2}
-    - target: {fileID: 8459132952913723215, guid: 395f44df74bb94c439f24fe1e44b8a07, type: 3}
-      propertyPath: 'mIngredientDataSO.Array.data[7]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 711ef06ee2faff040a703dc6300ed7fe, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
