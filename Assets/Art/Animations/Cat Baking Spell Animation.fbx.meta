@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6c9d2897a88570e469a14516c3271f11
+guid: 7107fedad464ca14c98a5201e3ec28f9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,18 +31,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Left
+      name: Knead
       takeName: RIG_BiscuitCat.001|RIG_BiscuitCat.001Action
       internalID: -6201216171024736785
       firstFrame: 0
-      lastFrame: 48
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

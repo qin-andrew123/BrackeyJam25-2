@@ -7,9 +7,10 @@ public class Animation_Debug : MonoBehaviour
 
 #if UNITY_EDITOR
     [Header("Debug Animation")]
-    [SerializeField] bool Animation1;
+    [SerializeField] bool Idle;
     [SerializeField] bool Trigger;
-    [SerializeField] bool Animation3;
+    [SerializeField] bool Left;	
+    [SerializeField] bool Right;	
 
 #endif
 
@@ -35,7 +36,7 @@ public class Animation_Debug : MonoBehaviour
      
 #if UNITY_EDITOR
        
-            if (Animation1)
+            if (Idle)
             {
                 SetBool("Bool 1", true);
             }
@@ -44,13 +45,22 @@ public class Animation_Debug : MonoBehaviour
                 SetBool("Bool 1", false);
             }
 
-            if (Animation3)
+            if (Left)
             {
                 SetBool("Bool 2", true);
             }
             else
             {
                 SetBool("Bool 2", false);
+            }
+
+            if (Right)
+            {
+                SetBool("Bool 3", true);
+            }
+            else
+            {
+                SetBool("Bool 3", false);
             }
 
             if (Trigger)
