@@ -30,7 +30,7 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private RoundManager mRoundManager;
     [SerializeField] private float mChanceToSpawnRequired = 0.7f;
     [SerializeField] private List<IngredientTransformPoint> mTransformPoints;
-    
+
     // TODO : Refactor Spawn Ingredients
     public void SpawnIngredients()
     {
@@ -196,7 +196,7 @@ public class IngredientManager : MonoBehaviour
             for (int i = numNewToSpawn; i < numNewToSpawn; ++i)
             {
                 int randomIndex = 0;
-                if (Random.Range(0, 1f) < 0.5f)
+                if (Random.Range(0, 1f) < 0.3f) // TODO : Adjust in case too rare
                 {
                     randomIndex = Random.Range(0, GlobalVariables.Instance.BaseIngredients.Count);
                     ingredientsToSpawn.Add(GlobalVariables.Instance.BaseIngredients[randomIndex]);
@@ -208,7 +208,7 @@ public class IngredientManager : MonoBehaviour
                 }
             }
         }
-            
+
         // Check to ensure that we have the required flavor and value
         for (int i = 0; i < ingredientsToSpawn.Count; ++i)
         {
@@ -239,7 +239,7 @@ public class IngredientManager : MonoBehaviour
                 }
             }
             GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavorSO);
-            if(flavorSO == null)
+            if (flavorSO == null)
             {
 #if UNITY_EDITOR
                 Assert.IsTrue(flavorSO != null, $"{ticket.ingredientFlavor}: Does not have any ingredients tied to its flavor dictionary, did we forget to add in any ingredients that match this flavor profile?");
@@ -253,7 +253,7 @@ public class IngredientManager : MonoBehaviour
                 Debug.Log("Ingredient Flavor: " + ticket.ingredientFlavor + " Generating FlavorSO: " + flavorSO.Count);
                 if (!bHasGeneratedFlavorType)
                 {
-                    for (int i = ingredientsToSpawn .Count - 1; i >= 0; --i)
+                    for (int i = ingredientsToSpawn.Count - 1; i >= 0; --i)
                     {
                         if (i != nameIndex)
                         {
@@ -261,8 +261,8 @@ public class IngredientManager : MonoBehaviour
                             int randomFlavorIndex = Random.Range(0, flavorSO.Count);
                             ingredientsToSpawn[flavorIndex] = flavorSO[randomFlavorIndex];
                             bHasGeneratedFlavorType = true;
+                            break;
                         }
-                        break;
                     }
                 }
             }
@@ -273,7 +273,7 @@ public class IngredientManager : MonoBehaviour
             }
             if (flavorIndex != -1)
             {
-                bool bAssertHasRightName =  ingredientsToSpawn[flavorIndex].IngredientName == ticket.ingredientName;
+                bool bAssertHasRightName = ingredientsToSpawn[flavorIndex].IngredientName == ticket.ingredientName;
                 Debug.Assert(bAssertHasRightName, "WE FAILED TO GENERATE RIGHT NAME, we made " + ingredientsToSpawn[flavorIndex].IngredientName + " we need " + ticket.ingredientName);
             }
         }
