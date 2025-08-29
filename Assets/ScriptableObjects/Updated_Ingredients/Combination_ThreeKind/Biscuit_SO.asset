@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: ScrambledEggs_SO
+  m_Name: Biscuit_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Scrambled Eggs
-  mIngredientFlavor: 3
+  mIngredientName: Biscuit
+  mIngredientFlavor: 0
   mIngredientValue: 30
   mFlavorData:
-    BLAND: 2
+    BLAND: 30
     BITTER: 0
-    SWEET: 1
-    SALTY: 5
+    SWEET: 10
+    SALTY: 10
     SOUR: 0
-    UMAMI: 1
-  mIngredientMaterial: {fileID: 2100000, guid: c809f27889b7b8a41b0bf7c4dc6a18cf, type: 2}
-  mIngredientMesh: {fileID: -5495902117074765545, guid: 7dfdbfc49015c1c4ba139e2d4ba95b02, type: 3}
+    UMAMI: 0
+  mIngredientMaterial: {fileID: 2100000, guid: 34bf1f129e8159b42b6d38a31fcc28fd, type: 2}
+  mIngredientMesh: {fileID: -5495902117074765545, guid: f8baec7a447c6c747b207d857c5b3095, type: 3}

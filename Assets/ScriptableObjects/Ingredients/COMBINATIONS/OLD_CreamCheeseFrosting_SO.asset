@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: PeanutButterDough_SO
+  m_Name: OLD_CreamCheeseFrosting_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Peanut Butter Dough
-  mIngredientFlavor: 5
-  mIngredientValue: 40
+  mIngredientName: Cream Cheese Frosting
+  mIngredientFlavor: 2
+  mIngredientValue: 35
   mFlavorData:
-    BLAND: 3
-    BITTER: 0
-    SWEET: 3
+    BLAND: 0
+    BITTER: -3
+    SWEET: 7
     SALTY: 1
-    SOUR: -1
-    UMAMI: 5
-  mIngredientMaterial: {fileID: 2100000, guid: 0b427d602f6fd6a438d4efa76beca1ab, type: 2}
+    SOUR: 1
+    UMAMI: 6
+  mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}
+  mIngredientMesh: {fileID: -5495902117074765545, guid: 7dfdbfc49015c1c4ba139e2d4ba95b02, type: 3}

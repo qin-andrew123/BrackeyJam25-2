@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: Eggs_SO
+  m_Name: OLD_Butter_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Eggs
+  mIngredientName: Butter
   mIngredientFlavor: 0
-  mIngredientValue: 4
+  mIngredientValue: 5
   mFlavorData:
     BLAND: 2
     BITTER: 0
@@ -23,4 +23,4 @@ MonoBehaviour:
     SOUR: 0
     UMAMI: 1
   mIngredientMaterial: {fileID: 2100000, guid: 34bf1f129e8159b42b6d38a31fcc28fd, type: 2}
-  mIngredientMesh: {fileID: -5495902117074765545, guid: f8baec7a447c6c747b207d857c5b3095, type: 3}
+  mIngredientMesh: {fileID: 2534964839176971238, guid: 3357cdb9102d3e24386f95e59b3decc7, type: 3}

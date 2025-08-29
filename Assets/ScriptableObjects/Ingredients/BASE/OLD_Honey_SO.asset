@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: DarkChocolate_SO
+  m_Name: OLD_Honey_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Dark Chocolate
-  mIngredientFlavor: 1
+  mIngredientName: Honey
+  mIngredientFlavor: 2
   mIngredientValue: 7
   mFlavorData:
-    BLAND: 0
-    BITTER: 5
-    SWEET: 0
+    BLAND: 1
+    BITTER: -1
+    SWEET: 4
     SALTY: 0
     SOUR: 1
-    UMAMI: -1
-  mIngredientMaterial: {fileID: 2100000, guid: 1e029821538aec848824abd2c669586a, type: 2}
-  mIngredientMesh: {fileID: -5495902117074765545, guid: f8baec7a447c6c747b207d857c5b3095, type: 3}
+    UMAMI: 0
+  mIngredientMaterial: {fileID: 2100000, guid: b82eee5d3a154d44cab1ae530d9a127d, type: 2}
+  mIngredientMesh: {fileID: 2534964839176971238, guid: dd09f560e4171f8429e1ca0a4236c51a, type: 3}

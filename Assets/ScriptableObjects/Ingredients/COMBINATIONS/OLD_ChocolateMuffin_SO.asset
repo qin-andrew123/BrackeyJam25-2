@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: ButterCream_SO
+  m_Name: OLD_ChocolateMuffin_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Buttercream
-  mIngredientFlavor: 2
-  mIngredientValue: 19
+  mIngredientName: Chocolate Muffin
+  mIngredientFlavor: 1
+  mIngredientValue: 22
   mFlavorData:
-    BLAND: 2
-    BITTER: -1
-    SWEET: 6
-    SALTY: -2
-    SOUR: 0
-    UMAMI: 1
-  mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}
+    BLAND: 4
+    BITTER: 5
+    SWEET: 1
+    SALTY: 0
+    SOUR: 1
+    UMAMI: 0
+  mIngredientMaterial: {fileID: 2100000, guid: 1e029821538aec848824abd2c669586a, type: 2}
   mIngredientMesh: {fileID: -5495902117074765545, guid: 7dfdbfc49015c1c4ba139e2d4ba95b02, type: 3}

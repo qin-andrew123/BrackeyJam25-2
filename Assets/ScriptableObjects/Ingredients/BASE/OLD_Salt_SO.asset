@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: Honey_SO
+  m_Name: OLD_Salt_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Honey
-  mIngredientFlavor: 2
-  mIngredientValue: 7
+  mIngredientName: Salt
+  mIngredientFlavor: 3
+  mIngredientValue: 8
   mFlavorData:
-    BLAND: 1
-    BITTER: -1
-    SWEET: 4
-    SALTY: 0
-    SOUR: 1
+    BLAND: 0
+    BITTER: 0
+    SWEET: 0
+    SALTY: 5
+    SOUR: 0
     UMAMI: 0
-  mIngredientMaterial: {fileID: 2100000, guid: b82eee5d3a154d44cab1ae530d9a127d, type: 2}
-  mIngredientMesh: {fileID: 2534964839176971238, guid: dd09f560e4171f8429e1ca0a4236c51a, type: 3}
+  mIngredientMaterial: {fileID: 2100000, guid: 75751aac0c83abe43af80b8f2180a8bb, type: 2}
+  mIngredientMesh: {fileID: 2534964839176971238, guid: 3357cdb9102d3e24386f95e59b3decc7, type: 3}

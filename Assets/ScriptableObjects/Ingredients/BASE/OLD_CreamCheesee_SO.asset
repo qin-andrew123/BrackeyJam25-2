@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: Flour_SO
+  m_Name: OLD_CreamCheesee_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Flour
-  mIngredientFlavor: 0
-  mIngredientValue: 2
+  mIngredientName: Cream Cheese
+  mIngredientFlavor: 5
+  mIngredientValue: 7
   mFlavorData:
-    BLAND: 2
-    BITTER: 0
-    SWEET: 0
-    SALTY: 0
-    SOUR: 0
-    UMAMI: 0
-  mIngredientMaterial: {fileID: 2100000, guid: f0360278337e5d24e8f33b2ea9c4c014, type: 2}
-  mIngredientMesh: {fileID: -5495902117074765545, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
+    BLAND: -2
+    BITTER: -2
+    SWEET: 1
+    SALTY: 1
+    SOUR: 1
+    UMAMI: 5
+  mIngredientMaterial: {fileID: 2100000, guid: 0b427d602f6fd6a438d4efa76beca1ab, type: 2}
+  mIngredientMesh: {fileID: 2534964839176971238, guid: b0649dd4ace811441ad22fabbadde2b2, type: 3}
