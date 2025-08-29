@@ -5,40 +5,56 @@ using UnityEngine.UIElements;
 
 public class PauseMenu : MonoBehaviour
 {
-    public VisualElement ui;
+    //public VisualElement ui;
     public Button QuitButton;
-    [SerializeField] UIDocument PauseMenuObj;
+    //[SerializeField] UIDocument PauseMenuObj;
+    [SerializeField] private GameObject mPauseMenu;
+    [SerializeField] private TutorialUI mTutorialMenu;
+    private bool bIsPaused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PauseMenuObj.gameObject.SetActive(false);
+        mPauseMenu.SetActive(false);
     }
 
     private void Awake()
     {
-        ui = PauseMenuObj.GetComponent<UIDocument>().rootVisualElement;
+        //ui = PauseMenuObj.GetComponent<UIDocument>().rootVisualElement;
 
     }
 
     private void OnEnable()
     {
-        QuitButton = ui.Q<Button>("Quit");
-        QuitButton.clicked += OnQuitButtonClicked;
+        //QuitButton = ui.Q<Button>("Quit");
+        //QuitButton.clicked += OnQuitButtonClicked;
     }
 
         // Update is called once per frame
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("Update");
-            PauseMenuObj.gameObject.SetActive(!PauseMenuObj.gameObject.activeSelf);
+            ShowPause();
         }
     }
 
-    private void OnQuitButtonClicked()
+    public void ShowPause()
+    {
+        Debug.Log("Pause");
+        bIsPaused = !bIsPaused;
+        mPauseMenu.SetActive(bIsPaused);
+    }
+
+    public void ShowTutorial()
+    {
+        mTutorialMenu.gameObject.SetActive(true);
+        mTutorialMenu.OpenTutorial();
+        ShowPause();
+    }
+
+    private void QuitGame()
     {
         Application.Quit();
 #if UNITY_EDITOR

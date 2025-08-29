@@ -52,7 +52,7 @@ public class RoundUI : MonoBehaviour
     }
     public void UpdateScoreText(float newValue)
     {
-        mScoreText.text = newValue.ToString();
+        mScoreText.text = "Score: " + newValue.ToString();
     }
 
     public void UpdateTurnsText(int turnsLeft)

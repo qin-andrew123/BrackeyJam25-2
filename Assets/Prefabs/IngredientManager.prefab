@@ -57,7 +57,7 @@ MonoBehaviour:
     resultPrefab: {fileID: 11400000, guid: 5bb35bf5fda5e204e80b8f4a44f43f74, type: 2}
   - ingredientPrefabs:
     - {fileID: 11400000, guid: a0524f123009f564686384bad22d0546, type: 2}
-    - {fileID: 11400000, guid: 28f1a5b96b1510f43b1fbffa774fcfe5, type: 2}
+    - {fileID: 11400000, guid: bf91af02977bc7849b3d5ea7e3776683, type: 2}
     resultPrefab: {fileID: 11400000, guid: 1bf7eb9b063d48b4395b879207ef9633, type: 2}
   - ingredientPrefabs:
     - {fileID: 11400000, guid: c68cdc45c6c04f3459be6bf217fbd526, type: 2}
@@ -205,17 +205,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 79c249b21e9029c45a410a5d63786c49, type: 2}
     resultPrefab: {fileID: 11400000, guid: 9b237d78aa0c853489887d0257fdf499, type: 2}
   mIngredientUI: {fileID: 0}
-  mSpawnIngredientLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   mRoundManager: {fileID: 0}
   mChanceToSpawnRequired: 0.7
+  mTransformPoints: []
 --- !u!114 &5452630126830102204
 MonoBehaviour:
   m_ObjectHideFlags: 0

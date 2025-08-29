@@ -37,24 +37,7 @@ public class RoundManager : MonoBehaviour
         Debug.Log("Handling Turn Number turn changed");
         mTurnsPerRound--;
 
-        if(!bHasFlavorRequirementBeenMetFirstTime)
-        {
-            GlobalVariables.Instance.MetRoundFlavorRequirement = mixedIngredient.IngredientFlavorValue == GlobalVariables.Instance.CurrentTicketConstraint.ingredientFlavor;
-
-            if(GlobalVariables.Instance.MetRoundFlavorRequirement)
-            {
-                bHasFlavorRequirementBeenMetFirstTime = true;
-            }
-        }
-        if(!bHasNameRequirementBeenMetFirstTime)
-        {
-            GlobalVariables.Instance.MetRoundNameRequirement = mixedIngredient.IngredientName == GlobalVariables.Instance.CurrentTicketConstraint.ingredientName;
-
-            if(GlobalVariables.Instance.MetRoundNameRequirement)
-            {
-                bHasNameRequirementBeenMetFirstTime = true;
-            }
-        }
+        CheckForRequirementsMet(mixedIngredient);
 
         if (mTurnsPerRound == 0)
         {
@@ -131,14 +114,6 @@ public class RoundManager : MonoBehaviour
     }
     private void StartNextRound()
     {
-        if (mRoundNumber == mRoundsForLevel)
-        {
-            LevelManager.OnBakeSceneEnded();
-            return;
-        }
-
-        mRoundNumber++;
-        mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
         if (GlobalVariables.Instance.MetRoundNameRequirement && GlobalVariables.Instance.MetRoundFlavorRequirement)
         {
             GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
@@ -149,6 +124,15 @@ public class RoundManager : MonoBehaviour
             GlobalVariables.Instance.BiscuitValues.Add(0);
         }
 
+        if (mRoundNumber == mRoundsForLevel)
+        {
+            LevelManager.OnBakeSceneEnded();
+            return;
+        }
+
+        mRoundNumber++;
+        mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
+        
         mRoundScore = 0.0f;
         mRoundUI.UpdateScoreText(mRoundScore);
 
@@ -171,19 +155,43 @@ public class RoundManager : MonoBehaviour
         StartNextRound();
     }
 
+    private void CheckForRequirementsMet(IngredientDataSO ingredientSO)
+    {
+        if (!bHasFlavorRequirementBeenMetFirstTime)
+        {
+            GlobalVariables.Instance.MetRoundFlavorRequirement = ingredientSO.IngredientFlavorValue == GlobalVariables.Instance.CurrentTicketConstraint.ingredientFlavor;
 
+            if (GlobalVariables.Instance.MetRoundFlavorRequirement)
+            {
+                bHasFlavorRequirementBeenMetFirstTime = true;
+            }
+        }
+        if (!bHasNameRequirementBeenMetFirstTime)
+        {
+            GlobalVariables.Instance.MetRoundNameRequirement = ingredientSO.IngredientName == GlobalVariables.Instance.CurrentTicketConstraint.ingredientName;
+
+            if (GlobalVariables.Instance.MetRoundNameRequirement)
+            {
+                bHasNameRequirementBeenMetFirstTime = true;
+            }
+        }
+
+    }
     // TODO: Delete or refactor after initial prototyping since this is reliant on PlayerInput hitting f5
     private void OnEnable()
     {
         PlayerInput.TEMPSetRoundRequirements += InitiateRounds;
         LevelManager.OnBakeSceneLoad += InitiateRounds;
         IngredientManager.OnIngredientMixed += HandleTurnNumberChange;
+        IngredientManager.OnIngredientCombined += CheckForRequirementsMet;
     }
     private void OnDisable()
     {
         PlayerInput.TEMPSetRoundRequirements -= InitiateRounds;
         LevelManager.OnBakeSceneLoad -= InitiateRounds;
         IngredientManager.OnIngredientMixed -= HandleTurnNumberChange;
+        IngredientManager.OnIngredientCombined -= CheckForRequirementsMet;
+
     }
 
     //private void SetRequiredItems()
