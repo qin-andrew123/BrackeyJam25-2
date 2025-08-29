@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Eggs_SO
   m_EditorClassIdentifier: 
   mIngredientName: Eggs
-  mIngredientFlavor: 0
+  mIngredientFlavor: 3
   mIngredientValue: 3
   mFlavorData:
     BLAND: 3
     BITTER: 0
     SWEET: 1
-    SALTY: 0
+    SALTY: 3
     SOUR: 0
     UMAMI: 1
   mIngredientMaterial: {fileID: 2100000, guid: 34bf1f129e8159b42b6d38a31fcc28fd, type: 2}
   mIngredientMesh: {fileID: -5495902117074765545, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
+  mPrefabObject: {fileID: 5050867494503628725, guid: 95dfaad3631f9fe4db7cf9e554645ed2, type: 3}

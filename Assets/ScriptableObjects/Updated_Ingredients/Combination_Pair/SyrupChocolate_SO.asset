@@ -24,3 +24,4 @@ MonoBehaviour:
     UMAMI: 5
   mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}
   mIngredientMesh: {fileID: 2534964839176971238, guid: 4a528e4e9e244c94ca52c65d55c2b1df, type: 3}
+  mPrefabObject: {fileID: 8311729570598752119, guid: 47cc2ea7a7f764143863311d850d5589, type: 3}
