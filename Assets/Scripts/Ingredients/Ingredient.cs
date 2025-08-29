@@ -7,7 +7,7 @@ public class Ingredient : MonoBehaviour
     public static event Action<Ingredient> OnIngredientClicked;
     public IngredientTransformPoint TransformPoint { get; set; }
     public IngredientDataSO IngredientData => mIngredientData;
-    private IngredientDataSO mIngredientData = null;
+    public IngredientDataSO mIngredientData = null;
     // TODO : DELETE THIS, WE ARE GONNA DELETE THE GO'S ANW
     private bool bIsUsed = false;
 
@@ -25,10 +25,9 @@ public class Ingredient : MonoBehaviour
         }
     }
 
-    public void SetIngredientData(IngredientDataSO ingredientDataSO, Transform startingSpawnLocation)
+    public void SetIngredientData(IngredientDataSO ingredientDataSO)
     {
         mIngredientData = ingredientDataSO;
-        mIngredientData.InitialSpawnTransform = startingSpawnLocation;
     }
 
     public void SetIngredientUsed(bool used)

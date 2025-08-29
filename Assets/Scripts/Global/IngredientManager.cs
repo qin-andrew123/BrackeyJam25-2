@@ -289,6 +289,7 @@ public class IngredientManager : MonoBehaviour
             {
                 Debug.Log("null ingredient when generating table ingredients");
             }
+            ingredient.SetIngredientData(ingredientsToSpawn[i]);
             mTransformPoints[freedIndices[i]].InitializePoint(ingredient);
         }
     }
