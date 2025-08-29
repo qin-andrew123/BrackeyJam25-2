@@ -29,12 +29,12 @@ public class FlavorData
     public static FlavorData operator +(FlavorData a, FlavorData b)
     {
         FlavorData c = new FlavorData();
-        c.BLAND = a.BLAND + b.BLAND;
-        c.BITTER = a.BITTER + b.BITTER;
-        c.SWEET = a.SWEET + b.SWEET;
-        c.SALTY = a.SALTY + b.SALTY;
-        c.SOUR = a.SOUR + b.SOUR;
-        c.UMAMI = a.UMAMI + b.UMAMI;
+        c.BLAND = Mathf.Max(0, a.BLAND + b.BLAND);
+        c.BITTER = Mathf.Max(0, a.BITTER + b.BITTER);
+        c.SWEET = Mathf.Max(0, a.SWEET + b.SWEET);
+        c.SALTY = Mathf.Max(0, a.SALTY + b.SALTY);
+        c.SOUR = Mathf.Max(0, a.SOUR + b.SOUR);
+        c.UMAMI = Mathf.Max(0, a.UMAMI + b.UMAMI);
 
         return c;
     }
