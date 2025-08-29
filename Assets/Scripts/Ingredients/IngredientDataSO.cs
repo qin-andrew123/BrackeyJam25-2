@@ -108,4 +108,6 @@ public class IngredientDataSO : ScriptableObject
     public Transform InitialSpawnTransform { get; set; }
     public Mesh IngredientMesh => mIngredientMesh;
     [SerializeField] private Mesh mIngredientMesh;
+    public GameObject PrefabObject => mPrefabObject;
+    [SerializeField] private GameObject mPrefabObject;
 }

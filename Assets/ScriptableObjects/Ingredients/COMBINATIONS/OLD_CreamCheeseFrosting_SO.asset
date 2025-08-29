@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
+  m_Name: OLD_CreamCheeseFrosting_SO
+  m_EditorClassIdentifier: 
+  mIngredientName: Cream Cheese Frosting
+  mIngredientFlavor: 2
+  mIngredientValue: 35
+  mFlavorData:
+    BLAND: 0
+    BITTER: -3
+    SWEET: 7
+    SALTY: 1
+    SOUR: 1
+    UMAMI: 6
+  mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}
+  mIngredientMesh: {fileID: -5495902117074765545, guid: 7dfdbfc49015c1c4ba139e2d4ba95b02, type: 3}
