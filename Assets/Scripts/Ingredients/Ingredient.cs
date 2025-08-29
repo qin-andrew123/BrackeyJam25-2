@@ -29,22 +29,6 @@ public class Ingredient : MonoBehaviour
     {
         mIngredientData = ingredientDataSO;
         mIngredientData.InitialSpawnTransform = startingSpawnLocation;
-        // This is temp but for debugging purposes. 
-        Renderer renderer = gameObject.GetComponent<Renderer>();
-        if (renderer != null)
-        {
-            renderer.material = ingredientDataSO.IngredientMaterial;
-            Bounds worldBounds = renderer.bounds;
-        }
-        MeshFilter meshFilter = gameObject.GetComponent<MeshFilter>();
-        if (meshFilter != null)
-        {
-            meshFilter.mesh = ingredientDataSO.IngredientMesh;
-            Bounds meshBounds = meshFilter.sharedMesh.bounds;
-            BoxCollider box = gameObject.GetComponent<BoxCollider>();
-            box.center = meshBounds.center;
-            box.size = meshBounds.size + Vector3.one * 0.001f;
-        }
     }
 
     public void SetIngredientUsed(bool used)
