@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: RIG_BiscuitCat.001|Idle
+      name: Idle
       takeName: RIG_BiscuitCat.001|Idle
       internalID: 230526945080494952
       firstFrame: 0
