@@ -44,6 +44,12 @@ public class ScoreSceneUI : MonoBehaviour
 #endif
 
         float hypotheticalMaxScore = finalScore / scoreList.Count;
+        // Totally failed
+        if(hypotheticalMaxScore == 0.0f)
+        {
+            hypotheticalMaxScore = float.MaxValue;
+        }
+
         for (int i = 0; i < scoreList.Count; i++)
         {
             GameObject newScoreItem = Instantiate(mScorePrefab, mScorePrefabParent);
