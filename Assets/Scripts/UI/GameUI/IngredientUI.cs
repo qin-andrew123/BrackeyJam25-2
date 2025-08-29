@@ -5,7 +5,14 @@ public class IngredientUI : MonoBehaviour
 {
     [SerializeField] private GameObject mPopupImage;
     [SerializeField] private TextMeshProUGUI mIngredientName;
-    [SerializeField] private TextMeshProUGUI mIngredientFlavor;
+
+    [SerializeField] private TextMeshProUGUI mIngredientFlavor_Sweet;
+    [SerializeField] private TextMeshProUGUI mIngredientFlavor_Bitter;
+    [SerializeField] private TextMeshProUGUI mIngredientFlavor_Bland;
+    [SerializeField] private TextMeshProUGUI mIngredientFlavor_Umami;
+    [SerializeField] private TextMeshProUGUI mIngredientFlavor_Sour;
+    [SerializeField] private TextMeshProUGUI mIngredientFlavor_Salty;
+
     [SerializeField] private TextMeshProUGUI mIngredientEffect;
     [SerializeField] private TextMeshProUGUI mIngredientValue;
 
@@ -31,7 +38,14 @@ public class IngredientUI : MonoBehaviour
         string ingredientValue = inputIngredient.IngredientValue.ToString();
 
         mIngredientName.text = ingredientName;
-        mIngredientFlavor.text = ingredientFlavor;
+
+        mIngredientFlavor_Sweet.text = inputIngredient.mFlavorData.SWEET.ToString();
+        mIngredientFlavor_Bitter.text = inputIngredient.mFlavorData.BITTER.ToString();
+        mIngredientFlavor_Bland.text = inputIngredient.mFlavorData.BLAND.ToString();
+        mIngredientFlavor_Umami.text = inputIngredient.mFlavorData.UMAMI.ToString();
+        mIngredientFlavor_Sour.text = inputIngredient.mFlavorData.SOUR.ToString();
+        mIngredientFlavor_Salty.text = inputIngredient.mFlavorData.SALTY.ToString();
+
         //mIngredientEffect.text = ingredientEffect;
         mIngredientValue.text = ingredientValue;
         
