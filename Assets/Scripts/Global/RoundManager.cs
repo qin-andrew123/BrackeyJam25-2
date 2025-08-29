@@ -114,14 +114,6 @@ public class RoundManager : MonoBehaviour
     }
     private void StartNextRound()
     {
-        if (mRoundNumber == mRoundsForLevel)
-        {
-            LevelManager.OnBakeSceneEnded();
-            return;
-        }
-
-        mRoundNumber++;
-        mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
         if (GlobalVariables.Instance.MetRoundNameRequirement && GlobalVariables.Instance.MetRoundFlavorRequirement)
         {
             GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
@@ -132,6 +124,15 @@ public class RoundManager : MonoBehaviour
             GlobalVariables.Instance.BiscuitValues.Add(0);
         }
 
+        if (mRoundNumber == mRoundsForLevel)
+        {
+            LevelManager.OnBakeSceneEnded();
+            return;
+        }
+
+        mRoundNumber++;
+        mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
+        
         mRoundScore = 0.0f;
         mRoundUI.UpdateScoreText(mRoundScore);
 

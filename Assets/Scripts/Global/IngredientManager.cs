@@ -31,6 +31,8 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private RoundManager mRoundManager;
     [SerializeField] private float mChanceToSpawnRequired = 0.7f;
     [SerializeField] private List<IngredientTransformPoint> mTransformPoints;
+    private List<Ingredient> mCurrentlyActiveBaseIngredients = new List<Ingredient>();
+    private List<Ingredient> mCurrentlyActiveFlavorIngredients = new List<Ingredient>();
 
     // TODO : Refactor Spawn Ingredients
     public void SpawnIngredients()
@@ -87,7 +89,6 @@ public class IngredientManager : MonoBehaviour
 
     private void ClickedIngredientsTryAdd(Ingredient ingredient)
     {
-
         Debug.Log("Adding Clicked Ingredient");
         if (mClickedIngredients.Contains(ingredient))
         {
@@ -100,11 +101,11 @@ public class IngredientManager : MonoBehaviour
             ingredient.gameObject.layer = LayerMask.NameToLayer("Outline");
         }
     }
-    private void ClickedIngredientsRemove(Ingredient ingredient)
+    private bool ClickedIngredientsRemove(Ingredient ingredient)
     {
-        if (!ingredient.gameObject)
+        if (!ingredient)
         {
-            return;
+            return false;
         }
 
         Debug.Log("Removing Clicked Ingredient");
@@ -118,6 +119,8 @@ public class IngredientManager : MonoBehaviour
         {
             mIngredientUI.HidePopup();
         }
+
+        return true;
     }
 
     public void Combine()
@@ -149,7 +152,9 @@ public class IngredientManager : MonoBehaviour
                 Transform resultPos = mClickedIngredients[0].IngredientData.InitialSpawnTransform;
                 for (int i = mClickedIngredients.Count - 1; i >= 0; --i)
                 {
-                    OnIngredientCombined?.Invoke(mClickedIngredients[i].IngredientData);
+                    // POST MORTEM: WE SHOULD NOT BE MAKING A COPY HERE PROB LMFAO
+                    IngredientDataSO sendToListeners = ScriptableObject.Instantiate(mClickedIngredients[i].IngredientData);
+                    OnIngredientCombined?.Invoke(sendToListeners);
                     CleanupIngredient(mClickedIngredients[i].gameObject);
                 }
                 mClickedIngredients.Clear();
@@ -193,15 +198,47 @@ public class IngredientManager : MonoBehaviour
             for (int i = 0; i < numNewToSpawn; ++i)
             {
                 int randomIndex = 0;
-                if (Random.Range(0, 1f) < 0.3f) // TODO : Adjust in case too rare
+                if (Random.Range(0, 1f) < 0.5f) // TODO : Adjust in case too rare
                 {
-                    randomIndex = Random.Range(0, GlobalVariables.Instance.BaseIngredients.Count);
-                    ingredientsToSpawn.Add(GlobalVariables.Instance.BaseIngredients[randomIndex]);
+                    List<IngredientDataSO> potentialToAdd = new List<IngredientDataSO>(GlobalVariables.Instance.BaseIngredients);
+                    foreach (Ingredient ing in mCurrentlyActiveBaseIngredients)
+                    {
+                        if (potentialToAdd.Contains(ing.IngredientData))
+                        {
+                            potentialToAdd.Remove(ing.IngredientData);
+                        }
+                    }
+                    if (potentialToAdd.Count > 0)
+                    {
+                        randomIndex = Random.Range(0, potentialToAdd.Count);
+                        ingredientsToSpawn.Add(potentialToAdd[randomIndex]);
+                    }
+                    else
+                    {
+                        randomIndex = Random.Range(0, GlobalVariables.Instance.BaseIngredients.Count);
+                        ingredientsToSpawn.Add(GlobalVariables.Instance.BaseIngredients[randomIndex]);
+                    }
                 }
                 else
                 {
-                    randomIndex = Random.Range(0, GlobalVariables.Instance.FlavorIngredients.Count);
-                    ingredientsToSpawn.Add(GlobalVariables.Instance.FlavorIngredients[randomIndex]);
+                    List<IngredientDataSO> potentialToAdd = new List<IngredientDataSO>(GlobalVariables.Instance.FlavorIngredients);
+                    foreach (Ingredient ing in mCurrentlyActiveFlavorIngredients)
+                    {
+                        if (potentialToAdd.Contains(ing.IngredientData))
+                        {
+                            potentialToAdd.Remove(ing.IngredientData);
+                        }
+                    }
+                    if (potentialToAdd.Count > 0)
+                    {
+                        randomIndex = Random.Range(0, potentialToAdd.Count);
+                        ingredientsToSpawn.Add(potentialToAdd[randomIndex]);
+                    }
+                    else
+                    {
+                        randomIndex = Random.Range(0, GlobalVariables.Instance.FlavorIngredients.Count);
+                        ingredientsToSpawn.Add(GlobalVariables.Instance.FlavorIngredients[randomIndex]);
+                    }
                 }
             }
         }
@@ -293,6 +330,14 @@ public class IngredientManager : MonoBehaviour
         }
         ingredient.SetIngredientData(ingredientToSpawn);
         mTransformPoints[freedIndex].InitializePoint(ingredient);
+        if (GlobalVariables.Instance.BaseIngredients.Contains(ingredientToSpawn))
+        {
+            mCurrentlyActiveBaseIngredients.Add(ingredient);
+        }
+        else if (GlobalVariables.Instance.FlavorIngredients.Contains(ingredientToSpawn))
+        {
+            mCurrentlyActiveFlavorIngredients.Add(ingredient);
+        }
     }
     private List<int> GetFreedIndices()
     {
@@ -360,6 +405,15 @@ public class IngredientManager : MonoBehaviour
         }
 
         ingredient.TransformPoint.ClearPoint();
+        if (GlobalVariables.Instance.BaseIngredients.Contains(ingredient.IngredientData))
+        {
+            mCurrentlyActiveBaseIngredients.Remove(ingredient);
+        }
+        else if (GlobalVariables.Instance.FlavorIngredients.Contains(ingredient.IngredientData))
+        {
+            mCurrentlyActiveFlavorIngredients.Remove(ingredient);
+        }
+
         Destroy(go);
     }
     private void CleanupClickedIngredients()
