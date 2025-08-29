@@ -152,7 +152,10 @@ public class IngredientManager : MonoBehaviour
                 }
                 mClickedIngredients.Clear();
 
+                List<int> freedIndices = GetFreedIndices();
                 // instantiate new prefab and delete previous ingredients
+                SpawnIngredient(pair.resultPrefab, freedIndices[0]);
+
                 GenerateIngredients(false);
 
                 return;
@@ -164,15 +167,7 @@ public class IngredientManager : MonoBehaviour
     }
     private void GenerateIngredients(bool bIsInitialSpawning)
     {
-        List<int> freedIndices = new List<int>();
-
-        for (int i = 0; i < mTransformPoints.Count; ++i)
-        {
-            if (mTransformPoints[i].IsAvailable)
-            {
-                freedIndices.Add(i);
-            }
-        }
+        List<int> freedIndices = GetFreedIndices();
 
         freedIndices = freedIndices.OrderBy(x => Random.value).ToList();
 
@@ -193,7 +188,7 @@ public class IngredientManager : MonoBehaviour
         }
         else
         {
-            for (int i = numNewToSpawn; i < numNewToSpawn; ++i)
+            for (int i = 0; i < numNewToSpawn; ++i)
             {
                 int randomIndex = 0;
                 if (Random.Range(0, 1f) < 0.3f) // TODO : Adjust in case too rare
@@ -283,15 +278,33 @@ public class IngredientManager : MonoBehaviour
 #endif
         for (int i = 0; i < ingredientsToSpawn.Count; i++)
         {
-            GameObject newIngredient = Instantiate(ingredientsToSpawn[i].PrefabObject);
-            Ingredient ingredient = newIngredient.GetComponent<Ingredient>();
-            if (ingredient == null)
-            {
-                Debug.Log("null ingredient when generating table ingredients");
-            }
-            ingredient.SetIngredientData(ingredientsToSpawn[i]);
-            mTransformPoints[freedIndices[i]].InitializePoint(ingredient);
+            SpawnIngredient(ingredientsToSpawn[i], freedIndices[i]);
         }
+    }
+    private void SpawnIngredient(IngredientDataSO ingredientToSpawn, int freedIndex)
+    {
+        GameObject newIngredient = Instantiate(ingredientToSpawn.PrefabObject);
+        Ingredient ingredient = newIngredient.GetComponent<Ingredient>();
+        if (ingredient == null)
+        {
+            Debug.Log("null ingredient when generating table ingredients");
+        }
+        ingredient.SetIngredientData(ingredientToSpawn);
+        mTransformPoints[freedIndex].InitializePoint(ingredient);
+    }
+    private List<int> GetFreedIndices()
+    {
+        List<int> freedIndices = new List<int>();
+
+        for (int i = 0; i < mTransformPoints.Count; ++i)
+        {
+            if (mTransformPoints[i].IsAvailable)
+            {
+                freedIndices.Add(i);
+            }
+        }
+
+        return freedIndices;
     }
     private void OnEnable()
     {
