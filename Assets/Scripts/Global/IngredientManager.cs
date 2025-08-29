@@ -182,13 +182,14 @@ public class IngredientManager : MonoBehaviour
         TicketConstraint ticket = GlobalVariables.Instance.CurrentTicketConstraint;
 
         List<IngredientDataSO> ingredientsToSpawn = new List<IngredientDataSO>();
-        List<IngredientDataSO> flavorIngredients = new List<IngredientDataSO>(GlobalVariables.Instance.FlavorIngredients);
-        flavorIngredients = flavorIngredients.OrderBy(x => Random.value).ToList();
-        flavorIngredients = flavorIngredients.Take(numNewToSpawn).ToList();
         if (bIsInitialSpawning)
         {
+            List<IngredientDataSO> flavorIngredients = new List<IngredientDataSO>(GlobalVariables.Instance.FlavorIngredients);
+            flavorIngredients = flavorIngredients.OrderBy(x => Random.value).ToList();
+            List<IngredientDataSO> selectedBunch = flavorIngredients.Take(3).ToList();
+
             ingredientsToSpawn.AddRange(GlobalVariables.Instance.BaseIngredients);
-            ingredientsToSpawn.AddRange(flavorIngredients);
+            ingredientsToSpawn.AddRange(selectedBunch);
         }
         else
         {
@@ -278,7 +279,7 @@ public class IngredientManager : MonoBehaviour
         }
 
 #if UNITY_EDITOR
-        Assert.IsFalse(freedIndices.Count == ingredientsToSpawn.Count, $"We have more ingredients to spawn than we do spawn points");
+        Assert.IsTrue(freedIndices.Count == ingredientsToSpawn.Count, $"We have more ingredients to spawn than we do spawn points");
 #endif
         for (int i = 0; i < ingredientsToSpawn.Count; i++)
         {
