@@ -17,6 +17,7 @@ public class IngredientPair
 public class IngredientManager : MonoBehaviour
 {
     public static event Action<IngredientDataSO> OnIngredientMixed;
+    public static event Action<IngredientDataSO> OnIngredientCombined;
     public static event Action<Ingredient> OnSpawnIngredient;
     public static List<GameObject> mSpawnedIngredients = new List<GameObject>();
 
@@ -148,6 +149,7 @@ public class IngredientManager : MonoBehaviour
                 Transform resultPos = mClickedIngredients[0].IngredientData.InitialSpawnTransform;
                 for (int i = mClickedIngredients.Count - 1; i >= 0; --i)
                 {
+                    OnIngredientCombined?.Invoke(mClickedIngredients[i].IngredientData);
                     CleanupIngredient(mClickedIngredients[i].gameObject);
                 }
                 mClickedIngredients.Clear();
