@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.2491
       objectReference: {fileID: 0}
@@ -48,9 +60,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
       propertyPath: m_Name
-      value: MESH_Flour_Bag
+      value: PREFAB_Flour_Bag
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
       propertyPath: m_Layer
