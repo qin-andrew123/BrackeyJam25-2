@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,7 +17,9 @@ public class IngredientPair
 public class IngredientManager : MonoBehaviour
 {
     public static event Action<IngredientDataSO> OnIngredientMixed;
-    public static event Action<GameObject> OnCleanupIngredients;
+    public static event Action<Ingredient> OnSpawnIngredient;
+    public static List<GameObject> mSpawnedIngredients = new List<GameObject>();
+
     public bool bIsCombining = false;
     [SerializeField] private List<Ingredient> mMixingBowlIngredients = new List<Ingredient>();
     [SerializeField] private List<Ingredient> mClickedIngredients = new List<Ingredient>();
@@ -24,22 +27,16 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private GameObject mIngredientPrefab;
     [SerializeField] private List<IngredientPair> mCombinableIngredients;
     [SerializeField] private IngredientUI mIngredientUI;
-    [SerializeField] private List<Transform> mSpawnIngredientLocations;
     [SerializeField] private RoundManager mRoundManager;
     [SerializeField] private float mChanceToSpawnRequired = 0.7f;
-    public static List<GameObject> mSpawnedIngredients = new List<GameObject>();
-    public static Dictionary<Transform, bool> mTransformToHasSpawnedIngredient = new Dictionary<Transform, bool>();
-
-    public static void AddIngredient(GameObject go)
-    {
-        mSpawnedIngredients.Add(go);
-    }
+    [SerializeField] private List<IngredientTransformPoint> mTransformPoints;
+    
     // TODO : Refactor Spawn Ingredients
     public void SpawnIngredients()
     {
         CleanupSpawnedIngredients();
 
-        GenerateIngredients(mSpawnIngredientLocations);
+        GenerateIngredients(true);
     }
 
     public void AddToMixingBowl()
@@ -82,9 +79,9 @@ public class IngredientManager : MonoBehaviour
         // We need to decrement the number of turns because we just used one
         // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
         OnIngredientMixed?.Invoke(ingredient.IngredientData);
-        OnCleanupIngredients?.Invoke(ingredient.gameObject);
+        CleanupIngredient(ingredient.gameObject);
 
-        RespawnIngredients();
+        GenerateIngredients(false);
     }
 
     private void ClickedIngredientsTryAdd(Ingredient ingredient)
@@ -104,7 +101,7 @@ public class IngredientManager : MonoBehaviour
     }
     private void ClickedIngredientsRemove(Ingredient ingredient)
     {
-        if(!ingredient.gameObject)
+        if (!ingredient.gameObject)
         {
             return;
         }
@@ -138,7 +135,8 @@ public class IngredientManager : MonoBehaviour
             List<IngredientDataSO> ingredients = pair.ingredientPrefabs;
             foreach (Ingredient ingredient in mClickedIngredients)
             {
-                if (!ingredients.Contains(ingredient.IngredientData))
+                bool bDoesContainIngredient = ingredients.Contains(ingredient.IngredientData);
+                if (!bDoesContainIngredient)
                 {
                     bCanCombine = false;
                     break;
@@ -148,17 +146,14 @@ public class IngredientManager : MonoBehaviour
             {
                 Debug.Log("Combining");
                 Transform resultPos = mClickedIngredients[0].IngredientData.InitialSpawnTransform;
-                for(int i = mClickedIngredients.Count - 1; i >= 0; --i)
+                for (int i = mClickedIngredients.Count - 1; i >= 0; --i)
                 {
-                    OnCleanupIngredients?.Invoke(mClickedIngredients[i].gameObject);
+                    CleanupIngredient(mClickedIngredients[i].gameObject);
                 }
                 mClickedIngredients.Clear();
 
                 // instantiate new prefab and delete previous ingredients
-                GameObject newIngredient = Instantiate(mIngredientPrefab);
-                HandleNewIngredientSpawned(newIngredient, resultPos, pair.resultPrefab);
-
-                RespawnIngredients();
+                GenerateIngredients(false);
 
                 return;
             }
@@ -167,34 +162,56 @@ public class IngredientManager : MonoBehaviour
         Debug.Log("Ingredients Not Combinable. Player did not select correct ones!");
         CleanupClickedIngredients();
     }
-    private void RespawnIngredients()
+    private void GenerateIngredients(bool bIsInitialSpawning)
     {
-        List<Transform> spotsToRespawnIngredients = new List<Transform>();
-        foreach (var KeyValue in mTransformToHasSpawnedIngredient)
+        List<int> freedIndices = new List<int>();
+
+        for (int i = 0; i < mTransformPoints.Count; ++i)
         {
-            if (!KeyValue.Value)
+            if (mTransformPoints[i].IsAvailable)
             {
-                Debug.Log("Key: " + KeyValue.Key.position + " | Value: " + KeyValue.Value);
-                spotsToRespawnIngredients.Add(KeyValue.Key);
+                freedIndices.Add(i);
             }
         }
 
-        GenerateIngredients(spotsToRespawnIngredients);
-    }
-    private void GenerateIngredients(List<Transform> spotsToSpawnIngredients)
-    {
-        Debug.Log("Total Number of items to respawn: " + spotsToSpawnIngredients.Count);
+        freedIndices = freedIndices.OrderBy(x => Random.value).ToList();
+
+        int numNewToSpawn = freedIndices.Count;
         bool bHasGeneratedFlavorType = false;
         bool bHasGeneratedIngredientName = false;
         TicketConstraint ticket = GlobalVariables.Instance.CurrentTicketConstraint;
 
-        // TODO Weighting
+        List<IngredientDataSO> ingredientsToSpawn = new List<IngredientDataSO>();
+        List<IngredientDataSO> flavorIngredients = new List<IngredientDataSO>(GlobalVariables.Instance.FlavorIngredients);
+        flavorIngredients = flavorIngredients.OrderBy(x => Random.value).ToList();
+        flavorIngredients = flavorIngredients.Take(numNewToSpawn).ToList();
+        if (bIsInitialSpawning)
+        {
+            ingredientsToSpawn.AddRange(GlobalVariables.Instance.BaseIngredients);
+            ingredientsToSpawn.AddRange(flavorIngredients);
+        }
+        for (int i = GlobalVariables.Instance.BaseIngredients.Count; i < numNewToSpawn; ++i)
+        {
+            if(bIsInitialSpawning)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        
+            // TODO Weighting
+
+            // First generate base ingredients
+            
         // Create the spawning pool and sort the list randomly
-        List<IngredientDataSO> spawningPool = new List<IngredientDataSO>(GlobalVariables.Instance.IngredientData);
+        List<IngredientDataSO> spawningPool = new List<IngredientDataSO>(GlobalVariables.Instance.FlavorIngredients);
         spawningPool = spawningPool.OrderBy(x => Random.value).ToList();
 
         // Take the first number to spawn as our selected
-        List<IngredientDataSO> selectedIngredients = spawningPool.Take(spotsToSpawnIngredients.Count).ToList();
+        List<IngredientDataSO> selectedIngredients = spawningPool.Take(numNewToSpawn).ToList();
 
         // TODO : Fix it so that there is a high chance of getting the required, but only if you haven't used it yet. Otherwise, just do the basic randomization.
 
@@ -214,25 +231,32 @@ public class IngredientManager : MonoBehaviour
         }
 
         float randThreshold = Random.Range(0.0f, 1.0f);
-        if(randThreshold < mChanceToSpawnRequired)
+        if (randThreshold < mChanceToSpawnRequired)
         {
             int nameIndex = -1;
             GlobalVariables.Instance.NameDictionary.TryGetValue(ticket.ingredientName, out var nameSO);
             if (!GlobalVariables.Instance.MetRoundNameRequirement)
             {
-                Debug.LogAssertion("WE HAVEN'T MET THE ROUND NAME REQ YET");
                 if (!bHasGeneratedIngredientName)
                 {
-                    nameIndex = Random.Range(0, spotsToSpawnIngredients.Count);
+                    nameIndex = Random.Range(0, numNewToSpawn);
                     selectedIngredients[nameIndex] = nameSO;
                     bHasGeneratedIngredientName = true;
                 }
             }
             GlobalVariables.Instance.FlavorDictionary.TryGetValue(ticket.ingredientFlavor, out var flavorSO);
+            if(flavorSO == null)
+            {
+#if UNITY_EDITOR
+                Assert.IsTrue(flavorSO != null, $"{ticket.ingredientFlavor}: Does not have any ingredients tied to its flavor dictionary, did we forget to add in any ingredients that match this flavor profile?");
+#endif
+                return;
+            }
+
             int flavorIndex = -1;
             if (!GlobalVariables.Instance.MetRoundFlavorRequirement)
             {
-                Debug.LogAssertion("WE HAVEN'T MET THE ROUND FLAVOR REQ YET");
+                Debug.Log("Ingredient Flavor: " + ticket.ingredientFlavor + " Generating FlavorSO: " + flavorSO.Count);
                 if (!bHasGeneratedFlavorType)
                 {
                     for (int i = selectedIngredients.Count - 1; i >= 0; --i)
@@ -259,31 +283,14 @@ public class IngredientManager : MonoBehaviour
                 Debug.Assert(bAssertHasRightName, "WE FAILED TO GENERATE RIGHT NAME, we made " + selectedIngredients[flavorIndex].IngredientName + " we need " + ticket.ingredientName);
             }
         }
-        
-        
-#if UNITY_EDITOR
-        Assert.IsTrue(spotsToSpawnIngredients.Count == selectedIngredients.Count, "The number of selected ingredients to spawn does not match the number of spawn locations");
-#endif
 
-        for (int i = 0; i < spotsToSpawnIngredients.Count; ++i)
+        // TODO : make it so that it spawns a unique prefab instead
+        foreach (int i in freedIndices)
         {
             GameObject newIngredient = Instantiate(mIngredientPrefab);
-            HandleNewIngredientSpawned(newIngredient, spotsToSpawnIngredients[i], selectedIngredients[i]);
+            mTransformPoints[i].InitializePoint(newIngredient.GetComponent<Ingredient>());
         }
     }
-    private void HandleNewIngredientSpawned(GameObject ingredient, Transform ingredientPosition, IngredientDataSO ingredientData)
-    {
-        ingredient.GetComponent<Ingredient>().SetIngredientData(ingredientData, ingredientPosition);
-        ingredient.transform.position = ingredientPosition.position;
-
-        // We want to remember which transforms has a ingredient or not
-        if (mTransformToHasSpawnedIngredient.ContainsKey(ingredientPosition))
-        {
-            Debug.LogError("Position " + ingredientPosition + " Already has osmething there");
-        }
-        mTransformToHasSpawnedIngredient[ingredientPosition] = true;
-    }
-
     private void OnEnable()
     {
         Ingredient.OnIngredientClicked += ClickedIngredientsTryAdd;
@@ -316,10 +323,27 @@ public class IngredientManager : MonoBehaviour
 
         for (int i = mSpawnedIngredients.Count - 1; i >= 0; --i)
         {
-            OnCleanupIngredients?.Invoke(mSpawnedIngredients[i]);
+            CleanupIngredient(mSpawnedIngredients[i]);
         }
 
         mSpawnedIngredients.Clear();
+    }
+    private void CleanupIngredient(GameObject go)
+    {
+        if (!go)
+        {
+            return;
+        }
+
+        Ingredient ingredient = go.GetComponent<Ingredient>();
+
+        if (!ingredient)
+        {
+            return;
+        }
+
+        ingredient.TransformPoint.ClearPoint();
+        Destroy(go);
     }
     private void CleanupClickedIngredients()
     {
