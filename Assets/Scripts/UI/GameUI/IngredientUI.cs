@@ -30,10 +30,15 @@ public class IngredientUI : MonoBehaviour
 
     public void UpdatePopup(IngredientDataSO inputIngredient)
     {
+        if(inputIngredient == null)
+        {
+            return;
+        }
+
         mPopupImage.gameObject.SetActive(true);
 
         string ingredientName = inputIngredient.IngredientName;
-        string ingredientFlavor = inputIngredient.IngredientFlavorValue.ToString();
+        //string ingredientFlavor = inputIngredient.IngredientFlavorValue.ToString();
         //string ingredientEffect = inputIngredient.IngredientEffectValue.ToString();
         string ingredientValue = inputIngredient.IngredientValue.ToString();
 

@@ -7,7 +7,7 @@ public class Ingredient : MonoBehaviour
     public static event Action<Ingredient> OnIngredientClicked;
     public IngredientTransformPoint TransformPoint { get; set; }
     public IngredientDataSO IngredientData => mIngredientData;
-    [SerializeField] private IngredientDataSO mIngredientData;
+    private IngredientDataSO mIngredientData = null;
     // TODO : DELETE THIS, WE ARE GONNA DELETE THE GO'S ANW
     private bool bIsUsed = false;
 

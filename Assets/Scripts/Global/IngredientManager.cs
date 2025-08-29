@@ -284,7 +284,12 @@ public class IngredientManager : MonoBehaviour
         for (int i = 0; i < ingredientsToSpawn.Count; i++)
         {
             GameObject newIngredient = Instantiate(ingredientsToSpawn[i].PrefabObject);
-            mTransformPoints[freedIndices[i]].InitializePoint(newIngredient.GetComponent<Ingredient>());
+            Ingredient ingredient = newIngredient.GetComponent<Ingredient>();
+            if (ingredient == null)
+            {
+                Debug.Log("null ingredient when generating table ingredients");
+            }
+            mTransformPoints[freedIndices[i]].InitializePoint(ingredient);
         }
     }
     private void OnEnable()
