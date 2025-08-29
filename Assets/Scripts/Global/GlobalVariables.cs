@@ -15,7 +15,7 @@ public class GlobalVariables : MonoBehaviour
     public static event Action OnQuotaChange;
     public int DayNumber { get; private set; } = 0;
     public float QuotaNumber => mQuotaNumber;
-
+    public TicketConstraint CurrentTicketConstraint { get; set; } = new TicketConstraint();
     public List<IngredientDataSO> IngredientData => mIngredientDataSO;
     public List<string> IngredientNames => mIngredientDataNames;
     public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorDictionary;
@@ -23,6 +23,9 @@ public class GlobalVariables : MonoBehaviour
     public int TurnsPerRound => mTurnsPerRound;
     public int RoundsPerLevel => mRoundsPerLevel;
     public List<float> BiscuitValues { get; private set; } = new List<float>();
+    public bool MetRoundFlavorRequirement { get; set; }
+    public bool MetRoundNameRequirement { get; set; }
+
 
     [SerializeField] private List<float> mQuotaValues;
     [SerializeField] private List<IngredientDataSO> mIngredientDataSO;

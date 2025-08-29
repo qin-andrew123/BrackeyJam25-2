@@ -22,4 +22,5 @@ MonoBehaviour:
     SALTY: 0
     SOUR: 1
     UMAMI: 0
-  mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}
+  mIngredientMaterial: {fileID: 2100000, guid: b82eee5d3a154d44cab1ae530d9a127d, type: 2}
+  mIngredientMesh: {fileID: 2534964839176971238, guid: dd09f560e4171f8429e1ca0a4236c51a, type: 3}

@@ -36,7 +36,9 @@ public class PlayerInput : MonoBehaviour
                 Debug.Log("Clicked on: " + hit.collider.gameObject.name);
                 // Check for a custom component
                 Ingredient ingredient = hit.collider.GetComponent<Ingredient>();
-                if (ingredient != null && !ingredient.GetIngredientUsed())
+
+                // TODO : We should delete the ingredient and just let the bowl symbolically show that this is added in.
+                if (ingredient != null)
                 {
                     ingredient.IngredientClicked();
                 }
