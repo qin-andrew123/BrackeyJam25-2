@@ -23,3 +23,4 @@ MonoBehaviour:
     SOUR: -1
     UMAMI: 5
   mIngredientMaterial: {fileID: 2100000, guid: 0b427d602f6fd6a438d4efa76beca1ab, type: 2}
+  mIngredientMesh: {fileID: -5495902117074765545, guid: 7dfdbfc49015c1c4ba139e2d4ba95b02, type: 3}

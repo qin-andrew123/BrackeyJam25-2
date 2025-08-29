@@ -23,6 +23,9 @@ public class GlobalVariables : MonoBehaviour
     public int TurnsPerRound => mTurnsPerRound;
     public int RoundsPerLevel => mRoundsPerLevel;
     public List<float> BiscuitValues { get; private set; } = new List<float>();
+    public bool MetRoundFlavorRequirement { get; set; }
+    public bool MetRoundNameRequirement { get; set; }
+
 
     [SerializeField] private List<float> mQuotaValues;
     [SerializeField] private List<IngredientDataSO> mIngredientDataSO;

@@ -31,8 +31,9 @@ public class RoundUI : MonoBehaviour
 
     }
 
-    private void UpdateTicketText(TicketConstraint ticketConstraint)
+    private void UpdateTicketText()
     {
+        TicketConstraint ticketConstraint = GlobalVariables.Instance.CurrentTicketConstraint;
         string ingredientFlavorConstraint = ticketConstraint.ingredientFlavor.ToString();
         ingredientFlavorConstraint = char.ToUpper(ingredientFlavorConstraint[0]) + ingredientFlavorConstraint.Substring(1).ToLower();
 

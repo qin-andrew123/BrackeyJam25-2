@@ -35,7 +35,7 @@ public class FlavorData
         c.SALTY = a.SALTY + b.SALTY;
         c.SOUR = a.SOUR + b.SOUR;
         c.UMAMI = a.UMAMI + b.UMAMI;
-        
+
         return c;
     }
 
@@ -99,12 +99,13 @@ public class IngredientDataSO : ScriptableObject
     public string IngredientName => mIngredientName;
     [SerializeField] private IngredientFlavor mIngredientFlavor = IngredientFlavor.NONE;
     public IngredientFlavor IngredientFlavorValue => mIngredientFlavor;
-    //[SerializeField] private IngredientEffect mIngredientEffect = IngredientEffect.NONE;
-    //public IngredientEffect IngredientEffectValue => mIngredientEffect;
     [SerializeField] private float mIngredientValue = 1.0f;
     public float IngredientValue => mIngredientValue;
 
     [SerializeField] public FlavorData mFlavorData = new FlavorData();
     public Material IngredientMaterial => mIngredientMaterial;
     [SerializeField] private Material mIngredientMaterial;
+    public Transform InitialSpawnTransform { get; set; }
+    public Mesh IngredientMesh => mIngredientMesh;
+    [SerializeField] private Mesh mIngredientMesh;
 }

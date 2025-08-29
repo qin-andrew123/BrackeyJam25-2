@@ -11,7 +11,7 @@ public class TicketConstraint
 
 public class TicketManager : MonoBehaviour
 {
-    public static event Action<TicketConstraint> OnTicketGenerated;
+    public static event Action OnTicketGenerated;
 
     private void Start()
     {
@@ -31,6 +31,6 @@ public class TicketManager : MonoBehaviour
         GlobalVariables.Instance.CurrentTicketConstraint.ingredientFlavor = (IngredientFlavor)(UnityEngine.Random.Range((int)IngredientFlavor.BLAND, (int)IngredientFlavor.TOTAL_FLAVORS - 1));
         GlobalVariables.Instance.CurrentTicketConstraint.ingredientName = ingredientNames[UnityEngine.Random.Range(0, ingredientNames.Count - 1)];
         GlobalVariables.Instance.CurrentTicketConstraint.orderNumber = roundNumber;
-        OnTicketGenerated?.Invoke(GlobalVariables.Instance.CurrentTicketConstraint);
+        OnTicketGenerated?.Invoke();
     }
 }

@@ -30,16 +30,31 @@ public class RoundManager : MonoBehaviour
     private float mRoundScore = 0.0f;
     private IngredientEffect mLastEffect = IngredientEffect.ADDITIVE;
     private FlavorData mRoundFlavors = new FlavorData();
-    private bool bMetRoundFlavorCondition = false;
-    private bool bMetRoundNameCondition = false;
-
+    private bool bHasFlavorRequirementBeenMetFirstTime = false;
+    private bool bHasNameRequirementBeenMetFirstTime = false;
     public void HandleTurnNumberChange(IngredientDataSO mixedIngredient)
     {
         Debug.Log("Handling Turn Number turn changed");
         mTurnsPerRound--;
 
-        bMetRoundFlavorCondition = mixedIngredient.IngredientFlavorValue == GlobalVariables.Instance.CurrentTicketConstraint.ingredientFlavor;
-        bMetRoundNameCondition = mixedIngredient.IngredientName == GlobalVariables.Instance.CurrentTicketConstraint.ingredientName;
+        if(!bHasFlavorRequirementBeenMetFirstTime)
+        {
+            GlobalVariables.Instance.MetRoundFlavorRequirement = mixedIngredient.IngredientFlavorValue == GlobalVariables.Instance.CurrentTicketConstraint.ingredientFlavor;
+
+            if(GlobalVariables.Instance.MetRoundFlavorRequirement)
+            {
+                bHasFlavorRequirementBeenMetFirstTime = true;
+            }
+        }
+        if(!bHasNameRequirementBeenMetFirstTime)
+        {
+            GlobalVariables.Instance.MetRoundNameRequirement = mixedIngredient.IngredientName == GlobalVariables.Instance.CurrentTicketConstraint.ingredientName;
+
+            if(GlobalVariables.Instance.MetRoundNameRequirement)
+            {
+                bHasNameRequirementBeenMetFirstTime = true;
+            }
+        }
 
         if (mTurnsPerRound == 0)
         {
@@ -108,11 +123,9 @@ public class RoundManager : MonoBehaviour
     {
         mRoundsForLevel = roundsPerLevel;
         mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
-        OnTurnUsed?.Invoke(mTurnsPerRound);
-        mRoundNumber++;
-        Debug.Log("Rounds: " + mRoundsForLevel);
-        Debug.Log("Turns: " + mTurnsPerRound);
 
+        OnTurnUsed?.Invoke(mTurnsPerRound);
+        mRoundNumber = 1;
         // This is mainly for effects
         OnRoundStart?.Invoke(mRoundNumber);
     }
@@ -126,7 +139,7 @@ public class RoundManager : MonoBehaviour
 
         mRoundNumber++;
         mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
-        if (bMetRoundFlavorCondition && bMetRoundNameCondition)
+        if (GlobalVariables.Instance.MetRoundNameRequirement && GlobalVariables.Instance.MetRoundFlavorRequirement)
         {
             GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
         }
