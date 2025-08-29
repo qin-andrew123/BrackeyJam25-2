@@ -44,12 +44,12 @@ public class IngredientUI : MonoBehaviour
 
         mIngredientName.text = ingredientName;
 
-        mIngredientFlavor_Sweet.text = inputIngredient.mFlavorData.SWEET.ToString();
-        mIngredientFlavor_Bitter.text = inputIngredient.mFlavorData.BITTER.ToString();
-        mIngredientFlavor_Bland.text = inputIngredient.mFlavorData.BLAND.ToString();
-        mIngredientFlavor_Umami.text = inputIngredient.mFlavorData.UMAMI.ToString();
-        mIngredientFlavor_Sour.text = inputIngredient.mFlavorData.SOUR.ToString();
-        mIngredientFlavor_Salty.text = inputIngredient.mFlavorData.SALTY.ToString();
+        mIngredientFlavor_Sweet.text = "Sweet: " + inputIngredient.mFlavorData.SWEET.ToString();
+        mIngredientFlavor_Bitter.text = "Bitter: " + inputIngredient.mFlavorData.BITTER.ToString();
+        mIngredientFlavor_Bland.text = "Bland: " + inputIngredient.mFlavorData.BLAND.ToString();
+        mIngredientFlavor_Umami.text = "Umami: " + inputIngredient.mFlavorData.UMAMI.ToString();
+        mIngredientFlavor_Sour.text = "Sour: " + inputIngredient.mFlavorData.SOUR.ToString();
+        mIngredientFlavor_Salty.text = "Salty: " + inputIngredient.mFlavorData.SALTY.ToString();
 
         //mIngredientEffect.text = ingredientEffect;
         mIngredientValue.text = ingredientValue;
