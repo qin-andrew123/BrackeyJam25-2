@@ -1923,7 +1923,7 @@ PrefabInstance:
     - target: {fileID: 6334941546609986383, guid: 75ce74dc543b8464e86ffd6a01f1c944, type: 3}
       propertyPath: 'mCombinableIngredients.Array.data[0].ingredientPrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 28f1a5b96b1510f43b1fbffa774fcfe5, type: 2}
+      objectReference: {fileID: 11400000, guid: bf91af02977bc7849b3d5ea7e3776683, type: 2}
     - target: {fileID: 6334941546609986383, guid: 75ce74dc543b8464e86ffd6a01f1c944, type: 3}
       propertyPath: 'mCombinableIngredients.Array.data[1].ingredientPrefabs.Array.data[0]'
       value: 

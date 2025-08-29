@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SyrupLemon_SO
   m_EditorClassIdentifier: 
   mIngredientName: Lemon Syrup
-  mIngredientFlavor: -1
+  mIngredientFlavor: 4
   mIngredientValue: 10
   mFlavorData:
     BLAND: -2
