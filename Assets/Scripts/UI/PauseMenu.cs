@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public Button QuitButton;
     //[SerializeField] UIDocument PauseMenuObj;
     [SerializeField] private GameObject mPauseMenu;
+    [SerializeField] private TutorialUI mTutorialMenu;
     private bool bIsPaused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,10 +36,22 @@ public class PauseMenu : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("Pause");
-            bIsPaused = !bIsPaused;
-            mPauseMenu.SetActive(bIsPaused);
+            ShowPause();
         }
+    }
+
+    public void ShowPause()
+    {
+        Debug.Log("Pause");
+        bIsPaused = !bIsPaused;
+        mPauseMenu.SetActive(bIsPaused);
+    }
+
+    public void ShowTutorial()
+    {
+        mTutorialMenu.gameObject.SetActive(true);
+        mTutorialMenu.OpenTutorial();
+        ShowPause();
     }
 
     private void QuitGame()

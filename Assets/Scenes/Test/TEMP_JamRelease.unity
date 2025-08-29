@@ -557,6 +557,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9049922418719457271, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: mTutorialMenu
+      value: 
+      objectReference: {fileID: 864660992}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 423588459569577583, guid: fb296b6142a27674aa1f600801494970, type: 3}
@@ -1030,6 +1034,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
+--- !u!114 &864660992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1871463450908845520, guid: fb296b6142a27674aa1f600801494970, type: 3}
+  m_PrefabInstance: {fileID: 281322018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687adc2d515b80d498829223147530a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &891780347 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8242789937551416344, guid: fb296b6142a27674aa1f600801494970, type: 3}
