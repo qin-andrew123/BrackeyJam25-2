@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
-  m_Name: SyrupLemon_SO
+  m_Name: Biscuit_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Lemon Syrup
-  mIngredientFlavor: 4
-  mIngredientValue: 10
+  mIngredientName: Biscuit
+  mIngredientFlavor: 0
+  mIngredientValue: 30
   mFlavorData:
-    BLAND: -2
+    BLAND: 30
     BITTER: 0
     SWEET: 10
-    SALTY: 0
-    SOUR: 10
+    SALTY: 10
+    SOUR: 0
     UMAMI: 0
-  mIngredientMaterial: {fileID: 2100000, guid: baecaa99a4c0f864498ce92ab2edbb29, type: 2}
-  mIngredientMesh: {fileID: 2534964839176971238, guid: 4a528e4e9e244c94ca52c65d55c2b1df, type: 3}
+  mIngredientMaterial: {fileID: 2100000, guid: 34bf1f129e8159b42b6d38a31fcc28fd, type: 2}
+  mIngredientMesh: {fileID: -5495902117074765545, guid: f8baec7a447c6c747b207d857c5b3095, type: 3}
