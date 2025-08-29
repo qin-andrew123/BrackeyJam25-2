@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Salt_Shaker
+  m_Name: MI_Biscuit
   m_Shader: {fileID: -6465566751694194690, guid: a910b09f5aaff7e469d853e03465084e, type: 3}
   m_Parent: {fileID: 2100000, guid: bf5f34383ca170e4e8f63680bdd8225e, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_6059f006e55d406eafdce54bcafb7e37:
-        m_Texture: {fileID: 2800000, guid: ffc93d05cedac3c48abbccf258d359b6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 390187c2967a40144b47d946f953e9d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
