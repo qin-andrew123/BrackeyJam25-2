@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5017740291525749802}
   - component: {fileID: 1284784691692254609}
-  - component: {fileID: 7502840510827364196}
   m_Layer: 0
   m_Name: TransformPosition
   m_TagString: Untagged
@@ -34,18 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1284784691692254609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2372918448610231915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221737004305888419aad5b3c43bbf6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7502840510827364196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
