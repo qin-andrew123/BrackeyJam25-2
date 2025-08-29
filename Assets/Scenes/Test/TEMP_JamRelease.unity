@@ -301,6 +301,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 71941309741532625, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1035531928492221737, guid: fb296b6142a27674aa1f600801494970, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1197
@@ -485,9 +489,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5933310968405340759, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848267522703207831, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6932828750892085722, guid: fb296b6142a27674aa1f600801494970, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115795765731293369, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253863332755187858, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253863332755187858, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253863332755187858, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1555651730}
+    - target: {fileID: 7253863332755187858, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253863332755187858, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253863332755187858, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7430223760057893217, guid: fb296b6142a27674aa1f600801494970, type: 3}
       propertyPath: m_IsActive
@@ -512,6 +552,10 @@ PrefabInstance:
     - target: {fileID: 8555765058312768293, guid: fb296b6142a27674aa1f600801494970, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815521669840917374, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -937,26 +981,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: mTurnsPerRound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: mRoundsPerLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: 'mQuotaValues.Array.data[0]'
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: 'mQuotaValues.Array.data[1]'
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: 'mQuotaValues.Array.data[2]'
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4552526234150555280, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
       propertyPath: m_Name
       value: GlobalVariables
@@ -1335,6 +1359,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1555651730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4134932874137805849, guid: d6cb80784eab9804ab5482ba7d2e7469, type: 3}
+  m_PrefabInstance: {fileID: 1170789512}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6a1cfa50849db4590193ec83a0d67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1581551350
 GameObject:
   m_ObjectHideFlags: 0

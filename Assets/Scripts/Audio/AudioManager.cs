@@ -88,4 +88,10 @@ public class AudioManager : MonoBehaviour
     {
         return mAudioPlayer.PlayAudioEvent(audioEvent);
     }
+
+    public void UpdateMusicVolume(float value)
+    {
+        mGameMusicSource.volume = value;
+        mMenuMusicSource.volume = value;
+    }
 }
