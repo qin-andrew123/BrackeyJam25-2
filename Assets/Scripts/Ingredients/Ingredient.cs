@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     public static event Action<Ingredient> OnIngredientClicked;
+    public IngredientTransformPoint TransformPoint { get; set; }
     public IngredientDataSO IngredientData => mIngredientData;
     [SerializeField] private IngredientDataSO mIngredientData;
     // TODO : DELETE THIS, WE ARE GONNA DELETE THE GO'S ANW
@@ -55,39 +56,8 @@ public class Ingredient : MonoBehaviour
     {
         return bIsUsed;
     }
-    private void CleanupIngredient(GameObject go)
-    {
-        if(go == null)
-        {
-            return;
-        }
-        if(go != gameObject)
-        {
-            return;
-        }
-
-        IngredientManager.mSpawnedIngredients.Remove(gameObject);
-        IngredientDataSO goDataSO = mIngredientData;
-
-        if (IngredientManager.mTransformToHasSpawnedIngredient.ContainsKey(goDataSO.InitialSpawnTransform))
-        {
-            IngredientManager.mTransformToHasSpawnedIngredient[goDataSO.InitialSpawnTransform] = false;
-        }
-        else
-        {
-            Debug.LogError("We are passing in a transform key that doesn't exist... how is that even possible");
-            IngredientManager.mTransformToHasSpawnedIngredient[goDataSO.InitialSpawnTransform] = false;
-        }
-
-        Destroy(gameObject);
-    }
     private void OnEnable()
     {
-        IngredientManager.OnCleanupIngredients += CleanupIngredient;
         IngredientManager.mSpawnedIngredients.Add(gameObject);
-    }
-    private void OnDestroy()
-    {
-        IngredientManager.OnCleanupIngredients -= CleanupIngredient;
     }
 }

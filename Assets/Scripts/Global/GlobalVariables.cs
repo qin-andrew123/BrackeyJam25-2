@@ -16,10 +16,11 @@ public class GlobalVariables : MonoBehaviour
     public int DayNumber { get; private set; } = 0;
     public float QuotaNumber => mQuotaNumber;
     public TicketConstraint CurrentTicketConstraint { get; set; } = new TicketConstraint();
-    public List<IngredientDataSO> IngredientData => mIngredientDataSO;
+    public List<IngredientDataSO> BaseIngredients => mBaseIngredients;
+    public List<IngredientDataSO> FlavorIngredients => mFlavorIngredients;
     public List<string> IngredientNames => mIngredientDataNames;
-    public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorDictionary;
-    public Dictionary<string, IngredientDataSO> NameDictionary => mNameDictionary;
+    public Dictionary<IngredientFlavor, List<IngredientDataSO>> FlavorDictionary => mFlavorIngredientDictionary;
+    public Dictionary<string, IngredientDataSO> NameDictionary => mFlavorIngredientNameDictionary;
     public int TurnsPerRound => mTurnsPerRound;
     public int RoundsPerLevel => mRoundsPerLevel;
     public List<float> BiscuitValues { get; private set; } = new List<float>();
@@ -28,15 +29,16 @@ public class GlobalVariables : MonoBehaviour
 
 
     [SerializeField] private List<float> mQuotaValues;
-    [SerializeField] private List<IngredientDataSO> mIngredientDataSO;
     [SerializeField] private int mTurnsPerRound = 5;
     [SerializeField] private int mRoundsPerLevel = 5;
-
+    [SerializeField] private List<IngredientDataSO> mBaseIngredients;
+    [SerializeField] private List<IngredientDataSO> mFlavorIngredients;
     private float mQuotaNumber = 0;
     private int mQuotaIndex = 0;
     private List<string> mIngredientDataNames = new List<string>();
-    private Dictionary<IngredientFlavor, List<IngredientDataSO>> mFlavorDictionary = new Dictionary<IngredientFlavor, List<IngredientDataSO>>();
-    private Dictionary<string, IngredientDataSO> mNameDictionary = new Dictionary<string, IngredientDataSO>();
+    // These two dictionary only applies to flavor ingredients
+    private Dictionary<IngredientFlavor, List<IngredientDataSO>> mFlavorIngredientDictionary = new Dictionary<IngredientFlavor, List<IngredientDataSO>>();
+    private Dictionary<string, IngredientDataSO> mFlavorIngredientNameDictionary = new Dictionary<string, IngredientDataSO>();
 
     public void ModifyQuota()
     {
@@ -77,29 +79,34 @@ public class GlobalVariables : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (mIngredientDataSO.Count == 0)
+        if(mBaseIngredients.Count == 0)
         {
-            Debug.LogError("ERROR: The list of ingredient data scriptable objects in TicketManager is empty");
+            Debug.LogError("ERROR: The list of base ingredient data scriptable objects in TicketManager is empty");
+            return;
+        }
+        if (mFlavorIngredients.Count == 0)
+        {
+            Debug.LogError("ERROR: The list of flavor ingredient data scriptable objects in TicketManager is empty");
             return;
         }
 
-        foreach (IngredientDataSO ingredientData in mIngredientDataSO)
+        foreach (IngredientDataSO ingredientData in mFlavorIngredients)
         {
             mIngredientDataNames.Add(ingredientData.IngredientName);
 
             IngredientFlavor indexFlavor = ingredientData.IngredientFlavorValue;
-            if (!mFlavorDictionary.ContainsKey(indexFlavor))
+            if (!mFlavorIngredientDictionary.ContainsKey(indexFlavor))
             {
-                mFlavorDictionary[indexFlavor] = new List<IngredientDataSO> { ingredientData };
+                mFlavorIngredientDictionary[indexFlavor] = new List<IngredientDataSO> { ingredientData };
             }
             else
             {
-                mFlavorDictionary[indexFlavor].Add(ingredientData);
+                mFlavorIngredientDictionary[indexFlavor].Add(ingredientData);
             }
 
             string indexName = ingredientData.IngredientName;
 
-            mNameDictionary[indexName] = ingredientData;
+            mFlavorIngredientNameDictionary[indexName] = ingredientData;
         }
     }
     private void OnDestroy()
