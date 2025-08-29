@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sugar_SO
   m_EditorClassIdentifier: 
   mIngredientName: Sugar
-  mIngredientFlavor: 2
+  mIngredientFlavor: 0
   mIngredientValue: 3
   mFlavorData:
     BLAND: 3
@@ -22,6 +22,6 @@ MonoBehaviour:
     SALTY: -2
     SOUR: 0
     UMAMI: 0
-  mIngredientMaterial: {fileID: 2100000, guid: d8328085fede1b845a569f3fd9bcd67c, type: 2}
+  mIngredientMaterial: {fileID: 2100000, guid: 34bf1f129e8159b42b6d38a31fcc28fd, type: 2}
   mIngredientMesh: {fileID: -5495902117074765545, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
   mPrefabObject: {fileID: 1478317962150354183, guid: f48819994ea568e4fbfdd4f0949aefc1, type: 3}
