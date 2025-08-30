@@ -11,6 +11,8 @@ public class Animation_Debug : MonoBehaviour
     [SerializeField] bool Trigger;
     [SerializeField] bool Left;	
     [SerializeField] bool Right;	
+    [SerializeField] bool Victory;
+    [SerializeField] bool EndLoop;
 
 #endif
 
@@ -67,6 +69,18 @@ public class Animation_Debug : MonoBehaviour
             {
                 Trigger = false;
                 SetTrigger("Trigger");
+            }
+			
+            if (Victory)
+            {
+                Victory = false;
+                SetTrigger("Victory");
+            }
+			
+            if (EndLoop)
+            {
+                EndLoop = false;
+                SetTrigger("EndLoop");
             }
 #endif
     }
