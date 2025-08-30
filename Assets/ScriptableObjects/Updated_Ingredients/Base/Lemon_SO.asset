@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f32a9e6aa506b74d9ee2e8a52728076, type: 3}
   m_Name: Lemon_SO
   m_EditorClassIdentifier: 
-  mIngredientName: Lemon
+  mIngredientName: Lemon Extract
   mIngredientFlavor: 4
   mIngredientValue: 4
   mFlavorData:
@@ -24,4 +24,4 @@ MonoBehaviour:
     UMAMI: 0
   mIngredientMaterial: {fileID: 2100000, guid: baecaa99a4c0f864498ce92ab2edbb29, type: 2}
   mIngredientMesh: {fileID: -5495902117074765545, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
-  mPrefabObject: {fileID: 8311729570598752119, guid: 47cc2ea7a7f764143863311d850d5589, type: 3}
+  mPrefabObject: {fileID: 6867006979924092215, guid: a183bd283d72a5b4d96122815e94b12e, type: 3}

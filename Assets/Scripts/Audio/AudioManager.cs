@@ -53,12 +53,23 @@ public class AudioManager : MonoBehaviour
 
     void StartMusic()
     {
-        mMenuMusicSource = transform.AddComponent<AudioSource>();
+        if (!mMenuMusicSource)
+        {
+            mMenuMusicSource = transform.AddComponent<AudioSource>();
+        }
+        if (!mGameMusicSource)
+        {
+            mGameMusicSource = transform.AddComponent<AudioSource>();
+        }
+
+        if (mMenuMusicSource.isPlaying || mGameMusicSource.isPlaying)
+        {
+            return;
+        }
         mMenuMusicSource.resource = mBGM.mSound[0];
         mMenuMusicSource.outputAudioMixerGroup = MusicMixer;
         mMenuMusicSource.loop = true;
 
-        mGameMusicSource = transform.AddComponent<AudioSource>();
         mGameMusicSource.resource = mBGM.mSound[1];
         mGameMusicSource.outputAudioMixerGroup = MusicMixer;
         mGameMusicSource.loop = true;
@@ -91,6 +102,11 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateMusicVolume(float value)
     {
+        if (!mMenuMusicSource || !mGameMusicSource)
+        {
+            StartMusic();
+        }
+
         mGameMusicSource.volume = value;
         mMenuMusicSource.volume = value;
     }

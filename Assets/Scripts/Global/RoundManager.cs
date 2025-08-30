@@ -51,6 +51,11 @@ public class RoundManager : MonoBehaviour
     }
     public void CalculateRoundScore(IngredientFlavor prevFlavor, IngredientFlavor currFlavor, float value)
     {
+        if (mRoundScore < 0)
+        {
+            mRoundScore = 0;
+        }
+
         if (prevFlavor == IngredientFlavor.NONE)
         {
             mRoundScore += value;
@@ -132,7 +137,7 @@ public class RoundManager : MonoBehaviour
 
         mRoundNumber++;
         mTurnsPerRound = GlobalVariables.Instance.TurnsPerRound;
-        
+
         mRoundScore = 0.0f;
         mRoundUI.UpdateScoreText(mRoundScore);
 
