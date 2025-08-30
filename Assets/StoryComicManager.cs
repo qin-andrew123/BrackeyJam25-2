@@ -9,22 +9,30 @@ public class StoryComicManager : MonoBehaviour
     [SerializeField] private float tweenDuration = 1.5f;
     [SerializeField] private CanvasGroup continueBtn;
     [SerializeField] private CanvasGroup fader;
+    [SerializeField] private SpriteRenderer[] comicPanels;
     // time between allowed actions
     private float _nextTimeToTween = 0f;
 
     private Transform[] _comicCameraPositions;
     private Camera _mainCam;
     private int _currentPosIndex = 0;
+    private bool _canStartClicking = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _mainCam = Camera.main;
         _comicCameraPositions = new Transform[posObj.transform.childCount];
         Setup();
-        fader.DOFade(0, 1f).OnComplete(() =>
+        foreach (SpriteRenderer comicPanel in comicPanels)
         {
-            fader.gameObject.SetActive(false);
-        });
+            comicPanel.color = new Color(comicPanel.color.r, comicPanel.color.g, comicPanel.color.b, 0);
+        }
+
+        
+
+
+
     }
 
     private void Setup()
@@ -37,7 +45,19 @@ public class StoryComicManager : MonoBehaviour
         }
         continueBtn.alpha = 0;
         continueBtn.interactable = false;
-        MoveToPosition();
+        _mainCam.transform.position = _comicCameraPositions[_currentPosIndex].position;
+        Sequence seq = DOTween.Sequence();
+        seq.Append(fader.DOFade(0, 1f).OnComplete(() =>
+        {
+            fader.gameObject.SetActive(false);
+        }));
+        seq.Append(comicPanels[0].DOFade(1, 1f));
+        seq.OnComplete(() =>
+        {
+            _currentPosIndex++;
+            _canStartClicking = true;
+
+        });
     }
 
     // when the player can act again
@@ -45,15 +65,33 @@ public class StoryComicManager : MonoBehaviour
     void Update()
     {
         // Check left mouse button
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _canStartClicking)
         {
             if (Time.time >= _nextTimeToTween && _currentPosIndex < _comicCameraPositions.Length)
             {
+                CheckComicPanelToShow();
                 MoveToPosition();
-               
                 CheckIfFinalPosition();
                 _nextTimeToTween = Time.time + (tweenDuration + .3f);
+                
+                
             }
+        }
+    }
+
+    private void CheckComicPanelToShow()
+    {
+        if (_currentPosIndex == 2)
+        {
+            comicPanels[1].DOFade(1, 2f);
+        }
+        else if (_currentPosIndex == 5)
+        {
+            comicPanels[2].DOFade(1, 2f);
+        }
+        else if (_currentPosIndex == 7)
+        {
+            comicPanels[3].DOFade(1, 2f);
         }
     }
 
@@ -69,14 +107,15 @@ public class StoryComicManager : MonoBehaviour
     
     public void MoveToPosition()
     {
-        Vector3 targetPos = new Vector3(_comicCameraPositions[_currentPosIndex].position.x,
-            _comicCameraPositions[_currentPosIndex].position.y,
-            _mainCam.transform.position.z);
+        Vector3 targetPos = _comicCameraPositions[_currentPosIndex].position;
 
         // Move the camera to the target position and rotation using DOTween
         _mainCam.transform.DOMove(targetPos, tweenDuration).SetEase(Ease.InOutSine)
             .OnComplete(() =>
             {
+                //Im lazy but this works
+                _canStartClicking = true;
+                
                 _currentPosIndex++;
                 CheckIfFinalPosition();
             });
