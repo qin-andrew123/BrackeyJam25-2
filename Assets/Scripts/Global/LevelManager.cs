@@ -45,6 +45,7 @@ public class LevelManager
         switch (levelIndex)
         {
             case LevelIndices.MAIN_MENU:
+            case LevelIndices.STORY_SCENE:
             case LevelIndices.BAKING_SCENE:
             case LevelIndices.SCORE_SCENE:
                 Debug.Log("Loading Level: " + levelIndex);
