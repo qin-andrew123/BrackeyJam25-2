@@ -18,6 +18,7 @@ public class IngredientManager : MonoBehaviour
 {
     public static event Action<IngredientDataSO> OnIngredientMixed;
     public static event Action<IngredientDataSO> OnIngredientCombined;
+    public static event Action<bool> OnIngredientCombinedStatus;
     public static event Action<Ingredient> OnSpawnIngredient;
     public static List<GameObject> mSpawnedIngredients = new List<GameObject>();
 
@@ -143,6 +144,7 @@ public class IngredientManager : MonoBehaviour
         if (mClickedIngredients.Count < 2)
         {
             Debug.LogWarning("Cannot enter combine mode without selecting at least two ingredients!");
+            OnIngredientCombinedStatus?.Invoke(false);
             return;
         }
 
@@ -161,6 +163,7 @@ public class IngredientManager : MonoBehaviour
             }
             if (bCanCombine)
             {
+                OnIngredientCombinedStatus?.Invoke(true);
                 Debug.Log("Combining");
                 Transform resultPos = mClickedIngredients[0].IngredientData.InitialSpawnTransform;
                 for (int i = mClickedIngredients.Count - 1; i >= 0; --i)
@@ -180,8 +183,9 @@ public class IngredientManager : MonoBehaviour
 
                 return;
             }
+            
         }
-
+        OnIngredientCombinedStatus?.Invoke(false);
         Debug.Log("Ingredients Not Combinable. Player did not select correct ones!");
         CleanupClickedIngredients();
     }

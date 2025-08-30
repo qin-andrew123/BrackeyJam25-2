@@ -8,6 +8,7 @@ public class IngredientActions : MonoBehaviour
 {
     public static event Action OnMixClicked;
     public static event Action OnCombineClicked;
+    
     [SerializeField] private IngredientManager mIngredientManager;
 
     public void CheckCombine()
