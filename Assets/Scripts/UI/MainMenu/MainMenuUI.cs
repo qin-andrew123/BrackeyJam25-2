@@ -15,6 +15,13 @@ public class MainMenuButtonUI : MonoBehaviour
     }
     private void OnButtonClick()
     {
-        GlobalVariables.Instance.LoadScene((int)LevelIndices.BAKING_SCENE);
+        if (!GlobalVariables.Instance.bDidWatchIntroCinematic)
+        {
+            GlobalVariables.Instance.LoadScene((int)LevelIndices.STORY_SCENE);
+        }
+        else
+        {
+            GlobalVariables.Instance.LoadScene((int)LevelIndices.BAKING_SCENE);
+        }
     }
 }
