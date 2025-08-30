@@ -1072,6 +1072,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2025311625857693370, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 121.7654
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025311625857693370, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 64.0688
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025311625857693370, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -325.71735
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025311625857693370, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -88.18861
+      objectReference: {fileID: 0}
     - target: {fileID: 2123467597805622702, guid: fb296b6142a27674aa1f600801494970, type: 3}
       propertyPath: mIngredientActions
       value: 
@@ -1164,8 +1180,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5858815240779285703, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580175778977519759, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 59bce3b6af68376489f5ffc2b2d38e9d, type: 3}
+    - target: {fileID: 7580175778977519759, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8578357843120201868, guid: fb296b6142a27674aa1f600801494970, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb296b6142a27674aa1f600801494970, type: 3}
