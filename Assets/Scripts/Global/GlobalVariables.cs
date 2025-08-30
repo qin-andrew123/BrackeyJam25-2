@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public enum LevelIndices
 {
     MAIN_MENU = 0,
-    BAKING_SCENE = 1,
-    SCORE_SCENE = 2,
+    STORY_SCENE = 1,
+    BAKING_SCENE = 2,
+    SCORE_SCENE = 3,
 }
 public class GlobalVariables : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class GlobalVariables : MonoBehaviour
     public List<float> BiscuitValues { get; private set; } = new List<float>();
     public bool MetRoundFlavorRequirement { get; set; }
     public bool MetRoundNameRequirement { get; set; }
-
+    public bool bDidWatchIntroCinematic { get; set; } = false;
 
     [SerializeField] private List<float> mQuotaValues;
     [SerializeField] private int mTurnsPerRound = 5;
@@ -39,7 +40,6 @@ public class GlobalVariables : MonoBehaviour
     // These two dictionary only applies to flavor ingredients
     private Dictionary<IngredientFlavor, List<IngredientDataSO>> mFlavorIngredientDictionary = new Dictionary<IngredientFlavor, List<IngredientDataSO>>();
     private Dictionary<string, IngredientDataSO> mFlavorIngredientNameDictionary = new Dictionary<string, IngredientDataSO>();
-
     public void ModifyQuota()
     {
         mQuotaIndex = Mathf.Clamp(mQuotaIndex, 0, mQuotaValues.Count - 1);
@@ -120,6 +120,9 @@ public class GlobalVariables : MonoBehaviour
         switch (loadedLevelIndex)
         {
             case LevelIndices.MAIN_MENU:
+                break;
+            case LevelIndices.STORY_SCENE:
+                bDidWatchIntroCinematic = true;
                 break;
             case LevelIndices.BAKING_SCENE:
                 // Starting a new level so we are clearing our values
