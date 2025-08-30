@@ -101,7 +101,7 @@ public class StoryComicManager : MonoBehaviour
     public void ContinueBtnOnClick()
     {
         ToggleFadeInOut(false);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("TEMP_JamRelease");
     }
 
     public void ToggleFadeInOut(bool fadein)

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Test/TEMP_MainMenu.unity
     guid: 30fecedd52ff2714fb72a86e118ca38d
   - enabled: 1
+    path: Assets/Scenes/StoryComic.unity
+    guid: 748a3187f6a68ec429c88c0ac060d6ee
+  - enabled: 1
     path: Assets/Scenes/Test/TEMP_JamRelease.unity
     guid: f62eef1b6573d7548ba5139e811f1e2a
   - enabled: 1

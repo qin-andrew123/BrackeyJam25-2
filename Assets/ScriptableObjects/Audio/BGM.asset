@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: BGM
   m_EditorClassIdentifier: 
   mSound:
-  - {fileID: 8300000, guid: fca0e8cb9ebebd74fa29fb1efeb6f946, type: 3}
   - {fileID: 8300000, guid: 82892332333fba545a4ac346b2d3a9a1, type: 3}
   bIsSpatial: 0
   bIsLoop: 1
