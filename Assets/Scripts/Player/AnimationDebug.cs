@@ -68,7 +68,7 @@ public class Animation_Debug : MonoBehaviour
                 Trigger = false;
                 SetTrigger("Trigger");
             }
-
-        }
 #endif
     }
+}
+

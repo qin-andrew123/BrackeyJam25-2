@@ -30,10 +30,10 @@ public class PauseMenu : MonoBehaviour
         //QuitButton.clicked += OnQuitButtonClicked;
     }
 
-        // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             ShowPause();
@@ -54,7 +54,7 @@ public class PauseMenu : MonoBehaviour
         ShowPause();
     }
 
-    private void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
 #if UNITY_EDITOR

@@ -248,26 +248,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: mTurnsPerRound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: mRoundsPerLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: 'mQuotaValues.Array.data[0]'
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: 'mQuotaValues.Array.data[1]'
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 958878852113073227, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
-      propertyPath: 'mQuotaValues.Array.data[2]'
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4552526234150555280, guid: c2d5602a8751d574f8e40f99f4deba22, type: 3}
       propertyPath: m_Name
       value: GlobalVariables
