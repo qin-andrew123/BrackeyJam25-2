@@ -80,11 +80,24 @@ public class IngredientManager : MonoBehaviour
         mRoundManager.CalculateRoundScore(prevFlavor, currFlavor, ingredient.IngredientData.IngredientValue);
         mRoundManager.CalculateRoundFlavor(ingredient.IngredientData.mFlavorData);
         // We need to decrement the number of turns because we just used one
-        // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
-        OnIngredientMixed?.Invoke(ingredient.IngredientData);
+
+        foreach (IngredientPair pair in mCombinableIngredients)
+        {
+            if (pair.resultPrefab == ingredient.IngredientData)
+            {
+                foreach (IngredientDataSO ingredientSO in pair.ingredientPrefabs)
+                {
+                    OnIngredientCombined?.Invoke(ingredientSO);
+                }
+                break;
+            }
+        }
         CleanupIngredient(ingredient.gameObject);
 
         GenerateIngredients(false);
+
+        // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
+        OnIngredientMixed?.Invoke(ingredient.IngredientData);
     }
 
     private void ClickedIngredientsTryAdd(Ingredient ingredient)
@@ -153,8 +166,8 @@ public class IngredientManager : MonoBehaviour
                 for (int i = mClickedIngredients.Count - 1; i >= 0; --i)
                 {
                     // POST MORTEM: WE SHOULD NOT BE MAKING A COPY HERE PROB LMFAO
-                    IngredientDataSO sendToListeners = ScriptableObject.Instantiate(mClickedIngredients[i].IngredientData);
-                    OnIngredientCombined?.Invoke(sendToListeners);
+                    //IngredientDataSO sendToListeners = ScriptableObject.Instantiate(mClickedIngredients[i].IngredientData);
+                    //OnIngredientCombined?.Invoke(sendToListeners);
                     CleanupIngredient(mClickedIngredients[i].gameObject);
                 }
                 mClickedIngredients.Clear();
