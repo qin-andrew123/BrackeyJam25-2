@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7107fedad464ca14c98a5201e3ec28f9
+guid: 9c00db0e65106134788d4c20fa7a9e8c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,40 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Knead
+      name: Celebration
       takeName: RIG_BiscuitCat.001|RIG_BiscuitCat.001Action
       internalID: -6201216171024736785
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 37
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Victory Loop
+      takeName: RIG_BiscuitCat.001|RIG_BiscuitCat.001Action
+      internalID: -392584043989714143
+      firstFrame: 38
+      lastFrame: 62
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
