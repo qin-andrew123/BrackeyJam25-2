@@ -1184,6 +1184,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6328608622520196187, guid: fb296b6142a27674aa1f600801494970, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7580175778977519759, guid: fb296b6142a27674aa1f600801494970, type: 3}
       propertyPath: m_Sprite
       value: 
