@@ -57,6 +57,7 @@ public class IngredientManager : MonoBehaviour
         {
             Debug.LogWarning("Error: You can only mix one ingredient at a time!");
             CleanupClickedIngredients();
+            playerAniamtion.playDefeat2();
             return;
         }
         Ingredient ingredient = mClickedIngredients[0];
@@ -66,6 +67,7 @@ public class IngredientManager : MonoBehaviour
         {
             Debug.LogWarning("Cannot mix. Ingredient already in mixing bowl");
             CleanupClickedIngredients();
+            playerAniamtion.playDefeat2();
             return;
         }
 
