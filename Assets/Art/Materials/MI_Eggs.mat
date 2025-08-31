@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Sugar_Box
+  m_Name: MI_Eggs
   m_Shader: {fileID: -6465566751694194690, guid: a910b09f5aaff7e469d853e03465084e, type: 3}
   m_Parent: {fileID: 2100000, guid: bf5f34383ca170e4e8f63680bdd8225e, type: 2}
   m_ModifiedSerializedProperties: 0
@@ -38,13 +38,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_6059f006e55d406eafdce54bcafb7e37:
-        m_Texture: {fileID: 2800000, guid: 2706fb30d15dfbd4fb47eb683d5903d5, type: 3}
+        m_Texture: {fileID: 2800000, guid: f95289bfad29fd142a80a741848ecfd4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - Vector1_a1a7d0098e624c1f919bd36ebdb3abf5: 2
+    m_Floats: []
     m_Colors:
-    - Color_2e63dbf5d96b44f2bf7c0bdc52cb09c9: {r: 0.6431351, g: 0.38216448, b: 0.7169812, a: 0}
+    - Color_2e63dbf5d96b44f2bf7c0bdc52cb09c9: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

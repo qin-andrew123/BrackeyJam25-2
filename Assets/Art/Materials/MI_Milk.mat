@@ -20,11 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MI_Sugar_Box
+  m_Name: MI_Milk
   m_Shader: {fileID: -6465566751694194690, guid: a910b09f5aaff7e469d853e03465084e, type: 3}
   m_Parent: {fileID: 2100000, guid: bf5f34383ca170e4e8f63680bdd8225e, type: 2}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - BOOLEAN_468D2CF8482A4A7CB571D5D0E3EDB71A_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -43,8 +44,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_a1a7d0098e624c1f919bd36ebdb3abf5: 2
+    - BOOLEAN_468D2CF8482A4A7CB571D5D0E3EDB71A: 1
+    - Vector1_01305b1874be4e058158dbe0e3f783ee: 0
+    - Vector1_28972982f4f1436ba3ba0d72befc83a9: 0.4
     m_Colors:
-    - Color_2e63dbf5d96b44f2bf7c0bdc52cb09c9: {r: 0.6431351, g: 0.38216448, b: 0.7169812, a: 0}
+    - Color_c32ca6ab0f6447f7a765005913e3b725: {r: 0.92549026, g: 0.58431375, b: 0.58431375, a: 0}
+    - Color_ca3227d43e804790a3e762861378fb56: {r: 0, g: 0.58431387, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

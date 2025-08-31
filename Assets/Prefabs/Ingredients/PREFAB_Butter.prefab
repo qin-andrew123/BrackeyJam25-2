@@ -67,10 +67,10 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f0360278337e5d24e8f33b2ea9c4c014, type: 2}
+      objectReference: {fileID: 2100000, guid: 6a7168d2bc0ffbf4a9af73a52099d784, type: 2}
     - target: {fileID: 919132149155446097, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
       propertyPath: m_Name
-      value: PREFAB_Flour_Bag
+      value: PREFAB_Butter
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ef50d65699e7b114e844642ec20eba1b, type: 3}
       propertyPath: m_Layer

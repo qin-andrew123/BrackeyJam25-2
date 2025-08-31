@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0649dd4ace811441ad22fabbadde2b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.037
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b0649dd4ace811441ad22fabbadde2b2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48,9 +48,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b0649dd4ace811441ad22fabbadde2b2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6958c69ae3248d4498f9f2946f26a378, type: 2}
     - target: {fileID: 919132149155446097, guid: b0649dd4ace811441ad22fabbadde2b2, type: 3}
       propertyPath: m_Name
-      value: PREFAB_Vanilla_Bottle
+      value: PREFAB_Lemon
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b0649dd4ace811441ad22fabbadde2b2, type: 3}
       propertyPath: m_Layer
