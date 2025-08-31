@@ -7,7 +7,6 @@ public class Animation_Manager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] List<Animator> playerAnimators;
-    public GameObject poofFX;
 
 #if UNITY_EDITOR
     [Header("Debug Animation")]
@@ -23,20 +22,19 @@ public class Animation_Manager : MonoBehaviour
 
 #endif
 
-    public void ToggleFX(string toggle)
-    {
-        print($"FX: {toggle}");
-        poofFX.SetActive(bool.Parse(toggle));
-    }
-
-    public void SetBool(string name, bool value)
+    private void SetBool(string name, bool value)
     {
         foreach (var animator in playerAnimators) animator.SetBool(name, value);
     }
 
-    public void SetTrigger(string name)
+    private void SetTrigger(string name)
     {
         foreach (var animator in playerAnimators) animator.SetTrigger(name);
+    }
+
+    public void playKnead()
+    {
+        foreach (var animator in playerAnimators) animator.SetTrigger("Mix/Combine");
     }
 
 

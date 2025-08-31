@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class ToggleFX : MonoBehaviour
 {
-   public void EndFX(string toggle)
+   public void enableFX()
     {
-        gameObject.SetActive(bool.Parse(toggle));
+        gameObject.SetActive(true);
+    }
+   public void EndFX()
+    {
+        gameObject.SetActive(false);
     }
 }
