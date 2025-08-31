@@ -23,7 +23,14 @@ public class Animation_Manager : MonoBehaviour
     [SerializeField] bool Knead;
 
 #endif
+    private void Start()
+    {
+        Animator aniamatorPlayer = GameObject.Find("RIG_BiscuitCat").GetComponent<Animator>();
+        Animator animatorFace = GameObject.Find("Sprite_Expressions").GetComponent<Animator>();
 
+        playerAnimators.Add(aniamatorPlayer);
+        playerAnimators.Add(animatorFace);
+    }
     private void SetBool(string name, bool value)
     {
         foreach (var animator in playerAnimators) animator.SetBool(name, value);
@@ -43,7 +50,7 @@ public class Animation_Manager : MonoBehaviour
     {
         foreach (var animator in playerAnimators) animator.SetTrigger("Victory");
     }
-    public void playVictory()
+    public void playVictory2()
     {
         foreach (var animator in playerAnimators) animator.SetTrigger("Victory2");
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -34,6 +35,13 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private List<IngredientTransformPoint> mTransformPoints;
     private List<Ingredient> mCurrentlyActiveBaseIngredients = new List<Ingredient>();
     private List<Ingredient> mCurrentlyActiveFlavorIngredients = new List<Ingredient>();
+
+    private Animation_Manager playerAniamtion;
+
+    private void Start()
+    {
+        playerAniamtion = GameObject.Find("Player").GetComponent<Animation_Manager>();
+    }
 
     // TODO : Refactor Spawn Ingredients
     public void SpawnIngredients()
@@ -99,6 +107,7 @@ public class IngredientManager : MonoBehaviour
 
         // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
         OnIngredientMixed?.Invoke(ingredient.IngredientData);
+        playerAniamtion.playKnead();
     }
 
     private void ClickedIngredientsTryAdd(Ingredient ingredient)
@@ -181,6 +190,8 @@ public class IngredientManager : MonoBehaviour
 
                 GenerateIngredients(false);
 
+                playerAniamtion.playVictory2();
+
                 return;
             }
             
@@ -188,6 +199,7 @@ public class IngredientManager : MonoBehaviour
         OnIngredientCombinedStatus?.Invoke(false);
         Debug.Log("Ingredients Not Combinable. Player did not select correct ones!");
         CleanupClickedIngredients();
+
     }
     private void GenerateIngredients(bool bIsInitialSpawning)
     {
