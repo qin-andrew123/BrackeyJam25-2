@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_SelectIngredients
   m_EditorClassIdentifier: 
   mSound:
-  - {fileID: 8300000, guid: 914ea4055d1fa794f9c86aa127bd6a24, type: 3}
+  - {fileID: 8300000, guid: e1da0533823a5794e868027cef42db6c, type: 3}
   bIsSpatial: 0
   bIsLoop: 0
   mVolumeScale: 1
