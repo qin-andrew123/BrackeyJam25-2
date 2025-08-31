@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: INTRO_Victory Expression Animation 1
+  m_Name: ANIM_Poof_FX
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: adf6c064fb63c1646892cfb71602d9fe, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: aea76a94de43acf419cf9675e0b73ec0, type: 3}
-    - time: 1.125
-      value: {fileID: 21300000, guid: 179f929a44d0808489e984674fb8ed2d, type: 3}
-    - time: 1.5833334
-      value: {fileID: 21300000, guid: f4642ef0b6565e646b659a2150941a0b, type: 3}
+      value: {fileID: 21300000, guid: 5a49e1b5a399e264099b29a62744ad3f, type: 3}
+    - time: 0.125
+      value: {fileID: 21300000, guid: 80658776371fcec4793b15c68d924516, type: 3}
+    - time: 0.29166666
+      value: {fileID: 21300000, guid: 7d4ac95323f4afa4fb167ea4a169aa9a, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: ea471cd3b5767e045a5b926b42727670, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 4fac9ac350375b94ea818fcaf8efa513, type: 3}
+    - time: 0.5416667
+      value: {fileID: 21300000, guid: b5eced7d25d6eaf4cbec5486883107ed, type: 3}
+    - time: 0.625
+      value: {fileID: 21300000, guid: b5eced7d25d6eaf4cbec5486883107ed, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +56,19 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: adf6c064fb63c1646892cfb71602d9fe, type: 3}
-    - {fileID: 21300000, guid: aea76a94de43acf419cf9675e0b73ec0, type: 3}
-    - {fileID: 21300000, guid: 179f929a44d0808489e984674fb8ed2d, type: 3}
-    - {fileID: 21300000, guid: f4642ef0b6565e646b659a2150941a0b, type: 3}
+    - {fileID: 21300000, guid: 5a49e1b5a399e264099b29a62744ad3f, type: 3}
+    - {fileID: 21300000, guid: 80658776371fcec4793b15c68d924516, type: 3}
+    - {fileID: 21300000, guid: 7d4ac95323f4afa4fb167ea4a169aa9a, type: 3}
+    - {fileID: 21300000, guid: ea471cd3b5767e045a5b926b42727670, type: 3}
+    - {fileID: 21300000, guid: 4fac9ac350375b94ea818fcaf8efa513, type: 3}
+    - {fileID: 21300000, guid: b5eced7d25d6eaf4cbec5486883107ed, type: 3}
+    - {fileID: 21300000, guid: b5eced7d25d6eaf4cbec5486883107ed, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.625
+    m_StopTime: 0.6666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,4 +87,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.6666667
+    functionName: EndFX
+    data: false
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

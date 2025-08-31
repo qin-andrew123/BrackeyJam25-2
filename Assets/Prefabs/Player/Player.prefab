@@ -120,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5920357520898295904}
   - component: {fileID: 8593221198166847551}
+  - component: {fileID: 6463113831889011921}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -159,6 +160,27 @@ MonoBehaviour:
   mClickablesMask:
     serializedVersion: 2
     m_Bits: 4104
+--- !u!114 &6463113831889011921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447294670570184670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf9385fb61c805419d12e834db70543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 8556119434934293590}
+  - {fileID: 4399077690234331253}
+  Idle: 0
+  Trigger: 0
+  Left: 0
+  Right: 0
+  Victory: 0
+  EndLoop: 0
 --- !u!1001 &1946512949702695694
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Animation_Debug : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    Animator m_Animator;
+    [SerializeField] List<Animator> animators;
 
 #if UNITY_EDITOR
     [Header("Debug Animation")]
@@ -12,23 +15,24 @@ public class Animation_Debug : MonoBehaviour
     [SerializeField] bool Left;	
     [SerializeField] bool Right;	
     [SerializeField] bool Victory;
+    [SerializeField] bool Defeat;
     [SerializeField] bool EndLoop;
 
 #endif
 
     private void Start()
     {
-        m_Animator = gameObject.GetComponent<Animator>();
+
     }
 
     public void SetBool(string name, bool value)
     {
-        m_Animator.SetBool(name, value);
+        foreach (var animator in animators) animator.SetBool(name, value);
     }
 
     public void SetTrigger(string name)
     {
-        m_Animator.SetTrigger(name);
+        foreach (var animator in animators) animator.SetTrigger(name);
     }
 
 
@@ -82,6 +86,13 @@ public class Animation_Debug : MonoBehaviour
                 EndLoop = false;
                 SetTrigger("EndLoop");
             }
+            
+            if (Defeat)
+            {
+                Defeat = false;
+                SetTrigger("Defeat");
+            }
+
 #endif
     }
 }
