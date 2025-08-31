@@ -16,7 +16,9 @@ public class Animation_Manager : MonoBehaviour
     [SerializeField] bool Left;	
     [SerializeField] bool Right;	
     [SerializeField] bool Victory;
+    [SerializeField] bool Victory2;
     [SerializeField] bool Defeat;
+    [SerializeField] bool Defeat2;
     [SerializeField] bool EndLoop;
     [SerializeField] bool Knead;
 
@@ -98,6 +100,12 @@ public class Animation_Manager : MonoBehaviour
                 SetTrigger("Victory");
             }
 
+            if (Victory2)
+            {
+                Victory2 = false;
+                SetTrigger("Victory2");
+            }
+
             if (EndLoop)
             {
                 EndLoop = false;
@@ -108,6 +116,12 @@ public class Animation_Manager : MonoBehaviour
             {
                 Defeat = false;
                 SetTrigger("Defeat");
+            }
+
+            if (Defeat2)
+            {
+                Defeat2 = false;
+                SetTrigger("Defeat2");
             }
 
             if (Knead)
