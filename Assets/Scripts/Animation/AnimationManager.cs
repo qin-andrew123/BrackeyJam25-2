@@ -32,11 +32,25 @@ public class Animation_Manager : MonoBehaviour
         foreach (var animator in playerAnimators) animator.SetTrigger(name);
     }
 
+    #region Animation triggers
     public void playKnead()
     {
         foreach (var animator in playerAnimators) animator.SetTrigger("Mix/Combine");
     }
+    public void playVictory()
+    {
+        foreach (var animator in playerAnimators) animator.SetTrigger("Victory");
+    }
 
+    public void playDefeat()
+    {
+        foreach (var animator in playerAnimators) animator.SetTrigger("Defeat");
+    }
+    public void endLoop()
+    {
+        foreach (var animator in playerAnimators) animator.SetTrigger("EndLoop");
+    }
+    #endregion
 
     // Update is called once per frame
     void Update()
