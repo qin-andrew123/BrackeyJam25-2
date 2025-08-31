@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3687657430971110434}
   - component: {fileID: 7227228528623656410}
   - component: {fileID: 9033706015337418127}
-  - component: {fileID: 3921702592414309855}
   m_Layer: 0
   m_Name: FX_Poof
   m_TagString: Untagged
@@ -29,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5707669, y: 3.4265249, z: 12.456524}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.0011012752, y: 0.0011012779, z: 0.0011012725}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,15 +110,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3921702592414309855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7140381601771339323}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49177eeeb9f112499348379efafb484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
