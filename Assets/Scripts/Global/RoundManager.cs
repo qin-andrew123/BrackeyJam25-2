@@ -32,6 +32,9 @@ public class RoundManager : MonoBehaviour
     private FlavorData mRoundFlavors = new FlavorData();
     private bool bHasFlavorRequirementBeenMetFirstTime = false;
     private bool bHasNameRequirementBeenMetFirstTime = false;
+
+    [SerializeField] private AudioEvent mSFX_ScoreIncrease;
+
     public void HandleTurnNumberChange(IngredientDataSO mixedIngredient)
     {
         Debug.Log("Handling Turn Number turn changed");
@@ -121,6 +124,7 @@ public class RoundManager : MonoBehaviour
     {
         if (GlobalVariables.Instance.MetRoundNameRequirement && GlobalVariables.Instance.MetRoundFlavorRequirement)
         {
+            mSFX_ScoreIncrease.Play2DSound();
             GlobalVariables.Instance.BiscuitValues.Add(mRoundScore);
         }
         else

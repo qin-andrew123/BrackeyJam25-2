@@ -292,6 +292,13 @@ MonoBehaviour:
   mRoundManager: {fileID: 0}
   mChanceToSpawnRequired: 0.7
   mTransformPoints: []
+  mSFX_BowlPoof: {fileID: 11400000, guid: a361b4fc9be74e3489542396b73df33d, type: 2}
+  mSFX_Combine: {fileID: 11400000, guid: 5d0e32358a31adf4e8fc0d559cfc12e7, type: 2}
+  mSFX_Deselect: {fileID: 11400000, guid: 72e22372c66e48e428af6f835742cb54, type: 2}
+  mSFX_Error: {fileID: 11400000, guid: 2853dbe7e9b1e044ba1e0a17645ee952, type: 2}
+  mSFX_Mix: {fileID: 11400000, guid: 715a0e8e3dc82994f963163071bb1918, type: 2}
+  mSFX_Reveal: {fileID: 11400000, guid: ea02f221a215b934fb56f96d7a9f215f, type: 2}
+  mSFX_SelectIngredients: {fileID: 11400000, guid: b3522f801f1bfea44856f2e87c9232a8, type: 2}
 --- !u!114 &5452630126830102204
 MonoBehaviour:
   m_ObjectHideFlags: 0

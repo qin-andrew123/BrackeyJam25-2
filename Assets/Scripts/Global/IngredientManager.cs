@@ -38,6 +38,14 @@ public class IngredientManager : MonoBehaviour
 
     private Animation_Manager playerAniamtion;
 
+    [SerializeField] private AudioEvent mSFX_BowlPoof;
+    [SerializeField] private AudioEvent mSFX_Combine;
+    [SerializeField] private AudioEvent mSFX_Deselect;
+    [SerializeField] private AudioEvent mSFX_Error;
+    [SerializeField] private AudioEvent mSFX_Mix;
+    [SerializeField] private AudioEvent mSFX_Reveal;
+    [SerializeField] private AudioEvent mSFX_SelectIngredients;
+
     private void Start()
     {
         playerAniamtion = GameObject.Find("Player").GetComponent<Animation_Manager>();
@@ -55,6 +63,7 @@ public class IngredientManager : MonoBehaviour
     {
         if (mClickedIngredients.Count != 1)
         {
+            mSFX_Error.Play2DSound();
             Debug.LogWarning("Error: You can only mix one ingredient at a time!");
             CleanupClickedIngredients();
             playerAniamtion.playDefeat2();
@@ -70,6 +79,8 @@ public class IngredientManager : MonoBehaviour
             playerAniamtion.playDefeat2();
             return;
         }
+
+        mSFX_Mix.Play2DSound();
 
         Debug.Log("Added " + ingredient + " to mixing bowl");
 
@@ -117,10 +128,12 @@ public class IngredientManager : MonoBehaviour
         Debug.Log("Adding Clicked Ingredient");
         if (mClickedIngredients.Contains(ingredient))
         {
+            mSFX_Deselect.Play2DSound();
             ClickedIngredientsRemove(ingredient);
         }
         else
         {
+            mSFX_SelectIngredients.Play2DSound();
             mClickedIngredients.Add(ingredient);
             mIngredientUI.UpdatePopup(ingredient.IngredientData);
             ingredient.gameObject.layer = LayerMask.NameToLayer("Outline");
@@ -154,6 +167,7 @@ public class IngredientManager : MonoBehaviour
 
         if (mClickedIngredients.Count < 2)
         {
+            mSFX_Error.Play2DSound();
             Debug.LogWarning("Cannot enter combine mode without selecting at least two ingredients!");
             OnIngredientCombinedStatus?.Invoke(false);
             return;
@@ -194,11 +208,15 @@ public class IngredientManager : MonoBehaviour
 
                 playerAniamtion.playVictory2();
 
+                mSFX_Combine.Play2DSound();
+                mSFX_BowlPoof.Play2DSound();
+
                 return;
             }
             
         }
         OnIngredientCombinedStatus?.Invoke(false);
+        mSFX_Error.Play2DSound();
         Debug.Log("Ingredients Not Combinable. Player did not select correct ones!");
         CleanupClickedIngredients();
 
