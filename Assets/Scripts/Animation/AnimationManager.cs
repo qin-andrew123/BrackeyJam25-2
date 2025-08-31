@@ -43,11 +43,20 @@ public class Animation_Manager : MonoBehaviour
     {
         foreach (var animator in playerAnimators) animator.SetTrigger("Victory");
     }
+    public void playVictory()
+    {
+        foreach (var animator in playerAnimators) animator.SetTrigger("Victory2");
+    }
 
     public void playDefeat()
     {
         foreach (var animator in playerAnimators) animator.SetTrigger("Defeat");
     }
+    public void playDefeat2()
+    {
+        foreach (var animator in playerAnimators) animator.SetTrigger("Defeat2");
+    }
+
     public void endLoop()
     {
         foreach (var animator in playerAnimators) animator.SetTrigger("EndLoop");
