@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -189,6 +190,8 @@ public class IngredientManager : MonoBehaviour
 
                 GenerateIngredients(false);
 
+                playerAniamtion.playVictory2();
+
                 return;
             }
             
@@ -196,6 +199,7 @@ public class IngredientManager : MonoBehaviour
         OnIngredientCombinedStatus?.Invoke(false);
         Debug.Log("Ingredients Not Combinable. Player did not select correct ones!");
         CleanupClickedIngredients();
+
     }
     private void GenerateIngredients(bool bIsInitialSpawning)
     {
