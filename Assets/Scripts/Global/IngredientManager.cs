@@ -35,6 +35,13 @@ public class IngredientManager : MonoBehaviour
     private List<Ingredient> mCurrentlyActiveBaseIngredients = new List<Ingredient>();
     private List<Ingredient> mCurrentlyActiveFlavorIngredients = new List<Ingredient>();
 
+    private Animation_Manager playerAniamtion;
+
+    private void Start()
+    {
+        playerAniamtion = GameObject.Find("Player").GetComponent<Animation_Manager>();
+    }
+
     // TODO : Refactor Spawn Ingredients
     public void SpawnIngredients()
     {
@@ -99,6 +106,7 @@ public class IngredientManager : MonoBehaviour
 
         // TODO: Pass in the value of the ingredient mixed in so that we can ensure that we are getting the required values.
         OnIngredientMixed?.Invoke(ingredient.IngredientData);
+        playerAniamtion.playKnead();
     }
 
     private void ClickedIngredientsTryAdd(Ingredient ingredient)
