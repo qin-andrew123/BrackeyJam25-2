@@ -3,13 +3,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using static UnityEngine.Rendering.DebugUI;
 
-public class Animation_Debug : MonoBehaviour
+public class Animation_Manager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] List<Animator> animators;
+    [SerializeField] List<Animator> playerAnimators;
+    public GameObject poofFX;
 
 #if UNITY_EDITOR
     [Header("Debug Animation")]
+    [SerializeField] bool enableDebug;
     [SerializeField] bool Idle;
     [SerializeField] bool Trigger;
     [SerializeField] bool Left;	
@@ -19,31 +21,32 @@ public class Animation_Debug : MonoBehaviour
     [SerializeField] bool EndLoop;
     [SerializeField] bool Knead;
 
-
 #endif
 
-    private void Start()
+    public void ToggleFX(string toggle)
     {
-
+        print($"FX: {toggle}");
+        poofFX.SetActive(bool.Parse(toggle));
     }
 
     public void SetBool(string name, bool value)
     {
-        foreach (var animator in animators) animator.SetBool(name, value);
+        foreach (var animator in playerAnimators) animator.SetBool(name, value);
     }
 
     public void SetTrigger(string name)
     {
-        foreach (var animator in animators) animator.SetTrigger(name);
+        foreach (var animator in playerAnimators) animator.SetTrigger(name);
     }
 
 
     // Update is called once per frame
     void Update()
     {
-     
+
 #if UNITY_EDITOR
-       
+        if (enableDebug)
+        {
             if (Idle)
             {
                 SetBool("Bool 1", true);
@@ -76,19 +79,19 @@ public class Animation_Debug : MonoBehaviour
                 Trigger = false;
                 SetTrigger("Trigger");
             }
-			
+
             if (Victory)
             {
                 Victory = false;
                 SetTrigger("Victory");
             }
-			
+
             if (EndLoop)
             {
                 EndLoop = false;
                 SetTrigger("EndLoop");
             }
-            
+
             if (Defeat)
             {
                 Defeat = false;
@@ -100,6 +103,7 @@ public class Animation_Debug : MonoBehaviour
                 Knead = false;
                 SetTrigger("Mix/Combine");
             }
+        }
 #endif
     }
 }
